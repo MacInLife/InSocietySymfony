@@ -1,0 +1,52 @@
+{% extends 'menu.html.twig' %}
+
+{% block title %}Mon espace !{% endblock %}
+{% block body %}  
+     <div class="bloc" id="contenu">
+        
+            <h4> Application : </h4>
+        <header> 
+            <p style="background-color:black; color:white;"><a href=""> NAS </a></p>
+           <p style="background-color:purple; color:white;"><a href="https://www.onenote.com"> OneNote </a></p>
+           <p style="background-color:blue; color:white;"><a href="http://glpi-project.org"> GLPI </a></p>
+           <p style="background-color:cyan; color:white;"> </p>
+           <p style="background-color:green; color:white;"><a href="https://www.centreon.com"> Centréon </a></p>
+           <p style="background-color:orange; color:white;"> </p>
+           <p style="background-color:yellow; color:white;"> </p>
+           <p style="background-color:pink; color:white;"> </p>
+           <p style="background-color:red; color:white;"> </p>
+        </header>
+      </div> 
+
+<style>
+div#contenu{
+    width: 98.9%;
+    height : 450px;
+    margin-top:10px;
+    background-color : white; 
+    position : absolute;
+
+ 
+}
+header{ display: flex;     flex-wrap: wrap; }
+
+h4{
+    font-family: 'BlackChancery';
+    text-decoration: underline;
+    text-decoration: bold;
+    font-size : 18px;
+}
+p{
+  margin-left: 25px;
+  height : 15%;
+  width : 8%;
+  border-radius: 15px;
+  text-align: center;
+  font-family: cursive;
+  line-height: 60px;
+
+}
+a{  text-decoration: none;     color: white;  }
+
+</style>
+{% endblock %}

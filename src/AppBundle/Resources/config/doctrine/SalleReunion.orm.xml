@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\SalleReunion" table="salle_reunion">
+    <indexes>
+      <index name="FK_Salle_Reunion_id_statut" columns="id_statut"/>
+    </indexes>
+    <id name="idSr" type="integer" column="id_SR">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nbPlace" type="integer" column="nb_place" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="horaire" type="time" column="horaire" nullable="true"/>
+    <field name="jour" type="date" column="jour" nullable="true"/>
+    <field name="nomsr" type="string" column="nomSR" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lieu" type="string" column="lieu" length="25" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idStatut" target-entity="Statut" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_statut" referenced-column-name="id_statut"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

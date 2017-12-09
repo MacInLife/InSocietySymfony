@@ -1,0 +1,69 @@
+{% extends 'menu.html.twig' %}
+
+{% block title %}Accueil !{% endblock %}
+{% block body %}  
+     <div class="bloc" id="contenu">
+        <header>
+            <p> Bienvenue : </p>
+            <!--Nom Prenom-->
+                {{prenom}}&nbsp;{{nom}}
+
+            <p> Nouveautés : </p>
+
+        </header>
+        <nav>
+            <p> Activité Récente : </p>
+
+            <p> Newsletters : </p>
+        </nav>
+        <footer>
+             <p> Compteur : </p>
+             <!--Script comteur : http://compteur-visite.com -->
+<script type="text/javascript" id="servicewb_143549">
+(function() {
+var cv = document.createElement("script"); cv.type = "text/javascript"; cv.async = true;
+cv.src = "http://www.compteur-visite.com/service.php?v=1.1&id=143549&k=32dfe5034dbf580d16304452e826cd89&c="+document.cookie;
+var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(cv, s);
+})();
+</script>
+<noscript><a href="http://www.compteur-visite.com/">Services gratuits pour webmasters</a></noscript>
+            
+            <p>Météo</p>
+            <!-- widget meteo http://www.widget-meteo.com -->
+<div id="widget_74d4826d063633330a710fd3e5a4e318">
+<span id="l_74d4826d063633330a710fd3e5a4e318"><a href="http://www.mymeteo.info/r/evry-91_h">&Eacute;vry temp&eacute;ratures et pr&eacute;visions</a></span>
+<script type="text/javascript">
+(function() {
+    var my = document.createElement("script"); my.type = "text/javascript"; my.async = true;
+    my.src = "https://services.my-meteo.com/widget/js_design?ville=32898&format=grand-rectangle&nb_jours=5&coins&ombre1=000000&c1=ffffff&c2=c9c9c9&c3=ffffff&c4=ffffff&c5=ffffff&police=2&t_icones=2&fond=1&masque=5&x=300&y=250&d=0&id=74d4826d063633330a710fd3e5a4e318";
+    var z = document.getElementsByTagName("script")[0]; z.parentNode.insertBefore(my, z);
+})();
+</script>
+</div>
+<!-- widget meteo -->
+            <p> Agenda : </p>
+        </footer>
+      </div> 
+
+<style>
+div#contenu{
+    width: 98.9%;
+    height : 450px;
+    margin-top:10px;
+  background-color : white; 
+  position : absolute;
+ 
+}
+
+header{  margin-left: 25px; }
+nav{  margin-left: 25px; }
+footer{ margin-left: 25px; }
+p{
+    font-family: 'BlackChancery';
+    text-decoration: underline;
+    text-decoration: bold;
+    font-size : 18px;
+}
+
+</style>
+{% endblock %}

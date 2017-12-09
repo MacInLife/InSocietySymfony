@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Evenement" table="evenement">
+    <indexes>
+      <index name="FK_Evenement_id_SR" columns="id_SR"/>
+    </indexes>
+    <id name="idEvent" type="integer" column="id_event">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomevt" type="string" column="nomEvt" length="50" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="jour" type="date" column="jour" nullable="false"/>
+    <field name="type" type="string" column="type" length="150" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lieu" type="string" column="lieu" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idSr" target-entity="SalleReunion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_SR" referenced-column-name="id_SR"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idPers" target-entity="Personnel" inversed-by="idEvent" fetch="LAZY">
+      <join-table name="participer">
+        <join-columns>
+          <join-column name="id_event" referenced-column-name="id_event"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="id_pers" referenced-column-name="id_pers"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

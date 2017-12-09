@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Se Connecter</title>
+       
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    	<h1>Bienvenue sur l'Intranet de InSociety</h1>
+    	<!--<img src="InSociety.PNG" align="center">-->
+    	<div>
+
+			{{ form(connectform)}}
+		</div>
+		<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
+       
+
+</body>
+<style>
+body{
+background-color :  #9edae5;
+  font-family: cursive;
+}
+
+h1{
+	font-family:'BlackChancery' ; 
+	 font-size:  24px ;
+	 text-align: center;
+	 margin-top: 5%;
+}
+h4{
+	font-family:'BlackChancery' ; 
+	 font-size:  24px ;
+	 text-align: center;
+	 color:#6b6b6b;
+}
+
+div{
+	margin-top: 5%;
+}
+div#form{
+background-color: white;
+margin : auto;
+margin-top: 5%;
+	border-radius: 20px;
+	border :1px solid;
+    border-color: #91efffe5;
+    width: 40%;
+    
+}
+button{
+	 font-family:'BlackChancery' ; 
+	 font-size:  24px ;
+	 border-radius: 5px;
+	 margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 40%;
+    margin-right: 45%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+
+}
+label{
+	margin-top: 5%;
+	margin-left: 20%;
+}
+
+input#form_Login{
+	border-radius: 5px;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-top: 5%;
+	
+
+}
+
+input#form_MDP{
+	border-radius: 5px;
+	margin-left: 13%;
+	margin-top: 5%;
+	
+
+}
+</style>
