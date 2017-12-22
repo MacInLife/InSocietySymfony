@@ -7,12 +7,19 @@ h1{
      font-size:  24px ;
      text-align: right;
 }
-h4{
+#real{
+ 
     font-family:'BlackChancery' ; 
      font-size:  18px ;
      text-align: center;
      color:#6b6b6b;
+    position: fixed;
+    bottom: 60px;
+     text-decoration-line: none;
+   left : 4%;
+   right : 0;
 }
+
 div#contenu{
   margin : auto;
   background : white;
@@ -21,18 +28,25 @@ div#contenu{
 #nav {
     padding: 0; margin: 0;
     text-align: center; /* centrer le texte */
+    list-style-type:none;
+    display: inherit;
 }
 #nav li {
-    display: inline;
+    display: inline-block;
     list-style: none;
+    position: relative;
 }
+
 #nav a {
     display:inline-block;
-    margin: 0 10px;
+    
 }
 #ex2 {
     padding-top: 2%;
   
+}
+#ex2 li a:hover{
+color: blue;
 }
 
 ul#nav{
@@ -47,7 +61,7 @@ ul#nav{
 a#a{
     height: 36px;
      margin: 0;
-    padding: 0 15px;
+    padding: 0 30px;
     line-height: 36px;
     border-left: 1px solid #555;
     border-right: 1px solid #888;
@@ -58,6 +72,7 @@ a#a{
     font-size: 24px;
 }
 
+
 a#f{
 
 color : black;
@@ -66,12 +81,60 @@ color : black;
 ul{
     font-family:'BlackChancery' ; 
      font-size:  18px ;
-     text-align: left;     
+     text-align: left;  
+
 }
 footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
   /*column-width: 24em; /* Disposition de la page en colonnes de taille dix fois supérieure à la normale */
       position: absolute;
-    bottom: 70px;
+    bottom: 150px;
     left: 140px;
     right: 0;
 }
+
+
+/*Menu Déroulant*/
+/*Disparition des sous menu de Ressources*/
+/*ul li ul { display: none}*/
+
+
+#nav ul li {
+/* on enlève ce comportement pour les liens du sous menu */
+    display: inherit;
+}
+#nav a {
+    text-decoration: none;
+    display: block;
+  
+}
+#nav ul {
+    position: absolute;
+/* on cache les sous menus complètement sur la gauche */
+    left: -999em;
+    
+    z-index: 1000;
+        padding: 0%;
+    margin: 1% 0%;
+    text-align: center;
+}
+#nav li:hover ul {
+/* Au survol des li du menu on replace les sous menus */
+    left: auto;
+}
+#ss {
+     color : white;
+     height: 20px;
+     width: 150px;
+     margin: 1%;
+     padding: 5%;
+     border-left: 1px solid #555;
+     border-right: 1px solid #888;
+     background-color: #5E5E5E;
+     font-family: BlackChancery;
+     font-size: 18px;
+
+}
+
+
+
+
