@@ -12,7 +12,7 @@
     <body>
       
         <h1>Bienvenue sur l'Intranet de InSociety</h1>
-        <img src="img/InSociety0.png" width="160px">
+        <img id="imgmenu" src="img/InSociety0.png" width="160px">
 
 
     <div class="exemple" id="ex2">
@@ -21,9 +21,9 @@
     --><li><a id="a" href="{{path('myspace')}}">Mon Espace</a></li><!--
     --><li><a id="a" href="#">Ressources</a><!--
         --><ul><!--
-            --><li><a id="ss" href="#">Gestion Documents</a></li><!--
-            --><li><a id="ss" href="#">Gestion Evènements</a></li><!--
-            --><li><a id="ss" href="#">Gestion Salles</a></li><!--
+            --><li><a id="ss" href="{{path('docs')}}">Gestion Document</a></li><!--
+            --><li><a id="ss" href="{{path('events')}}">Gestion Evènement</a></li><!--
+            --><li><a id="ss" href="{{path('salles')}}">Gestion Salle</a></li><!--
         --></ul><!--
       --></li><!--
     --><li><a id="a" href="{{ path('connexion') }}">Déconnexion</a></li>

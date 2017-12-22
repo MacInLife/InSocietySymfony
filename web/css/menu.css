@@ -87,7 +87,7 @@ ul{
 footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
   /*column-width: 24em; /* Disposition de la page en colonnes de taille dix fois supérieure à la normale */
       position: absolute;
-    bottom: 150px;
+    bottom: 140px;
     left: 140px;
     right: 0;
 }
@@ -136,7 +136,7 @@ footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
 }
 
 /*Position de l'image*/
-img{
+#imgmenu{
     width: 160px;
     position: float;
     position: absolute;

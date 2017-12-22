@@ -51,7 +51,7 @@ $personnel = $repository->findOneBy(
 //var_dump($personnel->getPrenom());
  $nom = $personnel->getNom() ;
  $prenom = $personnel->getPrenom() ;
-
+//session recuperer nom prénom
        if($personnel != null){
 
         $session =  $request->getSession();
@@ -88,6 +88,41 @@ $personnel = $repository->findOneBy(
    
     
         return $this->render('default/myspace.html.twig'  ) ;
+    }
+
+
+/**
+     * @Route("/docs", name="docs")
+     */
+    public function docAction(Request $request)
+    {
+
+
+   
+    
+        return $this->render('default/docs.html.twig'  ) ;
+    }
+    /**
+     * @Route("/events", name="events")
+     */
+    public function eventAction(Request $request)
+    {
+
+
+   
+    
+        return $this->render('default/events.html.twig'  ) ;
+    }
+    /**
+     * @Route("/salles", name="salles")
+     */
+    public function salleAction(Request $request)
+    {
+
+
+   
+    
+        return $this->render('default/salles.html.twig'  ) ;
     }
 }
 
