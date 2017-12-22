@@ -1,5 +1,5 @@
 body{
-background-color :  #9edae5;
+background-color :  #b1edf8;
   font-family: cursive;
 }
 h1{
@@ -42,7 +42,7 @@ div#contenu{
     
 }
 #ex2 {
-    padding-top: 2%;
+    padding-top: 4%;
   
 }
 #ex2 li a:hover{
@@ -135,6 +135,12 @@ footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
 
 }
 
-
+/*Position de l'image*/
+img{
+    width: 160px;
+    position: float;
+    position: absolute;
+    top: 0px;
+  }
 
 
