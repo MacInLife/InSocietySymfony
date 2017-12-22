@@ -5,8 +5,9 @@
      <div class="bloc" id="contenu">
         <header>
             <p> Bienvenue : </p>
-            <!--Nom Prenom-->
-                {{prenom}}&nbsp;{{nom}}
+            <!--Récupère le Nom Prenom grâce à Session-->
+           
+              {{app.session.get('prenom') }}&nbsp;{{app.session.get('nom') }}
 
             <p> Nouveautés : </p>
 
@@ -44,6 +45,7 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(cv
             <p> Agenda : </p>
         </footer>
       </div> 
+    
 
 <style>
 div#contenu{
@@ -64,6 +66,8 @@ p{
     text-decoration: bold;
     font-size : 18px;
 }
-
+a{  text-decoration: none;     color: white;  }
 </style>
+
+
 {% endblock %}

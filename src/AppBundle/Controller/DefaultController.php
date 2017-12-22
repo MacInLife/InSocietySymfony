@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Personnel
 ;
 
@@ -51,12 +52,19 @@ $personnel = $repository->findOneBy(
  $nom = $personnel->getNom() ;
  $prenom = $personnel->getPrenom() ;
 
-       if($personnel != null)
+       if($personnel != null){
+
+        $session =  $request->getSession();
+          $session->set('nom', $nom);
+          $session->set('prenom', $prenom);
+
 
               return  $this->render('default/accueil.html.twig' ,[ 'nom'=> $nom, 'prenom'=> $prenom]);
             }
+             }
         return $this->render('default/connexion.html.twig', ['connectform'=>$form->createView()])  ;
-    }
+   
+  }
 
 /**
      * @Route("/accueil", name="accueil")
@@ -70,5 +78,16 @@ $personnel = $repository->findOneBy(
         return $this->render('default/accueil.html.twig'  ) ;
     }
 
+/**
+     * @Route("/myspace", name="myspace")
+     */
+    public function myspaceAction(Request $request)
+    {
+
+
+   
+    
+        return $this->render('default/myspace.html.twig'  ) ;
+    }
 }
 

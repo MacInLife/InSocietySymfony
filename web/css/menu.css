@@ -58,8 +58,8 @@ a#a{
     font-size: 24px;
 }
 
-a{
-text-decoration: wavy;
+a#f{
+
 color : black;
 }
 
@@ -70,4 +70,8 @@ ul{
 }
 footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
   /*column-width: 24em; /* Disposition de la page en colonnes de taille dix fois supérieure à la normale */
+      position: absolute;
+    bottom: 70px;
+    left: 140px;
+    right: 0;
 }

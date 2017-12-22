@@ -17,28 +17,28 @@
       <div class="exemple" id="ex2">
       <ul id="nav"><!--
     --><li><a id="a" href="{{path('accueil')}}">Accueil</a></li><!--
-    --><li><a id="a" href="#">Mon Espace</a></li><!--
+    --><li><a id="a" href="{{path('myspace')}}">Mon Espace</a></li><!--
     --><li><a id="a" href="#">Ressources</a></li><!--
     --><li><a id="a" href="{{ path('connexion') }}">Déconnexion</a></li>
 </ul>
       </div>
+   {% block body %}{% endblock %}
 
-       {% block body %}{% endblock %}
-
-
+  
  {% block javascripts %}{% endblock %}
-     <h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
+    
+    <h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
         <footer id="menu">
         <ul><u><bold>Entreprise :</bold></u></ul>
-          <li><a href="#">Annuaire</a></li>
-          <li><a href="#">Plan du site</a></li>
+          <li><a id="f" href="#">Annuaire</a></li>
+          <li><a id="f" href="#">Plan du site</a></li>
 
         <ul><u><bold>Liens Utiles :</bold></u></ul>
-          <li><a href="#">Contacter-nous</a></li>
-          <li><a href="#"></a></li>
+          <li><a id="f" href="#">Contacter-nous</a></li>
+          <li><a id="f" href="#"></a></li>
 
         <ul><u><bold>Besoin d'aide ?</bold></u></ul>
-          <li><a href="#">Foire aux Questions</a></li>
+          <li><a id="f" href="#">Foire aux Questions</a></li>
       </footer>
         
     </body>
