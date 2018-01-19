@@ -1,5 +1,3 @@
-// src/AppBundle/Listener/LoadDataListener.php
-
 <?php
 
 namespace AppBundle\Listener;

@@ -3,12 +3,8 @@
  * Docs & License: http://fullcalendar.io/
  * (c) 2016 Adam Shaw
  */
-div#calendar-holder.fc.fc-unthemed.fc-ltr{
-	width: 500px;
-}
- .fc-icon,body .fc{
- 	font-size:1em
-  }
+
+ .fc-icon,body .fc{	font-size:1em  }
  .fc-button-group,.fc-icon{display:inline-block}
  .fc-bg,.fc-row .fc-bgevent-skeleton,.fc-row .fc-highlight-skeleton{bottom:0}
  .fc-icon,.fc-unselectable{-khtml-user-select:none;-webkit-touch-callout:none}

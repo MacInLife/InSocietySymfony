@@ -15,14 +15,14 @@ class __TwigTemplate_bcc40622c651f85085446e7c62a84c19d28712166e6a3817745620c572d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_4efcc709bd229c6bb9126ea9f8700d9763b8ab259f34fc12d2cc56542a246c6d = $this->env->getExtension("native_profiler");
-        $__internal_4efcc709bd229c6bb9126ea9f8700d9763b8ab259f34fc12d2cc56542a246c6d->enter($__internal_4efcc709bd229c6bb9126ea9f8700d9763b8ab259f34fc12d2cc56542a246c6d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FullCalendar/Calendar/calendar.html.twig"));
+        $__internal_04e8d60eb5d618123a106f008c8d4601181eef4aab2b2d39f62da0f1884691fd = $this->env->getExtension("native_profiler");
+        $__internal_04e8d60eb5d618123a106f008c8d4601181eef4aab2b2d39f62da0f1884691fd->enter($__internal_04e8d60eb5d618123a106f008c8d4601181eef4aab2b2d39f62da0f1884691fd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@FullCalendar/Calendar/calendar.html.twig"));
 
         // line 1
-        echo "<div id=\"calendar-holder\"></div>
+        echo "<div id=\"calendar-holder\" style=\"width:500px; height:440px; margin-top: 10px; margin-left:10px; margin-right:10px;\"></div>
 ";
         
-        $__internal_4efcc709bd229c6bb9126ea9f8700d9763b8ab259f34fc12d2cc56542a246c6d->leave($__internal_4efcc709bd229c6bb9126ea9f8700d9763b8ab259f34fc12d2cc56542a246c6d_prof);
+        $__internal_04e8d60eb5d618123a106f008c8d4601181eef4aab2b2d39f62da0f1884691fd->leave($__internal_04e8d60eb5d618123a106f008c8d4601181eef4aab2b2d39f62da0f1884691fd_prof);
 
     }
 
@@ -36,5 +36,5 @@ class __TwigTemplate_bcc40622c651f85085446e7c62a84c19d28712166e6a3817745620c572d
         return array (  22 => 1,);
     }
 }
-/* <div id="calendar-holder"></div>*/
+/* <div id="calendar-holder" style="width:500px; height:440px; margin-top: 10px; margin-left:10px; margin-right:10px;"></div>*/
 /* */
