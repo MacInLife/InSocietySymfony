@@ -22,32 +22,32 @@ class __TwigTemplate_a41bd5f9eb4eb70811f0a2bdd5a9787ee8e8bdfa27338871d2db7d95b51
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_fa182b1f2a076027c514f57be8d0294781e4700ac874d857048349ed92111cf5 = $this->env->getExtension("native_profiler");
-        $__internal_fa182b1f2a076027c514f57be8d0294781e4700ac874d857048349ed92111cf5->enter($__internal_fa182b1f2a076027c514f57be8d0294781e4700ac874d857048349ed92111cf5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/events.html.twig"));
+        $__internal_c03cc5c84334c153a5863277dd45fed44c0edb439a36ecf3aac4915f61a6275c = $this->env->getExtension("native_profiler");
+        $__internal_c03cc5c84334c153a5863277dd45fed44c0edb439a36ecf3aac4915f61a6275c->enter($__internal_c03cc5c84334c153a5863277dd45fed44c0edb439a36ecf3aac4915f61a6275c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/events.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_fa182b1f2a076027c514f57be8d0294781e4700ac874d857048349ed92111cf5->leave($__internal_fa182b1f2a076027c514f57be8d0294781e4700ac874d857048349ed92111cf5_prof);
+        $__internal_c03cc5c84334c153a5863277dd45fed44c0edb439a36ecf3aac4915f61a6275c->leave($__internal_c03cc5c84334c153a5863277dd45fed44c0edb439a36ecf3aac4915f61a6275c_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_25704886e6c0e6b5922104cc0ea63b79d1b8f24505b98a5d6ed3898e079edd88 = $this->env->getExtension("native_profiler");
-        $__internal_25704886e6c0e6b5922104cc0ea63b79d1b8f24505b98a5d6ed3898e079edd88->enter($__internal_25704886e6c0e6b5922104cc0ea63b79d1b8f24505b98a5d6ed3898e079edd88_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_1dd867bc70b06ab7bd090920c7ad35921f4736e03d107519bbf51de051087ad8 = $this->env->getExtension("native_profiler");
+        $__internal_1dd867bc70b06ab7bd090920c7ad35921f4736e03d107519bbf51de051087ad8->enter($__internal_1dd867bc70b06ab7bd090920c7ad35921f4736e03d107519bbf51de051087ad8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Mon espace !";
+        echo "Evènement !";
         
-        $__internal_25704886e6c0e6b5922104cc0ea63b79d1b8f24505b98a5d6ed3898e079edd88->leave($__internal_25704886e6c0e6b5922104cc0ea63b79d1b8f24505b98a5d6ed3898e079edd88_prof);
+        $__internal_1dd867bc70b06ab7bd090920c7ad35921f4736e03d107519bbf51de051087ad8->leave($__internal_1dd867bc70b06ab7bd090920c7ad35921f4736e03d107519bbf51de051087ad8_prof);
 
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
-        $__internal_72875daae6e54b000880ae070482a33c173f65e8a09920bded110ab84271928e = $this->env->getExtension("native_profiler");
-        $__internal_72875daae6e54b000880ae070482a33c173f65e8a09920bded110ab84271928e->enter($__internal_72875daae6e54b000880ae070482a33c173f65e8a09920bded110ab84271928e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_e42fdec79a12ac8bbd80fdf6399f1a03a3bb7ad36a357cdd87a51b6722b25f31 = $this->env->getExtension("native_profiler");
+        $__internal_e42fdec79a12ac8bbd80fdf6399f1a03a3bb7ad36a357cdd87a51b6722b25f31->enter($__internal_e42fdec79a12ac8bbd80fdf6399f1a03a3bb7ad36a357cdd87a51b6722b25f31_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "  
 
@@ -55,9 +55,33 @@ class __TwigTemplate_a41bd5f9eb4eb70811f0a2bdd5a9787ee8e8bdfa27338871d2db7d95b51
 
 </style>
 
-";
+ ";
+        // line 10
+        $this->loadTemplate("@FullCalendar/Calendar/calendar.html.twig", "default/events.html.twig", 10)->display($context);
+        // line 11
+        echo " <link rel=\"stylesheet\" href=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css"), "html", null, true);
+        echo "\" />
+
+ \t<<script type=\"text/javascript\" src=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js"), "html", null, true);
+        echo "\"></script>
+  \t<script type=\"text/javascript\" src=\"";
+        // line 14
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/lib/moment.min.js"), "html", null, true);
+        echo "\"></script>
+  \t<script type=\"text/javascript\" src=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js"), "html", null, true);
+        echo "\"></script>
+ \t<script type=\"text/javascript\" src=\"";
+        // line 16
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js"), "html", null, true);
+        echo "\"></script>
+ ";
         
-        $__internal_72875daae6e54b000880ae070482a33c173f65e8a09920bded110ab84271928e->leave($__internal_72875daae6e54b000880ae070482a33c173f65e8a09920bded110ab84271928e_prof);
+        $__internal_e42fdec79a12ac8bbd80fdf6399f1a03a3bb7ad36a357cdd87a51b6722b25f31->leave($__internal_e42fdec79a12ac8bbd80fdf6399f1a03a3bb7ad36a357cdd87a51b6722b25f31_prof);
 
     }
 
@@ -73,16 +97,27 @@ class __TwigTemplate_a41bd5f9eb4eb70811f0a2bdd5a9787ee8e8bdfa27338871d2db7d95b51
 
     public function getDebugInfo()
     {
-        return array (  47 => 4,  35 => 3,  11 => 1,);
+        return array (  80 => 16,  76 => 15,  72 => 14,  68 => 13,  62 => 11,  60 => 10,  47 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'menu.html.twig' %}*/
 /* */
-/* {% block title %}Mon espace !{% endblock %}*/
+/* {% block title %}Evènement !{% endblock %}*/
 /* {% block body %}  */
 /* */
 /* <style type="text/css">*/
 /* */
 /* </style>*/
 /* */
-/* {% endblock %}*/
+/*  {% include '@FullCalendar/Calendar/calendar.html.twig' %}*/
+/*  <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />*/
+/* */
+/*  	<<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>*/
+/*   	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>*/
+/*   	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>*/
+/*  	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>*/
+/*  {% endblock %}*/
+/* */
+/*   */
+/* */
+/* */

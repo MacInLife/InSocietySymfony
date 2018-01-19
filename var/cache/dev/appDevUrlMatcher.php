@@ -130,6 +130,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::salleAction',  '_route' => 'salles',);
         }
 
+        // ancarebeca_full_calendar_load
+        if ($pathinfo === '/full-calendar/load') {
+            return array (  '_controller' => 'AncaRebeca\\FullCalendarBundle\\Controller\\CalendarController::loadAction',  '_route' => 'ancarebeca_full_calendar_load',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

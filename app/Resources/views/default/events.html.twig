@@ -1,10 +1,20 @@
 {% extends 'menu.html.twig' %}
 
-{% block title %}Mon espace !{% endblock %}
+{% block title %}Evènement !{% endblock %}
 {% block body %}  
 
 <style type="text/css">
 
 </style>
 
-{% endblock %}
+ {% include '@FullCalendar/Calendar/calendar.html.twig' %}
+ <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+
+ 	<<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+  	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+  	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+ 	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+ {% endblock %}
+
+  
+
