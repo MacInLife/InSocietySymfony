@@ -130,9 +130,6 @@ class Personnel
     }
 
 
-
-
-
     /**
      * Set nom
      *

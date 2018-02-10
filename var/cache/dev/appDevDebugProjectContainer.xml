@@ -35,6 +35,7 @@
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">62241c95480ca1a62572d5a4baac3038cec30308</parameter>
     <parameter key="locale">en</parameter>
+    <parameter key="brochures_directory">C:\wamp64\www\InSociety\app/../web/uploads/documents</parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">62241c95480ca1a62572d5a4baac3038cec30308</parameter>
@@ -491,7 +492,7 @@
                   <tag name="cache.pool"/>
                   <argument>-ofA4nlcq9</argument>
                   <argument>0</argument>
-                  <argument>tP0vFv5nu+tT1YHTb7FQyw</argument>
+                  <argument>C7wDcB7aLqPdfQzdY1GCuA</argument>
                   <argument>C:\wamp64\www\InSociety\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -504,7 +505,7 @@
                   <tag name="cache.pool"/>
                   <argument>BzjR5RAP17</argument>
                   <argument>0</argument>
-                  <argument>tP0vFv5nu+tT1YHTb7FQyw</argument>
+                  <argument>C7wDcB7aLqPdfQzdY1GCuA</argument>
                   <argument>C:\wamp64\www\InSociety\var\cache\dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -836,7 +837,7 @@
       <tag name="cache.pool"/>
       <argument>sYCc+WhxVm</argument>
       <argument>0</argument>
-      <argument>tP0vFv5nu+tT1YHTb7FQyw</argument>
+      <argument>C7wDcB7aLqPdfQzdY1GCuA</argument>
       <argument>C:\wamp64\www\InSociety\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1580,7 +1581,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5a60a94f795073.73033256</argument>
+            <argument>5a7ad73f609f51.86012735</argument>
           </service>
         </argument>
       </argument>
@@ -1714,7 +1715,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5a60a94f795073.73033256</argument>
+            <argument>5a7ad73f609f51.86012735</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>

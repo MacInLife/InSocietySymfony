@@ -9,16 +9,33 @@
     </head>
     <body>
     	<h1>Bienvenue sur l'Intranet de InSociety</h1>
-    	<!--<img src="InSociety.PNG" align="center">-->
+    	
     	<div>
 
+			<img id="imgmenu" src="img/InSociety0.png" width="300px"> 
 			{{ form(connectform)}}
+			<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">	&#128065; </button>
+			
 		</div>
 		<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
        
 
 </body>
+<script>
+;(function(){var TYPE_ATTR_PASSWORD='input#form_MDP[type="password"]';var CLASS_TOGGLE='ua-password-preview-toggle';var CLASS_IS_VISIBLE='ua-is-visible';var CLASS_ICON='ua-password-preview-icon';var HTML_TOGGLE='\
+    <i class="jui-icon icon-eye-close '+CLASS_ICON+' '+CLASS_ICON+'--hide"></i>\
+    <i class="jui-icon icon-eye-open '+CLASS_ICON+' '+CLASS_ICON+'--show"></i>\
+';function getInputElements(){return[].slice.call(document.querySelectorAll(TYPE_ATTR_PASSWORD));}
+function getToggleElement(){var toggle=document.createElement('button');toggle.type='button';toggle.innerHTML=HTML_TOGGLE;toggle.className=CLASS_TOGGLE;return toggle;}
+function togglePasswordPreview(toggle,inputs){var previewVisible=false;return function(){var isVisible=!previewVisible;var inputType=isVisible?'text':'password';toggle.classList.toggle(CLASS_IS_VISIBLE,isVisible);inputs.forEach(function(input){input.type=inputType;});previewVisible=isVisible;};}
+var inputs=getInputElements();var lastInput=inputs.slice().pop();var toggle=getToggleElement();lastInput.parentNode.appendChild(toggle);toggle.addEventListener('click',togglePasswordPreview(toggle,inputs));})();
+function unmask(){ 	
+	document.getElementById("form_MDP").type="text"; 	
+}
+</script>
 <style>
+
+
 body{
 background-color :  #9edae5;
   font-family: cursive;
@@ -40,6 +57,7 @@ h4{
 div{
 	margin-top: 5%;
 }
+img#imgmenu{ position: absolute; margin-left: 100px; margin-top: 40px; }
 div#form{
 background-color: white;
 margin : auto;
@@ -47,10 +65,21 @@ margin-top: 5%;
 	border-radius: 20px;
 	border :1px solid;
     border-color: #91efffe5;
-    width: 40%;
-    
+    width: 40%;   
 }
-button{
+button#unmask{
+	position: absolute;
+	font-family : cursive;
+	    font-size: 30px;
+    margin-left: 57.5%;
+    margin-top: -10.5%;
+        border: none;
+        background: none;
+    background-color: initial;
+    outline: none;
+    color:grey;
+}
+button#form_Connexion{
 	 font-family:'BlackChancery' ; 
 	 font-size:  24px ;
 	 border-radius: 5px;
@@ -71,17 +100,20 @@ label{
 
 input#form_Login{
 	border-radius: 5px;
+	height: 20px;
 	margin-top: 5%;
 	margin-left: 5%;
 	margin-top: 5%;
-	
+	font-size:  18px ;
 
 }
 
 input#form_MDP{
 	border-radius: 5px;
-	margin-left: 13%;
+	height: 20px;
+	margin-left: 12%;
 	margin-top: 5%;
+	font-size:  18px ;
 	
 
 }

@@ -15,23 +15,30 @@ class SalleReunion
     /**
      * @var integer
      *
-     * @ORM\Column(name="nb_place", type="integer", nullable=true)
+     * @ORM\Column(name="NbPlaceTotal", type="integer", nullable=true)
      */
-    private $nbPlace;
+    private $nbplacetotal;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbPers", type="integer", nullable=false)
+     */
+    private $nbpers;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaire", type="time", nullable=true)
+     * @ORM\Column(name="date_d", type="datetime", nullable=true)
      */
-    private $horaire;
+    private $dateD;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="jour", type="date", nullable=true)
+     * @ORM\Column(name="date_f", type="datetime", nullable=true)
      */
-    private $jour;
+    private $dateF;
 
     /**
      * @var string
@@ -67,5 +74,182 @@ class SalleReunion
     private $idStatut;
 
 
-}
 
+    /**
+     * Set nbplacetotal
+     *
+     * @param integer $nbplacetotal
+     *
+     * @return SalleReunion
+     */
+    public function setNbplacetotal($nbplacetotal)
+    {
+        $this->nbplacetotal = $nbplacetotal;
+
+        return $this;
+    }
+
+    /**
+     * Get nbplacetotal
+     *
+     * @return integer
+     */
+    public function getNbplacetotal()
+    {
+        return $this->nbplacetotal;
+    }
+
+    /**
+     * Set nbpers
+     *
+     * @param integer $nbpers
+     *
+     * @return SalleReunion
+     */
+    public function setNbpers($nbpers)
+    {
+        $this->nbpers = $nbpers;
+
+        return $this;
+    }
+
+    /**
+     * Get nbpers
+     *
+     * @return integer
+     */
+    public function getNbpers()
+    {
+        return $this->nbpers;
+    }
+
+    /**
+     * Set dateD
+     *
+     * @param \DateTime $dateD
+     *
+     * @return SalleReunion
+     */
+    public function setDateD($dateD)
+    {
+        $this->dateD = $dateD;
+
+        return $this;
+    }
+
+    /**
+     * Get dateD
+     *
+     * @return \DateTime
+     */
+    public function getDateD()
+    {
+        return $this->dateD;
+    }
+
+    /**
+     * Set dateF
+     *
+     * @param \DateTime $dateF
+     *
+     * @return SalleReunion
+     */
+    public function setDateF($dateF)
+    {
+        $this->dateF = $dateF;
+
+        return $this;
+    }
+
+    /**
+     * Get dateF
+     *
+     * @return \DateTime
+     */
+    public function getDateF()
+    {
+        return $this->dateF;
+    }
+
+    /**
+     * Set nomsr
+     *
+     * @param string $nomsr
+     *
+     * @return SalleReunion
+     */
+    public function setNomsr($nomsr)
+    {
+        $this->nomsr = $nomsr;
+
+        return $this;
+    }
+
+    /**
+     * Get nomsr
+     *
+     * @return string
+     */
+    public function getNomsr()
+    {
+        return $this->nomsr;
+    }
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return SalleReunion
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * Get idSr
+     *
+     * @return integer
+     */
+    public function getIdSr()
+    {
+        return $this->idSr;
+    }
+
+    /**
+     * Set idStatut
+     *
+     * @param \AppBundle\Entity\Statut $idStatut
+     *
+     * @return SalleReunion
+     */
+    public function setIdStatut(\AppBundle\Entity\Statut $idStatut = null)
+    {
+        $this->idStatut = $idStatut;
+
+        return $this;
+    }
+
+    /**
+     * Get idStatut
+     *
+     * @return \AppBundle\Entity\Statut
+     */
+    public function getIdStatut()
+    {
+        return $this->idStatut;
+    }
+}

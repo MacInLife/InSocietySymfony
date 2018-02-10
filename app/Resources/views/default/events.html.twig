@@ -3,18 +3,154 @@
 {% block title %}Evènement !{% endblock %}
 {% block body %}  
 
-<style type="text/css">
 
-</style>
+<nav>
+  <a id="cal" href="{{path('calendrier')}}">Calendrier</a>
+ <dialog id="Agenda">  {% include '@FullCalendar/Calendar/calendar.html.twig' %} <button id="Fermer" type="reset">Fermer</button>
 
- {% include '@FullCalendar/Calendar/calendar.html.twig' %}
  <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+ </dialog>
 
- 	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
-  	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
-  	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
- 	<script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
- {% endblock %}
+ <dialog id="addEvt">   {{ form(eventform)}}  </dialog>
 
+ <menu>
+  <img id="ag" src="img/agenda.png" width="80px" height="80px" align="left">
+ 	<img id="add" src="img/PlusBleu.png" width="160px" height="85px" align="right">
+ </menu>
+
+
+<div id="bodyevt">
+  <table width="80%" border="1">
+   
+    <tr>
+    <td>Nom de l'évènement</td>
+    <td>Description/Type</td>
+    <td>Date de Début</td>
+    <td>Date de Fin</td>
+    <td>Heure de Début</td>
+    <td>Heure de Fin</td>
+    <td>Lieu</td>
+    <td>Salle</td>
+    </tr>
+     
+
+
+    </table>
+    
+</div>
+ </nav>
+
+
+ 	<script>
+  (function() {
+    var updateButton = document.getElementById('add');
+    var cancelButton = document.getElementById('form_Annuler');
+
+
+    // Update button opens a modal dialog
+    updateButton.addEventListener('click', function() {
+      document.getElementById('addEvt').showModal();
+    });
+
+    // Bouton pour fermer la boîte de dialogue
+    cancelButton.addEventListener('click', function() {
+      document.getElementById('addEvt').close();
+    });
+
+  })();
+
+  (function(){
+    var updateButton = document.getElementById('ag');
+    var cancelButton = document.getElementById('Fermer')
+
+    //Update bouton ouvrir la boite de dialogue
+    updateButton.addEventListener('click', function(){
+      document.getElementById('Agenda').showModal();
+    });
+
+    //Bouton pour fermer la boite de dialogue
+    cancelButton.addEventListener('click', function(){
+      document.getElementById('Agenda').close();
+    });
+  })();
+
+
+    
+
+</script>
+
+
+<style type="text/css">
+table{ margin-left: 9%; position: absolute; }
+img#add { margin-right: 2%; }
+
+input{
+  border-radius: 5px;
+  margin-left: 2%;
+  margin-right: 2%;
+  float : right;
   
+}
+select{
+  border-radius: 5px;
+}
+select#form_idSR{ float: right; }
+label#form_nomEvt{ float: left; }
+label#form_type{ float: left; }
 
+div#form_jourD{ float: right; }
+div#form_jourF{ float: right; }
+div#form_hDebut{ float: right; }
+div#form_hFin{ float: right; }
+
+
+dialog#addEvt{ width: 20%;  }
+button#Fermer{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 37%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+ float: left;
+}
+button#form_Ajouter{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+ float: left;
+}
+button#form_Annuler{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+    float: right;
+}
+</style> 
+
+ {% endblock %}

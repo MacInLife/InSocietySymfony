@@ -7,13 +7,18 @@
     <id name="idSr" type="integer" column="id_SR">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="nbPlace" type="integer" column="nb_place" nullable="true">
+    <field name="nbplacetotal" type="integer" column="NbPlaceTotal" nullable="true">
       <options>
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="horaire" type="time" column="horaire" nullable="true"/>
-    <field name="jour" type="date" column="jour" nullable="true"/>
+    <field name="nbpers" type="integer" column="nbPers" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dateD" type="datetime" column="date_d" nullable="true"/>
+    <field name="dateF" type="datetime" column="date_f" nullable="true"/>
     <field name="nomsr" type="string" column="nomSR" length="50" nullable="true">
       <options>
         <option name="fixed"/>

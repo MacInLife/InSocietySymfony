@@ -11,3 +11,6 @@ services:
           class: AppBundle\Listener\LoadDataListener
           tags:
                 - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }
+parameters:
+    locale: fr
+    brochures_directory: '%kernel.root_dir%/../web/uploads/documents'

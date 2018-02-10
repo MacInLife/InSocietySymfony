@@ -29,5 +29,38 @@ class Service
     private $idService;
 
 
-}
 
+    /**
+     * Set typeService
+     *
+     * @param string $typeService
+     *
+     * @return Service
+     */
+    public function setTypeService($typeService)
+    {
+        $this->typeService = $typeService;
+
+        return $this;
+    }
+
+    /**
+     * Get typeService
+     *
+     * @return string
+     */
+    public function getTypeService()
+    {
+        return $this->typeService;
+    }
+
+    /**
+     * Get idService
+     *
+     * @return integer
+     */
+    public function getIdService()
+    {
+        return $this->idService;
+    }
+}

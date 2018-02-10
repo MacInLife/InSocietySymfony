@@ -12,7 +12,10 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="jour" type="date" column="jour" nullable="false"/>
+    <field name="jourD" type="date" column="jour_d" nullable="false"/>
+    <field name="jourF" type="date" column="jour_f" nullable="false"/>
+    <field name="hDebut" type="time" column="h_debut" nullable="false"/>
+    <field name="hFin" type="time" column="h_fin" nullable="false"/>
     <field name="type" type="string" column="type" length="150" nullable="true">
       <options>
         <option name="fixed"/>

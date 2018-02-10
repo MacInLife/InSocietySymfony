@@ -29,5 +29,38 @@ class Role
     private $idRole;
 
 
-}
 
+    /**
+     * Set nomRole
+     *
+     * @param string $nomRole
+     *
+     * @return Role
+     */
+    public function setNomRole($nomRole)
+    {
+        $this->nomRole = $nomRole;
+
+        return $this;
+    }
+
+    /**
+     * Get nomRole
+     *
+     * @return string
+     */
+    public function getNomRole()
+    {
+        return $this->nomRole;
+    }
+
+    /**
+     * Get idRole
+     *
+     * @return integer
+     */
+    public function getIdRole()
+    {
+        return $this->idRole;
+    }
+}

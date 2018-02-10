@@ -29,5 +29,38 @@ class Statut
     private $idStatut;
 
 
-}
 
+    /**
+     * Set libeller
+     *
+     * @param string $libeller
+     *
+     * @return Statut
+     */
+    public function setLibeller($libeller)
+    {
+        $this->libeller = $libeller;
+
+        return $this;
+    }
+
+    /**
+     * Get libeller
+     *
+     * @return string
+     */
+    public function getLibeller()
+    {
+        return $this->libeller;
+    }
+
+    /**
+     * Get idStatut
+     *
+     * @return integer
+     */
+    public function getIdStatut()
+    {
+        return $this->idStatut;
+    }
+}

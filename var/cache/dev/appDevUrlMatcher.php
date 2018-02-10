@@ -115,9 +115,14 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::myspaceAction',  '_route' => 'myspace',);
         }
 
+        // calendrier
+        if ($pathinfo === '/calendrier') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::calendrierAction',  '_route' => 'calendrier',);
+        }
+
         // docs
         if ($pathinfo === '/docs') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::docAction',  '_route' => 'docs',);
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadAction',  '_route' => 'docs',);
         }
 
         // events
