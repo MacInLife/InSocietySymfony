@@ -22,15 +22,13 @@
 
 </body>
 <script>
-;(function(){var TYPE_ATTR_PASSWORD='input#form_MDP[type="password"]';var CLASS_TOGGLE='ua-password-preview-toggle';var CLASS_IS_VISIBLE='ua-is-visible';var CLASS_ICON='ua-password-preview-icon';var HTML_TOGGLE='\
-    <i class="jui-icon icon-eye-close '+CLASS_ICON+' '+CLASS_ICON+'--hide"></i>\
-    <i class="jui-icon icon-eye-open '+CLASS_ICON+' '+CLASS_ICON+'--show"></i>\
-';function getInputElements(){return[].slice.call(document.querySelectorAll(TYPE_ATTR_PASSWORD));}
-function getToggleElement(){var toggle=document.createElement('button');toggle.type='button';toggle.innerHTML=HTML_TOGGLE;toggle.className=CLASS_TOGGLE;return toggle;}
-function togglePasswordPreview(toggle,inputs){var previewVisible=false;return function(){var isVisible=!previewVisible;var inputType=isVisible?'text':'password';toggle.classList.toggle(CLASS_IS_VISIBLE,isVisible);inputs.forEach(function(input){input.type=inputType;});previewVisible=isVisible;};}
-var inputs=getInputElements();var lastInput=inputs.slice().pop();var toggle=getToggleElement();lastInput.parentNode.appendChild(toggle);toggle.addEventListener('click',togglePasswordPreview(toggle,inputs));})();
 function unmask(){ 	
-	document.getElementById("form_MDP").type="text"; 	
+  
+  if( document.getElementById('form_MDP').type == "password" ){
+	document.getElementById('form_MDP').type="text";
+  } else {
+    document.getElementById('form_MDP').type="password";
+  }
 }
 </script>
 <style>
