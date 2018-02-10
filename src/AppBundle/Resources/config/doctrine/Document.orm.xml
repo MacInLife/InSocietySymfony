@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Document" table="document">
+    <id name="idDoc" type="integer" column="id_doc">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fileDoc" type="string" column="file_doc" length="100" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="typeDoc" type="string" column="type_doc" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+   
+  </entity>
+</doctrine-mapping>
