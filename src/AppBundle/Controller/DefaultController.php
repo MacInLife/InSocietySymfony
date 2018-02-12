@@ -197,11 +197,11 @@ $personnel = $repository->findOneBy(
   
     // replace this example code with whatever you need
 
-//Création de Formulaire Page Connexion
+//Création de Formulaire Page Events
  $form = $this->createFormBuilder()
             ->add('nomEvt', TextType::class,  array('label' => 'Nom de l\'évènement :'))
             ->add('type', TextType::class, array('label' => 'Description :'))
-            ->add('jourD', DateType::class, array('label' => 'Date de Début :'))
+            ->add('jourD', DateType::class , array('label' => 'Date de Début :'))
             ->add('jourF', DateType::class, array('label' => 'Date de Fin :'))
             ->add('hDebut', TimeType::class, array('label' => 'Heure de Début :'))
             ->add('hFin', TimeType::class, array('label' => 'Heure de Fin :'))
@@ -213,7 +213,7 @@ $personnel = $repository->findOneBy(
             ->getForm();
             $form->handleRequest($request);
 
-            //Validation  du formulaire avec le bouton Connexion (Submit)
+            //Validation  du formulaire avec le bouton Ajouter (Submit)
             if($form->isValid()){
 
 
@@ -245,7 +245,11 @@ $personnel = $repository->findOneBy(
 
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
+ // On redirige vers la page de visualisation de l'annonce nouvellement créée
 
+      return $this->redirect($this->generateUrl('default/events.html.twig', array('idEvent' => $event->getIdEvent())));
+
+    
             }
 
              

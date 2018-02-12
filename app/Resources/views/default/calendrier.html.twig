@@ -3,7 +3,7 @@
 {% block title %}Calendrier !{% endblock %}
 {% block body %}  
     
-<div>        {% include '@FullCalendar/Calendar/calendar.html.twig' %}</div>
+<div>        <div id="calendar-holder" style="width:500px; height:440px; margin-top: 10px; margin-left:10px; margin-right:10px;"></div></div>
     
        
        <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />

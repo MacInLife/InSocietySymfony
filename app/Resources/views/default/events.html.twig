@@ -6,20 +6,15 @@
 
 <nav>
   <a id="cal" href="{{path('calendrier')}}">Calendrier</a>
- <dialog id="Agenda">  {% include '@FullCalendar/Calendar/calendar.html.twig' %} <button id="Fermer" type="reset">Fermer</button>
-
- <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
- <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
- <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
- <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
- <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
- </dialog>
+ <dialog id="Agenda">  {% include '@FullCalendar/Calendar/calendar.html.twig' %} <button id="Fermer" type="reset">Fermer</button></dialog>
 
  <dialog id="addEvt">   {{ form(eventform)}}  </dialog>
+ <dialog id="editEvt">   {{ form(eventform)}}  </dialog>
 
  <menu>
   <img id="ag" src="img/agenda.png" width="80px" height="80px" align="left">
  	<img id="add" src="img/PlusBleu.png" width="160px" height="85px" align="right">
+  <img id="edit" src="img/modif.png" width="70px" height="70px" align="right">
  </menu>
 
 
@@ -40,8 +35,29 @@
 </div>
  </nav>
 
+ <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+ <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
 
  	<script>
+      (function(){
+    var updateButton = document.getElementById('ag');
+    var cancelButton = document.getElementById('Fermer')
+
+    //Update bouton ouvrir la boite de dialogue
+    updateButton.addEventListener('click', function(){
+      document.getElementById('Agenda').showModal();
+    });
+
+    //Bouton pour fermer la boite de dialogue
+    cancelButton.addEventListener('click', function(){
+      document.getElementById('Agenda').close();
+    });
+  })();
+
+  //Action image add
   (function() {
     var updateButton = document.getElementById('add');
     var cancelButton = document.getElementById('form_Annuler');
@@ -59,19 +75,22 @@
 
   })();
 
-  (function(){
-    var updateButton = document.getElementById('ag');
-    var cancelButton = document.getElementById('Fermer')
+  //Action image edit
+  (function() {
+    var updateButton = document.getElementById('edit');
+    var cancelButton = document.getElementById('form_Annuler');
 
-    //Update bouton ouvrir la boite de dialogue
-    updateButton.addEventListener('click', function(){
-      document.getElementById('Agenda').showModal();
+
+    // Update button opens a modal dialog
+    updateButton.addEventListener('click', function() {
+      document.getElementById('editEvt').showModal();
     });
 
-    //Bouton pour fermer la boite de dialogue
-    cancelButton.addEventListener('click', function(){
-      document.getElementById('Agenda').close();
+    // Bouton pour fermer la boîte de dialogue
+    cancelButton.addEventListener('click', function() {
+      document.getElementById('editEvt').close();
     });
+
   })();
 
 
@@ -83,6 +102,7 @@
 <style type="text/css">
 table{ margin-left: 9%; position: absolute; }
 img#add { margin-right: 2%; }
+img#edit {     margin-top: 8%;    margin-right: -6%; }
 
 input{
   border-radius: 5px;
@@ -103,7 +123,7 @@ div#form_jourF{ float: right; }
 div#form_hDebut{ float: right; }
 div#form_hFin{ float: right; }
 
-
+dialog#Agenda{ width: 60%; height: 60%; }
 dialog#addEvt{ width: 20%;  }
 button#Fermer{
   font-family:'BlackChancery' ; 
