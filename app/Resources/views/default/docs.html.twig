@@ -5,17 +5,17 @@
 
  <dialog id="addDoc">   {{ form(docsform)}}   </dialog>
  <menu>
-    <img id="add" src="img/PlusBleu.png" width="160px" height="85px" align="right">
+    <img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
  </menu>
 
 <div id="body">
 	<table width="80%" border="1">
-   
+   Veuillez déposer vos documents ou images de type : PDF, PNG, JPEG, JPEG, TXT 
     <tr>
-    <td><b>Nom du Fichier</b></td>
-    <td><b>Type de Fichier</b></td>
-    <td><b>Vue</b></td>
-    <td><b>Aperçu</b></td>
+    <td align="center" width="20%"><b>Nom du Fichier</b></td>
+    <td align="center" width="20%"><b>Type de Fichier</b></td>
+    <td align="center" width="10%"><b>Vue</b></td>
+    <td align="center" width="5%" ><b>Supprimer</b></td>
     </tr>
      
 	{% for undoc in liste %}
@@ -24,13 +24,20 @@
         <td>{{foo[1] }}</td>
         <td>{{ undoc.typeDoc }}</td>
         <td><a href="../uploads/documents/{{ undoc.fileDoc }}" target="_blank">Voir le Fichier</a></td>
+        <td id="suppDoc" align="center"><img id="supp" src="img/supp.png" width="30px" height="30px" ></td>
         </tr>
    {% endfor %} 
 
     </table>
     
 </div>
-
+<script>
+$(document).ready(function(){
+    $("img#supp").click(function(){
+        $("suppDoc").remove();
+    });
+});
+</script>
     <script> 
   (function() {
     var updateButton = document.getElementById('add');
@@ -47,8 +54,10 @@
     });
 
   })();
+
 </script>
 <style type="text/css">
+b{ text-align: center; }
 img#add{ margin-right: 3%; }
 table{ margin-left: 5%; }
 dialog{ width: 30%; }

@@ -13,22 +13,23 @@
 
  <menu>
   <img id="ag" src="img/agenda.png" width="80px" height="80px" align="left">
- 	<img id="add" src="img/PlusBleu.png" width="160px" height="85px" align="right">
+ 	<img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
   <img id="edit" src="img/modif.png" width="70px" height="70px" align="right">
+  <img id="supp" src="img/supp.png" width="70px" height="70px" align="right">
  </menu>
 
 
 <div id="bodyevt">
   <table width="80%" border="1"> 
     <tr>
-    <td><b>Nom de l'évènement</b></td>
-    <td><b>Description/Type</b></td>
-    <td><b>Date de Début</b></td>
-    <td><b>Date de Fin</b></td>
-    <td><b>Heure de Début</b></td>
-    <td><b>Heure de Fin</b></td>
-    <td><b>Lieu</b></td>
-    <td><b>Salle</b></td>
+    <td align="center" width="20%"><b>Nom de l'évènement</b></td>
+    <td align="center" width="20%"><b>Description/Type</b></td>
+    <td align="center" width="10%"><b>Date de Début</b></td>
+    <td align="center" width="10%"><b>Date de Fin</b></td>
+    <td align="center" width="12%"><b>Heure de Début</b></td>
+    <td align="center" width="10%"><b>Heure de Fin</b></td>
+    <td align="center" width="10%"><b>Lieu</b></td>
+    <td align="center" width="10%"><b>Salle</b></td>
     </tr>
     </table>
     
@@ -101,15 +102,15 @@
 
 <style type="text/css">
 table{ margin-left: 9%; position: absolute; }
-img#add { margin-right: 2%; }
-img#edit {     margin-top: 8%;    margin-right: -6%; }
+img#add { margin-right: 2.5%; }
+img#edit {     margin-top: 8%;    margin-right: -5%; }
+img#supp { margin-top: 16%; margin-right: -5% }
 
 input{
   border-radius: 5px;
   margin-left: 2%;
   margin-right: 2%;
-  float : right;
-  
+  float: right;  
 }
 select{
   border-radius: 5px;
@@ -124,7 +125,7 @@ div#form_hDebut{ float: right; }
 div#form_hFin{ float: right; }
 
 dialog#Agenda{ width: 60%; height: 60%; }
-dialog#addEvt{ width: 20%;  }
+dialog#addEvt{ width: 25%;  height: 30%; }
 button#Fermer{
   font-family:'BlackChancery' ; 
    font-size:  24px ;

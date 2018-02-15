@@ -14,13 +14,16 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\Personnel;
+use AppBundle\Entity\Evenement;
 use AppBundle\Entity\Document;
+use AppBundle\Entity\SalleReunion;
 ;
-
 class DefaultController extends Controller
 {
     /**
@@ -186,6 +189,9 @@ $personnel = $repository->findOneBy(
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+    private function deleteFile(){
+
+    }
 
 
     /**
@@ -207,8 +213,17 @@ $personnel = $repository->findOneBy(
             ->add('hFin', TimeType::class, array('label' => 'Heure de Fin :'))
             ->add('lieu', TextType::class, array('label' => 'Lieu :'))
             ->add('idSR', ChoiceType::class, array('label' => 'Salle :'))
+            ->add('idSR', EntityType::class, 
+                 array('class' => 'AppBundle:SalleReunion',
+                        'label' => 'Salle :',
+                        'multiple' => 'true',
+                        'choice_label' => function($nomsr){
+                            return $nomsr->getNomsr();
+                        },
+                        'placeholder' => 'Choississez ...'))
             ->add('Ajouter', SubmitType::class, array('label' => 'Ajouter'))
             ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
+          
 
             ->getForm();
             $form->handleRequest($request);
@@ -216,7 +231,7 @@ $personnel = $repository->findOneBy(
             //Validation  du formulaire avec le bouton Ajouter (Submit)
             if($form->isValid()){
 
-
+ $em = $this->getDoctrine()->getManager();
                 $infoEvent = $form->getData();
                 $nomEvt = $infoEvent['nomEvt'];
                 $type = $infoEvent['type'];
@@ -226,9 +241,8 @@ $personnel = $repository->findOneBy(
                 $hFin = $infoEvent['hFin'];
                 $lieu = $infoEvent['lieu'];
                 $idSR = $infoEvent['idSR'];
-
-              $em = $this->getDoctrine()->getManager();
-
+ dump($idSR[0]->getIdSr());
+             
         $event = new Evenement();
         $event->setNomevt($nomEvt);
         $event->setType($type);
@@ -237,17 +251,22 @@ $personnel = $repository->findOneBy(
         $event->setHDebut($hDebut);
         $event->setHFin($hFin);
         $event->setLieu($lieu);
-        $event->setIdSR($idSR);
+
+// query for a single product matching the given name and price
+
+     //var_dump($salleR);
+
+        $event->setIdSR($idSR[0]);
        
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $em->persist($event);
+       $em->persist($event);
 
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
  // On redirige vers la page de visualisation de l'annonce nouvellement créée
 
-      return $this->redirect($this->generateUrl('default/events.html.twig', array('idEvent' => $event->getIdEvent())));
+      //return $this->redirect($this->generateUrl('default/events.html.twig', array('idEvent' => $event->getIdEvent())));
 
     
             }
@@ -270,5 +289,14 @@ $personnel = $repository->findOneBy(
     
         return $this->render('default/salles.html.twig'  ) ;
     }
-}
 
+
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contactAction(Request $request)
+    {    
+        return $this->render('default/contact.html.twig') ;
+    }
+}
