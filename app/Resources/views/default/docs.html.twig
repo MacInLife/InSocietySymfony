@@ -6,11 +6,12 @@
  <dialog id="addDoc">   {{ form(docsform)}}   </dialog>
  <menu>
     <img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
+    <img id="fresh" src="img/refresh.png" width="85px" height="85px" align="right">
  </menu>
 
 <div id="body">
 	<table width="80%" border="1">
-   <center><font color="red"><b>Veuillez déposer vos documents ou images de type : PDF, PNG, JPEG, JPEG, TXT ! <b></font></center>
+   <center><font color="red"><b>Veuillez déposer vos documents ou images de type : PDF, PNG, JPG, JPEG, TXT, SQL ! <b></font></center>
     <tr>
     <td align="center" width="20%"><b>Nom du Fichier</b></td>
     <td align="center" width="20%"><b>Type de Fichier</b></td>
@@ -24,9 +25,7 @@
         <td>{{foo[1] }}</td>
         <td>{{ undoc.typeDoc }}</td>
         <td><a href="../uploads/documents/{{ undoc.fileDoc }}" target="_blank">Voir le Fichier</a></td>
-        <td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}">
-         <img id="supp" src="img/supp.png" width="30px" height="30px" >
-     </a></td>
+        <td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}"><img id="supp" src="img/supp.png" width="30px" height="30px" ></a></td>
         </tr>
    {% endfor %} 
 
@@ -55,6 +54,7 @@
 <style type="text/css">
 b{ text-align: center; }
 img#add{ margin-right: 3%; }
+img#fresh {     margin-top: 8%;    margin-right: -5%; }
 table{ margin-left: 5%; }
 dialog{ width: 30%; }
 input#form_Fichier{

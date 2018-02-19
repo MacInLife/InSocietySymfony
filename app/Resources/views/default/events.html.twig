@@ -5,32 +5,50 @@
 
 
 <nav>
-  <a id="cal" href="{{path('calendrier')}}">Calendrier</a>
- <dialog id="Agenda">  {% include '@FullCalendar/Calendar/calendar.html.twig' %} <button id="Fermer" type="reset">Fermer</button></dialog>
+ 
+
 
  <dialog id="addEvt">   {{ form(eventform)}}  </dialog>
  <dialog id="editEvt">   {{ form(eventform)}}  </dialog>
 
  <menu>
-  <img id="ag" src="img/agenda.png" width="80px" height="80px" align="left">
+   <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="img/agenda.png" width="80px" height="80px" align="left"></a>
  	<img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
-  <img id="edit" src="img/modif.png" width="70px" height="70px" align="right">
-  <img id="supp" src="img/supp.png" width="70px" height="70px" align="right">
+  <img id="fresh" src="img/refresh.png" width="85px" height="85px" align="right">
+
  </menu>
 
 
 <div id="bodyevt">
   <table width="80%" border="1"> 
     <tr>
-    <td align="center" width="20%"><b>Nom de l'évènement</b></td>
-    <td align="center" width="20%"><b>Description/Type</b></td>
+    <td align="center" width="15%"><b>Nom de l'évènement</b></td>
+    <td align="center" width="15%"><b>Description/Type</b></td>
     <td align="center" width="10%"><b>Date de Début</b></td>
-    <td align="center" width="10%"><b>Date de Fin</b></td>
+    <td align="center" width="8%"><b>Date de Fin</b></td>
     <td align="center" width="12%"><b>Heure de Début</b></td>
     <td align="center" width="10%"><b>Heure de Fin</b></td>
     <td align="center" width="10%"><b>Lieu</b></td>
     <td align="center" width="10%"><b>Salle</b></td>
+    <td align="center" width="6%"><b>Outils</b></td> 
     </tr>
+      {% for evt in liste %}
+       {% set fooo = evt.nomevt|split('.') %}
+    <tr>
+      <td>{{evt.nomevt}}</td>
+      <td>{{evt.type}}</td>
+      <td>{{evt.jourD|date('d-m-Y')}}</td>
+      <td>{{evt.jourF|date('d-m-Y')}}</td>
+      <td>{{evt.hDebut|date('H:i:s')}}</td>
+      <td>{{evt.hFin|date('H:i:s')}}</td>
+      <td>{{evt.lieu}}</td>
+      <td>{{evt.idSr.nomsr}}</td>
+      <td align="center">
+        <a href="#"><img src="img/modif.png" width="30px" height="30px"></a>
+        <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/supp.png" width="30px" height="30px" ></a>
+      </td>
+    </tr>
+    {% endfor %} 
     </table>
     
 </div>
@@ -43,21 +61,6 @@
  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
 
  	<script>
-      (function(){
-    var updateButton = document.getElementById('ag');
-    var cancelButton = document.getElementById('Fermer')
-
-    //Update bouton ouvrir la boite de dialogue
-    updateButton.addEventListener('click', function(){
-      document.getElementById('Agenda').showModal();
-    });
-
-    //Bouton pour fermer la boite de dialogue
-    cancelButton.addEventListener('click', function(){
-      document.getElementById('Agenda').close();
-    });
-  })();
-
   //Action image add
   (function() {
     var updateButton = document.getElementById('add');
@@ -77,6 +80,7 @@
   })();
 
   //Action image edit
+  /*
   (function() {
     var updateButton = document.getElementById('edit');
     var cancelButton = document.getElementById('form_Annuler');
@@ -94,7 +98,7 @@
 
   })();
 
-
+*/
     
 
 </script>
@@ -103,8 +107,8 @@
 <style type="text/css">
 table{ margin-left: 9%; position: absolute; }
 img#add { margin-right: 2.5%; }
-img#edit {     margin-top: 8%;    margin-right: -5%; }
-img#supp { margin-top: 16%; margin-right: -5% }
+img#fresh {     margin-top: 8%;    margin-right: -5%; }
+
 
 input{
   border-radius: 5px;
