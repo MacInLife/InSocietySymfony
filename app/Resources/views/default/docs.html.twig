@@ -10,7 +10,7 @@
 
 <div id="body">
 	<table width="80%" border="1">
-   Veuillez déposer vos documents ou images de type : PDF, PNG, JPEG, JPEG, TXT 
+   <center><font color="red"><b>Veuillez déposer vos documents ou images de type : PDF, PNG, JPEG, JPEG, TXT ! <b></font></center>
     <tr>
     <td align="center" width="20%"><b>Nom du Fichier</b></td>
     <td align="center" width="20%"><b>Type de Fichier</b></td>
@@ -24,20 +24,16 @@
         <td>{{foo[1] }}</td>
         <td>{{ undoc.typeDoc }}</td>
         <td><a href="../uploads/documents/{{ undoc.fileDoc }}" target="_blank">Voir le Fichier</a></td>
-        <td id="suppDoc" align="center"><img id="supp" src="img/supp.png" width="30px" height="30px" ></td>
+        <td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}">
+         <img id="supp" src="img/supp.png" width="30px" height="30px" >
+     </a></td>
         </tr>
    {% endfor %} 
 
     </table>
     
 </div>
-<script>
-$(document).ready(function(){
-    $("img#supp").click(function(){
-        $("suppDoc").remove();
-    });
-});
-</script>
+
     <script> 
   (function() {
     var updateButton = document.getElementById('add');

@@ -14,7 +14,9 @@
 
 			<img id="imgmenu" src="img/InSociety0.png" width="300px"> 
 			{{ form(connectform)}}
-			<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">	&#128065; </button>
+			<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">
+				<strike>&#128065;</strike>
+			</button>
 			
 		</div>
 		<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
@@ -26,8 +28,10 @@ function unmask(){
   
   if( document.getElementById('form_MDP').type == "password" ){
 	document.getElementById('form_MDP').type="text";
+	document.getElementById('unmask').innerHTML = "&#128065;";
   } else {
     document.getElementById('form_MDP').type="password";
+    document.getElementById('unmask').innerHTML = "<strike>&#128065;</strike>";
   }
 }
 </script>
