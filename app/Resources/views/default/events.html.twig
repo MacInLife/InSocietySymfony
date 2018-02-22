@@ -14,7 +14,7 @@
  <menu>
    <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="img/agenda.png" width="80px" height="80px" align="left"></a>
  	<img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
-  <img id="fresh" src="img/refresh.png" width="85px" height="85px" align="right">
+  <img id="fresh" onclick="refresh()" src="img/refresh.png" width="85px" height="85px" align="right">
 
  </menu>
 
@@ -79,6 +79,10 @@
 
   })();
 
+  //Rafraichissement
+function refresh(){
+    location.reload();
+}
   //Action image edit
   /*
   (function() {

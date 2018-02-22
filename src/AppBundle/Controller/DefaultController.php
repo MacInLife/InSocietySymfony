@@ -303,6 +303,7 @@ return $this->render('default/accueil.html.twig');
     
       //  return $this->render('default/events.html.twig'  ) ;*/
     }
+
     /**
      * @Route("/deleteEvt", name="deleteEvt")
      */
@@ -323,7 +324,9 @@ $event = $repository->findOneBy(  array('idEvent' => $idEvent));
 
        dump($event);
         $em->remove($event);
+        $em->persist($event);
         $em->flush();
+        
 return $this->render('default/accueil.html.twig');
 
    
