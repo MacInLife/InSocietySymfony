@@ -145,7 +145,9 @@ $personnel = $repository->findOneBy(
          $form->handleRequest($request);
 
          if($form->isValid())
-         {   $file = $form->getData();
+         {      dump("ok");
+          $file = $form->getData();
+              
           $uploadFile =  $file["Fichier"];
           // generateUniqueFileName() permet de generer une cle unique pour chaque fichier
           $fileName =$this->generateUniqueFileName().'.'.$uploadFile->getClientOriginalName();
@@ -164,8 +166,10 @@ $personnel = $repository->findOneBy(
           $em->persist($document);
           // exécute réellement les requêtes (i. e. la requête INSÉRER)
           $em->flush();
+
+          
           $GLOBALS['liste']= $this->getAlldocument() ;
-        
+       
          }
          return $this->render('default/docs.html.twig', ["docsform"=>$form->createView(), 'liste'=>$liste, 'path'=> $path]);
     }
@@ -226,8 +230,8 @@ return $this->render('default/accueil.html.twig');
      */
     public function addEvtAction(Request $request)
     {
-     $evt = $this->getDoctrine()->getManager();
-         $listeEvt = $evt->getRepository(Evenement::class)->findAll();
+     $em = $this->getDoctrine()->getManager();
+         $listeEvt = $em->getRepository(Evenement::class)->findAll();
     // replace this example code with whatever you need
 
 //Création de Formulaire Page Events
@@ -257,7 +261,7 @@ return $this->render('default/accueil.html.twig');
             //Validation  du formulaire avec le bouton Ajouter (Submit)
             if($form->isValid()){
 
- $em = $this->getDoctrine()->getManager();
+ 
                 $infoEvent = $form->getData();
                 $nomEvt = $infoEvent['nomEvt'];
                 $type = $infoEvent['type'];
@@ -277,13 +281,7 @@ return $this->render('default/accueil.html.twig');
         $event->setHDebut($hDebut);
         $event->setHFin($hFin);
         $event->setLieu($lieu);
-
-// query for a single product matching the given name and price
-
-     //var_dump($salleR);
-
         $event->setIdSR($idSR[0]);
-       
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
        $em->persist($event);
@@ -291,18 +289,163 @@ return $this->render('default/accueil.html.twig');
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
  // On redirige vers la page de visualisation de l'annonce nouvellement créée
-
       //return $this->redirect($this->generateUrl('default/events.html.twig', array('idEvent' => $event->getIdEvent())));
-        
-    
+
             }
 
+/////////////////////////modif/////////////////////////////////
+     
+            $idEvent = $request->get('idEvt');    
+       
+ $formModif = $this->createFormBuilder()->getForm();
+if(!empty($idEvent)){
+
+    dump( $idEvent);
+
+     $repository = $this->getDoctrine()->getRepository(Evenement::class);
+
+// recherche d'un seul évènement correspondant au id indiqué
+$eventM = $repository->findOneBy(array('idEvent' => $idEvent));
+
+dump($eventM);
+
+       //Création de Formulaire Page Events
+ $formModif = $this->createFormBuilder()
+            ->add('nomEvt', TextType::class,  array('label' => 'Nom de l\'évènement :' ,'data' => $eventM->getNomevt()))
+            ->add('type', TextType::class, array('label' => 'Description :','data' => $eventM->getType()))
+            ->add('jourD', DateType::class , array('label' => 'Date de Début :','data' => $eventM->getJourD()))
+            ->add('jourF', DateType::class, array('label' => 'Date de Fin :','data' => $eventM->getJourF()))
+            ->add('hDebut', TimeType::class, array('label' => 'Heure de Début :','data' => $eventM->getHDebut()))
+            ->add('hFin', TimeType::class, array('label' => 'Heure de Fin :','data' => $eventM->getHFin()))
+            ->add('lieu', TextType::class, array('label' => 'Lieu :','data' => $eventM->getLieu()))
+            ->add('idSR', ChoiceType::class, array('label' => 'Salle :','data' => $eventM->getIdSr()))
+            ->add('idSR', EntityType::class, 
+                 array('class' => 'AppBundle:SalleReunion',
+                        'label' => 'Salle :',
+                        'multiple' => 'true',
+                        'choice_label' => function($nomsr){
+                            return $nomsr->getNomsr();
+                        },
+                        'placeholder' => 'Choississez ...'))
+            ->add('Modifier', SubmitType::class, array('label' => 'Modifier'))
+            ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
+            ->getForm();
+                
+            $formModif->handleRequest($request);
+           
+ //Validation  du formulaire avec le bouton Ajouter (Submit)
+            if($formModif->isValid()){
+                
+                $infoEvent = $form->getData();
+                $nomEvt = $infoEvent['nomEvt'];
+                $type = $infoEvent['type'];
+                $jourD = $infoEvent['jourD'];
+                $jourF = $infoEvent['jourF'];
+                $hDebut = $infoEvent['hDebut'];
+                $hFin = $infoEvent['hFin'];
+                $lieu = $infoEvent['lieu'];
+                $idSR = $infoEvent['idSR'];
+ dump($idSR[0]->getIdSr());
              
-        return $this->render('default/events.html.twig', ['eventform'=>$form->createView(), 'liste'=> $listeEvt])  ;
+       
+        $eventM->setNomevt($nomEvt);
+        $eventM->setType($type);
+        $eventM->setJourD($jourD);
+        $eventM->setJourF($jourF);
+        $eventM->setHDebut($hDebut);
+        $eventM->setHFin($hFin);
+        $eventM->setLieu($lieu);
+        $eventM->setIdSR($idSR[0]);
+ 
+
+dump($eventM); 
+      
+        $em->flush();
+       // return $this->render($this->generateUrl('default/events.html.twig'));
+            }
+        }
+        return $this->render('default/events.html.twig',
+         ['eventform'=>$form->createView(),'eventMform'=>$formModif->createView(), 'liste'=> $listeEvt])  ;
    
     
       //  return $this->render('default/events.html.twig'  ) ;*/
     }
+
+
+     /*
+     public function modifEvtAction(Request $request){
+$idEvent = $request->get('idEvt');
+       
+       dump( $idEvent);
+$em = $this->getDoctrine()->getManager();
+
+
+     $repository = $this->getDoctrine()->getRepository(Evenement::class);
+
+// recherche d'un seul évènement correspondant au id indiqué
+$eventM = $repository->findOneBy(  array('idEvent' => $idEvent));
+
+
+       //Création de Formulaire Page Events
+ $formModif = $this->createFormBuilder()
+            ->add('nomEvt', TextType::class,  array('label' => 'Nom de l\'évènement :' ,'data' => $eventM->getNomevt()))
+            ->add('type', TextType::class, array('label' => 'Description :','data' => $eventM->getType()))
+            ->add('jourD', DateType::class , array('label' => 'Date de Début :','data' => $eventM->getJourD()))
+            ->add('jourF', DateType::class, array('label' => 'Date de Fin :','data' => $eventM->getJourF()))
+            ->add('hDebut', TimeType::class, array('label' => 'Heure de Début :','data' => $eventM->getHDebut()))
+            ->add('hFin', TimeType::class, array('label' => 'Heure de Fin :','data' => $eventM->getHFin()))
+            ->add('lieu', TextType::class, array('label' => 'Lieu :','data' => $eventM->getLieu()))
+            ->add('idSR', ChoiceType::class, array('label' => 'Salle :','data' => $eventM->getIdSr()))
+            ->add('idSR', EntityType::class, 
+                 array('class' => 'AppBundle:SalleReunion',
+                        'label' => 'Salle :',
+                        'multiple' => 'true',
+                        'choice_label' => function($nomsr){
+                            return $nomsr->getNomsr();
+                        },
+                        'placeholder' => 'Choississez ...'))
+            ->add('Modifier', SubmitType::class, array('label' => 'Modifier'))
+            ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
+            ->getForm();
+                
+            $formModif->handleRequest($request);
+ //Validation  du formulaire avec le bouton Ajouter (Submit)
+            if($formModif->isValid()){
+                
+                $infoEvent = $form->getData();
+                $nomEvt = $infoEvent['nomEvt'];
+                $type = $infoEvent['type'];
+                $jourD = $infoEvent['jourD'];
+                $jourF = $infoEvent['jourF'];
+                $hDebut = $infoEvent['hDebut'];
+                $hFin = $infoEvent['hFin'];
+                $lieu = $infoEvent['lieu'];
+                $idSR = $infoEvent['idSR'];
+ dump($idSR[0]->getIdSr());
+             
+       
+        $event->setNomevt($nomEvt);
+        $event->setType($type);
+        $event->setJourD($jourD);
+        $event->setJourF($jourF);
+        $event->setHDebut($hDebut);
+        $event->setHFin($hFin);
+        $event->setLieu($lieu);
+        $event->setIdSR($idSR[0]);
+ 
+
+dump($event); 
+      
+        $em->flush();
+        return $this->render($this->generateUrl('default/events.html.twig'));
+            }
+        
+        
+   return $this->render('default/Modifier.html.twig', ['eventMform'=>$formModif->createView()]);
+
+    }
+*/
+
 
     /**
      * @Route("/deleteEvt", name="deleteEvt")
@@ -318,13 +461,13 @@ $em = $this->getDoctrine()->getManager();
 
      $repository = $this->getDoctrine()->getRepository(Evenement::class);
 
-// recherche d'un seul document correspondant au id indiqué
+// recherche d'un seul évènement correspondant au id indiqué
 $event = $repository->findOneBy(  array('idEvent' => $idEvent));
        
 
        dump($event);
         $em->remove($event);
-        $em->persist($event);
+      
         $em->flush();
         
 return $this->render('default/accueil.html.twig');
