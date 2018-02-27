@@ -238,24 +238,22 @@ return $this->render('default/accueil.html.twig');
  $form = $this->createFormBuilder()
             ->add('nomEvt', TextType::class,  array('label' => 'Nom de l\'évènement :'))
             ->add('type', TextType::class, array('label' => 'Description :'))
-            ->add('jourD', DateType::class , array('label' => 'Date de Début :'))
-            ->add('jourF', DateType::class, array('label' => 'Date de Fin :'))
-            ->add('hDebut', TimeType::class, array('label' => 'Heure de Début :'))
-            ->add('hFin', TimeType::class, array('label' => 'Heure de Fin :'))
-            ->add('lieu', TextType::class, array('label' => 'Lieu :'))
-            ->add('idSR', ChoiceType::class, array('label' => 'Salle :'))
+            ->add('jourD', DateType::class , array('widget' => 'single_text' , 'label' => 'Date de Début :'))
+            ->add('jourF', DateType::class, array('widget' => 'single_text' , 'label' => 'Date de Fin :'))
+            ->add('hDebut', TimeType::class, array('widget' => 'single_text' , 'label' => 'Heure de Début :'))
+            ->add('hFin', TimeType::class, array('widget' => 'single_text' , 'label' => 'Heure de Fin :'))
+            ->add('lieu', TextType::class, array('label' => 'Lieu :'))                    
             ->add('idSR', EntityType::class, 
-                 array('class' => 'AppBundle:SalleReunion',
+                 array('class' => 'AppBundle:SalleReunion', 
                         'label' => 'Salle :',
-                        'multiple' => 'true',
-                        'choice_label' => function($nomsr){
+                         'choice_label' => function($nomsr){
                             return $nomsr->getNomsr();
                         },
                         'placeholder' => 'Choississez ...'))
             ->add('Ajouter', SubmitType::class, array('label' => 'Ajouter'))
             ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
             ->getForm();
-                
+                  
             $form->handleRequest($request);
 
             //Validation  du formulaire avec le bouton Ajouter (Submit)
@@ -313,17 +311,16 @@ dump($eventM);
  $formModif = $this->createFormBuilder()
             ->add('nomEvt', TextType::class,  array('label' => 'Nom de l\'évènement :' ,'data' => $eventM->getNomevt()))
             ->add('type', TextType::class, array('label' => 'Description :','data' => $eventM->getType()))
-            ->add('jourD', DateType::class , array('label' => 'Date de Début :','data' => $eventM->getJourD()))
-            ->add('jourF', DateType::class, array('label' => 'Date de Fin :','data' => $eventM->getJourF()))
-            ->add('hDebut', TimeType::class, array('label' => 'Heure de Début :','data' => $eventM->getHDebut()))
-            ->add('hFin', TimeType::class, array('label' => 'Heure de Fin :','data' => $eventM->getHFin()))
+            ->add('jourD', DateType::class , array('widget' => 'single_text','label' => 'Date de Début :','data' => $eventM->getJourD()))
+            ->add('jourF', DateType::class, array('widget' => 'single_text','label' => 'Date de Fin :','data' => $eventM->getJourF()))
+            ->add('hDebut', TimeType::class, array('widget' => 'single_text','label' => 'Heure de Début :','data' => $eventM->getHDebut()))
+            ->add('hFin', TimeType::class, array('widget' => 'single_text','label' => 'Heure de Fin :','data' => $eventM->getHFin()))
             ->add('lieu', TextType::class, array('label' => 'Lieu :','data' => $eventM->getLieu()))
-            ->add('idSR', ChoiceType::class, array('label' => 'Salle :','data' => $eventM->getIdSr()))
+            /*->add('idSR', ChoiceType::class, array('label' => 'Salle :','data' => $eventM->getIdSr()))*/
             ->add('idSR', EntityType::class, 
-                 array('class' => 'AppBundle:SalleReunion',
+                 array('class' => 'AppBundle:SalleReunion', 
                         'label' => 'Salle :',
-                        'multiple' => 'true',
-                        'choice_label' => function($nomsr){
+                         'choice_label' => function($nomsr){
                             return $nomsr->getNomsr();
                         },
                         'placeholder' => 'Choississez ...'))
@@ -480,9 +477,19 @@ return $this->render('default/accueil.html.twig');
      */
     public function salleAction(Request $request)
     {
+$idSr = $request->get('idSr');
+       
+       dump( $idSr);
+$em = $this->getDoctrine()->getManager();
+       $listeSal = $em->getRepository(SalleReunion::class)->findAll();
 
+     $repository = $this->getDoctrine()->getRepository(SalleReunion::class);
 
-   
+// recherche d'un seul évènement correspondant au id indiqué
+$salle = $repository->findOneBy(  array('idSr' => $idSr));
+ dump($salle);
+       $em = $this->getDoctrine()->getManager();
+  
     
         return $this->render('default/salles.html.twig'  ) ;
     }

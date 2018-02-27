@@ -9,13 +9,31 @@
            
               {{app.session.get('prenom') }}&nbsp;{{app.session.get('nom') }}
 
-            <p> Nouveautés : </p>
-
+            <p> Aujourd'hui : </p>
+<script type="text/javascript" src="http://vivget.com/viv/loader/nameday/pid/12921/locale/FR/rel/nofollow/loader.js/headercolortop/3DDFFF/headercolorbottom/FFFEF7/loader.js"></script><noscript><a href="http://www.viversum.fr" rel="nofollow">Voyance viversum</a></noscript>
         </header>
+        <hr>
         <nav>
             <p> Newsletters : </p>
-            
+            <section>
+ <iframe width="400px" height="160px" src="https://www.20minutes.fr/actu-generale/">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+      <iframe width="400px" height="160px" src="https://www.lemondeinformatique.fr/actualites/toute-l-actualite.html">
+  <p>Your browser does not support iframe</p>
+</iframe>
+</section>
+<article>
+ <iframe width="400px" height="160px" src="https://www.usinenouvelle.com/informatique/">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+ <iframe width="400px" height="160px" src="https://www.generation-nt.com/logiciels.html">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</article>
+
         </nav>
+         <hr>
         <footer>
             <p> Compteur : 
              <!--Script comteur : http://compteur-visite.com -->
@@ -54,14 +72,18 @@ div#acc{
     margin-top:10px;
   background-color : white; 
   position : absolute;
+  justify-content: center;
   display: flex;
+
  
 }
 
-header{  margin-left: 25px; flex:1;}
-nav{   flex:2;}
-footer{  
-  flex:3; 
+header{  margin-left: 25px; margin-right: 25px; flex:1;}
+nav{ margin-left : 25px; margin-right: 25px; }
+section{ flex: 2; }
+article { flex : 3; }
+footer{  margin-left: 25px;
+  flex:4; 
     }
 p{
     font-family: 'BlackChancery';

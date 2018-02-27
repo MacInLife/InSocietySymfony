@@ -10,7 +10,7 @@
 
  <dialog id="addEvt">   {{ form(eventform)}}  </dialog>
  
- <dialog id="editEvt"> {{ form(eventMform)}} </dialog>
+ <dialog id="editEvt"> {{ form(eventMform)}}</dialog>
 
  <menu>
    <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="img/agenda.png" width="80px" height="80px" align="left"></a>
@@ -35,7 +35,7 @@
     <td align="center" width="6%" colspan=2><b>Outils</b></td> 
     </tr>
       {% for evt in liste %}
-       {% set fooo = evt.nomevt|split('.') %}
+       {% set fooo = evt.idEvent|split('.') %}
     <tr>
       <td>{{evt.nomevt}}</td>
       <td>{{evt.type}}</td>
@@ -45,8 +45,8 @@
       <td>{{evt.hFin|date('H:i:s')}}</td>
       <td>{{evt.lieu}}</td>
       <td>{{evt.idSr.nomsr}}</td>
-      <td align="center"><!--<a href="/modifEvt?idEvt={{evt.idEvent}}">-->
-     <a onclick="modif()" href="/events?idEvt={{evt.idEvent}}"><img src="img/modif.png" width="30px" height="30px"></a>
+      <td align="center"><!--<a href="/events?idEvt={{evt.idEvent}}">-->
+     <a onclick="modif()" href="/events?idEvt={{evt.idEvent}}" ><img src="img/modif.png" width="30px" height="30px"></a>
       	<!--</a>-->
       </td>
       <td align="center">
@@ -69,12 +69,15 @@
 
  function modif(){
 	// body...
+
+
 	addEventListener('click', function(){
 	document.getElementById('editEvt').showModal();
 	});
 
 
 }
+
 
   //Action image add
   (function() {
@@ -147,8 +150,9 @@ div#form_jourF{ float: right; }
 div#form_hDebut{ float: right; }
 div#form_hFin{ float: right; }
 
-dialog#Agenda{ width: 60%; height: 60%; }
+
 dialog#addEvt{ width: 25%;  height: 30%; }
+dialog#editEvt{ width: 25%;  height: 30%; }
 button#Fermer{
   font-family:'BlackChancery' ; 
    font-size:  24px ;

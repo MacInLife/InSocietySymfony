@@ -2,9 +2,70 @@
 
 {% block title %}Salles de réunion !{% endblock %}
 {% block body %}  
+<div class="bloc" id="acc">
+	<p> Réserver une salle de réunion :</p>
 
+<div id="bodysal">
+  <table width="80%" border="1" align="center"> 
+    <tr>
+    <td align="center" width="10%"><b>Nom de la Salle</b></td>
+    <td align="center" width="9%"><b>Nombre Total de place</b></td>
+    <td align="center" width="10%"><b>Nombre de personne prévu</b></td>
+    <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>
+    <td align="center" width="12%"><b>Date &amp; Heure d'occupation fin</b></td>
+    <td align="center" width="8%"><b>Lieu</b></td>
+    <td align="center" width="8%"><b>Statut</b></td>
+    <td align="center" width="6%" colspan=2><b>Outils</b></td> 
+    </tr>
+    
+
+    </table>
+    
+</div>
+
+<hr>
+	<section id="list">
+	<ul>
+		<li> Choisir le lieu :</li>
+		<li> Choisir la salle :</li>
+		<li> Choix du nombre de personne prévu :</li>
+	</ul><ul>
+
+		<li>Date &amp; Heure de début :</li>
+		<li>Date &amp; Heure de fin :</li>
+	</ul>
+	</section>
+	<button> Réserver </button>
+</div> 
 <style type="text/css">
+div#acc{
+    width: 98.9%;
+    height : 450px;
+    margin-top:10px;
+    margin-left: 10px;
+  background-color : white; 
+  
+}
+p{
+    font-family: 'BlackChancery';
+    text-decoration: bold;
+    font-size : 20px;
+}
 
+section#list{ column-count: 2; }
+button{
+	 font-family:'BlackChancery' ; 
+	 font-size:  24px ;
+	 border-radius: 5px;
+	
+    margin-left: 85%;
+    margin-right: 45%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+
+}
 </style>
 
 {% endblock %}
