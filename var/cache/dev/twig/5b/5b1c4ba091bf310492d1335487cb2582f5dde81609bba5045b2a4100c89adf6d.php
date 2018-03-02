@@ -22,32 +22,32 @@ class __TwigTemplate_5375af4b9af5c1ac9dac9d3a62ecd3456dab59fbae03223a96bfd100f38
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0da3c9990712005e29bcf09172f41b498e1842d074c2c0f826e4a088cb3dcb32 = $this->env->getExtension("native_profiler");
-        $__internal_0da3c9990712005e29bcf09172f41b498e1842d074c2c0f826e4a088cb3dcb32->enter($__internal_0da3c9990712005e29bcf09172f41b498e1842d074c2c0f826e4a088cb3dcb32_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/accueil.html.twig"));
+        $__internal_446b75471ce9dbb82a6de0350ca96aa2207494cff1d56dbc7cf80e87dd643927 = $this->env->getExtension("native_profiler");
+        $__internal_446b75471ce9dbb82a6de0350ca96aa2207494cff1d56dbc7cf80e87dd643927->enter($__internal_446b75471ce9dbb82a6de0350ca96aa2207494cff1d56dbc7cf80e87dd643927_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/accueil.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_0da3c9990712005e29bcf09172f41b498e1842d074c2c0f826e4a088cb3dcb32->leave($__internal_0da3c9990712005e29bcf09172f41b498e1842d074c2c0f826e4a088cb3dcb32_prof);
+        $__internal_446b75471ce9dbb82a6de0350ca96aa2207494cff1d56dbc7cf80e87dd643927->leave($__internal_446b75471ce9dbb82a6de0350ca96aa2207494cff1d56dbc7cf80e87dd643927_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_3911dc98ebdc226ba9f0b9b0462978b35b786a255425963f07e1bf038818f676 = $this->env->getExtension("native_profiler");
-        $__internal_3911dc98ebdc226ba9f0b9b0462978b35b786a255425963f07e1bf038818f676->enter($__internal_3911dc98ebdc226ba9f0b9b0462978b35b786a255425963f07e1bf038818f676_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_c68db9d7af553ee8c8c7722269e89cda764b588cdf9ba9e9575836827f6fc928 = $this->env->getExtension("native_profiler");
+        $__internal_c68db9d7af553ee8c8c7722269e89cda764b588cdf9ba9e9575836827f6fc928->enter($__internal_c68db9d7af553ee8c8c7722269e89cda764b588cdf9ba9e9575836827f6fc928_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Accueil !";
         
-        $__internal_3911dc98ebdc226ba9f0b9b0462978b35b786a255425963f07e1bf038818f676->leave($__internal_3911dc98ebdc226ba9f0b9b0462978b35b786a255425963f07e1bf038818f676_prof);
+        $__internal_c68db9d7af553ee8c8c7722269e89cda764b588cdf9ba9e9575836827f6fc928->leave($__internal_c68db9d7af553ee8c8c7722269e89cda764b588cdf9ba9e9575836827f6fc928_prof);
 
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
-        $__internal_353c2803f74c765b7160b59934d7ccdfcc4c92864580dd7a118537edeb00a2a0 = $this->env->getExtension("native_profiler");
-        $__internal_353c2803f74c765b7160b59934d7ccdfcc4c92864580dd7a118537edeb00a2a0->enter($__internal_353c2803f74c765b7160b59934d7ccdfcc4c92864580dd7a118537edeb00a2a0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_ffdd8e3988affb179bdf5d54a3a4a19dc6ced1b03a60449010f8cea4bd24c5f6 = $this->env->getExtension("native_profiler");
+        $__internal_ffdd8e3988affb179bdf5d54a3a4a19dc6ced1b03a60449010f8cea4bd24c5f6->enter($__internal_ffdd8e3988affb179bdf5d54a3a4a19dc6ced1b03a60449010f8cea4bd24c5f6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "  
      <div class=\"bloc\" id=\"acc\">
@@ -62,14 +62,31 @@ class __TwigTemplate_5375af4b9af5c1ac9dac9d3a62ecd3456dab59fbae03223a96bfd100f38
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "get", array(0 => "nom"), "method"), "html", null, true);
         echo "
 
-            <p> Nouveautés : </p>
-
+            <p> Aujourd'hui : </p>
+<script type=\"text/javascript\" src=\"http://vivget.com/viv/loader/nameday/pid/12921/locale/FR/rel/nofollow/loader.js/headercolortop/3DDFFF/headercolorbottom/FFFEF7/loader.js\"></script><noscript><a href=\"http://www.viversum.fr\" rel=\"nofollow\">Voyance viversum</a></noscript>
         </header>
+        <hr>
         <nav>
-            <p> Activité Récente : </p>
-
             <p> Newsletters : </p>
+            <section>
+ <iframe width=\"400px\" height=\"160px\" src=\"https://www.20minutes.fr/actu-generale/\">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+      <iframe width=\"400px\" height=\"160px\" src=\"https://www.lemondeinformatique.fr/actualites/toute-l-actualite.html\">
+  <p>Your browser does not support iframe</p>
+</iframe>
+</section>
+<article>
+ <iframe width=\"400px\" height=\"160px\" src=\"https://www.usinenouvelle.com/informatique/\">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+ <iframe width=\"400px\" height=\"160px\" src=\"https://www.generation-nt.com/logiciels.html\">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</article>
+
         </nav>
+         <hr>
         <footer>
             <p> Compteur : 
              <!--Script comteur : http://compteur-visite.com -->
@@ -108,14 +125,18 @@ div#acc{
     margin-top:10px;
   background-color : white; 
   position : absolute;
+  justify-content: center;
   display: flex;
+
  
 }
 
-header{  margin-left: 25px; flex:1;}
-nav{   flex:2;}
-footer{  
-  flex:3; 
+header{  margin-left: 25px; margin-right: 25px; flex:1;}
+nav{ margin-left : 25px; margin-right: 25px; }
+section{ flex: 2; }
+article { flex : 3; }
+footer{  margin-left: 25px;
+  flex:4; 
     }
 p{
     font-family: 'BlackChancery';
@@ -130,7 +151,7 @@ img{ width: 120px; }
 
 ";
         
-        $__internal_353c2803f74c765b7160b59934d7ccdfcc4c92864580dd7a118537edeb00a2a0->leave($__internal_353c2803f74c765b7160b59934d7ccdfcc4c92864580dd7a118537edeb00a2a0_prof);
+        $__internal_ffdd8e3988affb179bdf5d54a3a4a19dc6ced1b03a60449010f8cea4bd24c5f6->leave($__internal_ffdd8e3988affb179bdf5d54a3a4a19dc6ced1b03a60449010f8cea4bd24c5f6_prof);
 
     }
 
@@ -160,14 +181,31 @@ img{ width: 120px; }
 /*            */
 /*               {{app.session.get('prenom') }}&nbsp;{{app.session.get('nom') }}*/
 /* */
-/*             <p> Nouveautés : </p>*/
-/* */
+/*             <p> Aujourd'hui : </p>*/
+/* <script type="text/javascript" src="http://vivget.com/viv/loader/nameday/pid/12921/locale/FR/rel/nofollow/loader.js/headercolortop/3DDFFF/headercolorbottom/FFFEF7/loader.js"></script><noscript><a href="http://www.viversum.fr" rel="nofollow">Voyance viversum</a></noscript>*/
 /*         </header>*/
+/*         <hr>*/
 /*         <nav>*/
-/*             <p> Activité Récente : </p>*/
-/* */
 /*             <p> Newsletters : </p>*/
+/*             <section>*/
+/*  <iframe width="400px" height="160px" src="https://www.20minutes.fr/actu-generale/">*/
+/*   <p>Your browser does not support iframes.</p>*/
+/* </iframe>*/
+/*       <iframe width="400px" height="160px" src="https://www.lemondeinformatique.fr/actualites/toute-l-actualite.html">*/
+/*   <p>Your browser does not support iframe</p>*/
+/* </iframe>*/
+/* </section>*/
+/* <article>*/
+/*  <iframe width="400px" height="160px" src="https://www.usinenouvelle.com/informatique/">*/
+/*   <p>Your browser does not support iframes.</p>*/
+/* </iframe>*/
+/*  <iframe width="400px" height="160px" src="https://www.generation-nt.com/logiciels.html">*/
+/*   <p>Your browser does not support iframes.</p>*/
+/* </iframe>*/
+/* </article>*/
+/* */
 /*         </nav>*/
+/*          <hr>*/
 /*         <footer>*/
 /*             <p> Compteur : */
 /*              <!--Script comteur : http://compteur-visite.com -->*/
@@ -206,14 +244,18 @@ img{ width: 120px; }
 /*     margin-top:10px;*/
 /*   background-color : white; */
 /*   position : absolute;*/
+/*   justify-content: center;*/
 /*   display: flex;*/
+/* */
 /*  */
 /* }*/
 /* */
-/* header{  margin-left: 25px; flex:1;}*/
-/* nav{   flex:2;}*/
-/* footer{  */
-/*   flex:3; */
+/* header{  margin-left: 25px; margin-right: 25px; flex:1;}*/
+/* nav{ margin-left : 25px; margin-right: 25px; }*/
+/* section{ flex: 2; }*/
+/* article { flex : 3; }*/
+/* footer{  margin-left: 25px;*/
+/*   flex:4; */
 /*     }*/
 /* p{*/
 /*     font-family: 'BlackChancery';*/

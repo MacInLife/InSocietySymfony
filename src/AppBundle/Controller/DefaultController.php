@@ -477,8 +477,15 @@ return $this->render('default/accueil.html.twig');
      */
     public function salleAction(Request $request)
     {
+
+      $em = $this->getDoctrine()->getManager();
+       $listeSal = $em->getRepository(SalleReunion::class)->findAll();
+
+
 $idSr = $request->get('idSr');
        
+
+      
        dump( $idSr);
 $em = $this->getDoctrine()->getManager();
        $listeSal = $em->getRepository(SalleReunion::class)->findAll();
@@ -489,11 +496,58 @@ $em = $this->getDoctrine()->getManager();
 $salle = $repository->findOneBy(  array('idSr' => $idSr));
  dump($salle);
        $em = $this->getDoctrine()->getManager();
-  
-    
-        return $this->render('default/salles.html.twig'  ) ;
-    }
 
+       //Création de Formulaire Page Events
+ $form = $this->createFormBuilder()
+            ->add('lieu', EntityType::class,  array('class' => 'AppBundle:SalleReunion', 'label' => 'Choisir le Lieu :', 'choice_label' => function ($lieu){ return $lieu->getLieu();}, 
+                  'placeholder' => 'Choississez le lieu'))
+                  // ,'data' => $salle->getLieu()))
+            ->add('nomsr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
+                  'placeholder' => 'Choississez le nom'))
+                  //'data' => $salle->getNomsr()))
+            ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
+                  //'data' => $salle->getNbpers()))
+            ->add('dateD', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Début :'))
+            ->add('dateF', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Fin :'))
+               
+          
+           /* -            ->add('idSR', EntityType::class, 
+                 array('class' => 'AppBundle:SalleReunion', 
+                        'label' => 'Salle :',
+                         'choice_label' => function($nomsr){
+                            return $nomsr->getNomsr();
+                        },
+                        'placeholder' => 'Choississez ...'))*/
+            ->add('Réserver', SubmitType::class, array('label' => 'Réserver'))
+            ->getForm();
+                
+            $form->handleRequest($request);
+
+             //Validation  du formulaire avec le bouton Ajouter (Submit)
+            if($form->isValid()){
+                
+                $infoSalle = $form->getData();
+                $lieu = $infoSalle['lieu'];
+                $nomsr = $infoSalle['nomsr'];
+                $nbpers = $infoSalle['nbpers'];
+                $DateD = $infoSalle['dateD'];
+                $DateF = $infoSalle['dateF'];
+             
+       
+        $salle->setLieu($lieu);
+        $salle->setNomsr($nomsr);
+        $salle->setNbpers($nbpers);
+        $salle->setDateD($dateD);
+        $salle->setDateF($dateF);
+        
+
+dump($salle); 
+      
+        $em->flush();
+    }
+  
+        return $this->render('default/salles.html.twig',['sallesform'=>$form->createView(), 'liste' => $listeSal]  ) ;
+    }
 
 
     /**

@@ -15,8 +15,8 @@ class __TwigTemplate_589bbff12ce554baf928bc9e83becd9358c7239e34431134b851d1c9dfd
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5dc90d801f6e988e9361d91915d2255a4f36453a53bc5eb1866446793c92a52d = $this->env->getExtension("native_profiler");
-        $__internal_5dc90d801f6e988e9361d91915d2255a4f36453a53bc5eb1866446793c92a52d->enter($__internal_5dc90d801f6e988e9361d91915d2255a4f36453a53bc5eb1866446793c92a52d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/connexion.html.twig"));
+        $__internal_8c7f4c616e930ed31318308cebf0deda3c7f02bea69f60defcf6e4111bd881e9 = $this->env->getExtension("native_profiler");
+        $__internal_8c7f4c616e930ed31318308cebf0deda3c7f02bea69f60defcf6e4111bd881e9->enter($__internal_8c7f4c616e930ed31318308cebf0deda3c7f02bea69f60defcf6e4111bd881e9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/connexion.html.twig"));
 
         // line 1
         echo "
@@ -41,7 +41,9 @@ class __TwigTemplate_589bbff12ce554baf928bc9e83becd9358c7239e34431134b851d1c9dfd
         // line 16
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["connectform"]) ? $context["connectform"] : $this->getContext($context, "connectform")), 'form');
         echo "
-\t\t\t<button id=\"unmask\" type=\"button\" onclick=\"unmask()\" title=\"Mask/Unmask password to check content\">\t&#128065; </button>
+\t\t\t<button id=\"unmask\" type=\"button\" onclick=\"unmask()\" title=\"Mask/Unmask password to check content\">
+\t\t\t\t<strike>&#128065;</strike>
+\t\t\t</button>
 \t\t\t
 \t\t</div>
 \t\t<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
@@ -49,15 +51,15 @@ class __TwigTemplate_589bbff12ce554baf928bc9e83becd9358c7239e34431134b851d1c9dfd
 
 </body>
 <script>
-;(function(){var TYPE_ATTR_PASSWORD='input#form_MDP[type=\"password\"]';var CLASS_TOGGLE='ua-password-preview-toggle';var CLASS_IS_VISIBLE='ua-is-visible';var CLASS_ICON='ua-password-preview-icon';var HTML_TOGGLE='\\
-    <i class=\"jui-icon icon-eye-close '+CLASS_ICON+' '+CLASS_ICON+'--hide\"></i>\\
-    <i class=\"jui-icon icon-eye-open '+CLASS_ICON+' '+CLASS_ICON+'--show\"></i>\\
-';function getInputElements(){return[].slice.call(document.querySelectorAll(TYPE_ATTR_PASSWORD));}
-function getToggleElement(){var toggle=document.createElement('button');toggle.type='button';toggle.innerHTML=HTML_TOGGLE;toggle.className=CLASS_TOGGLE;return toggle;}
-function togglePasswordPreview(toggle,inputs){var previewVisible=false;return function(){var isVisible=!previewVisible;var inputType=isVisible?'text':'password';toggle.classList.toggle(CLASS_IS_VISIBLE,isVisible);inputs.forEach(function(input){input.type=inputType;});previewVisible=isVisible;};}
-var inputs=getInputElements();var lastInput=inputs.slice().pop();var toggle=getToggleElement();lastInput.parentNode.appendChild(toggle);toggle.addEventListener('click',togglePasswordPreview(toggle,inputs));})();
 function unmask(){ \t
-\tdocument.getElementById(\"form_MDP\").type=\"text\"; \t
+  
+  if( document.getElementById('form_MDP').type == \"password\" ){
+\tdocument.getElementById('form_MDP').type=\"text\";
+\tdocument.getElementById('unmask').innerHTML = \"&#128065;\";
+  } else {
+    document.getElementById('form_MDP').type=\"password\";
+    document.getElementById('unmask').innerHTML = \"<strike>&#128065;</strike>\";
+  }
 }
 </script>
 <style>
@@ -98,8 +100,8 @@ button#unmask{
 \tposition: absolute;
 \tfont-family : cursive;
 \t    font-size: 30px;
-    margin-left: 57.5%;
-    margin-top: -10.5%;
+    margin-left: 60.75%;
+    margin-top: -11.65%;
         border: none;
         background: none;
     background-color: initial;
@@ -146,7 +148,7 @@ input#form_MDP{
 }
 </style>";
         
-        $__internal_5dc90d801f6e988e9361d91915d2255a4f36453a53bc5eb1866446793c92a52d->leave($__internal_5dc90d801f6e988e9361d91915d2255a4f36453a53bc5eb1866446793c92a52d_prof);
+        $__internal_8c7f4c616e930ed31318308cebf0deda3c7f02bea69f60defcf6e4111bd881e9->leave($__internal_8c7f4c616e930ed31318308cebf0deda3c7f02bea69f60defcf6e4111bd881e9_prof);
 
     }
 
@@ -181,7 +183,9 @@ input#form_MDP{
 /* */
 /* 			<img id="imgmenu" src="img/InSociety0.png" width="300px"> */
 /* 			{{ form(connectform)}}*/
-/* 			<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">	&#128065; </button>*/
+/* 			<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">*/
+/* 				<strike>&#128065;</strike>*/
+/* 			</button>*/
 /* 			*/
 /* 		</div>*/
 /* 		<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>*/
@@ -189,15 +193,15 @@ input#form_MDP{
 /* */
 /* </body>*/
 /* <script>*/
-/* ;(function(){var TYPE_ATTR_PASSWORD='input#form_MDP[type="password"]';var CLASS_TOGGLE='ua-password-preview-toggle';var CLASS_IS_VISIBLE='ua-is-visible';var CLASS_ICON='ua-password-preview-icon';var HTML_TOGGLE='\*/
-/*     <i class="jui-icon icon-eye-close '+CLASS_ICON+' '+CLASS_ICON+'--hide"></i>\*/
-/*     <i class="jui-icon icon-eye-open '+CLASS_ICON+' '+CLASS_ICON+'--show"></i>\*/
-/* ';function getInputElements(){return[].slice.call(document.querySelectorAll(TYPE_ATTR_PASSWORD));}*/
-/* function getToggleElement(){var toggle=document.createElement('button');toggle.type='button';toggle.innerHTML=HTML_TOGGLE;toggle.className=CLASS_TOGGLE;return toggle;}*/
-/* function togglePasswordPreview(toggle,inputs){var previewVisible=false;return function(){var isVisible=!previewVisible;var inputType=isVisible?'text':'password';toggle.classList.toggle(CLASS_IS_VISIBLE,isVisible);inputs.forEach(function(input){input.type=inputType;});previewVisible=isVisible;};}*/
-/* var inputs=getInputElements();var lastInput=inputs.slice().pop();var toggle=getToggleElement();lastInput.parentNode.appendChild(toggle);toggle.addEventListener('click',togglePasswordPreview(toggle,inputs));})();*/
 /* function unmask(){ 	*/
-/* 	document.getElementById("form_MDP").type="text"; 	*/
+/*   */
+/*   if( document.getElementById('form_MDP').type == "password" ){*/
+/* 	document.getElementById('form_MDP').type="text";*/
+/* 	document.getElementById('unmask').innerHTML = "&#128065;";*/
+/*   } else {*/
+/*     document.getElementById('form_MDP').type="password";*/
+/*     document.getElementById('unmask').innerHTML = "<strike>&#128065;</strike>";*/
+/*   }*/
 /* }*/
 /* </script>*/
 /* <style>*/
@@ -238,8 +242,8 @@ input#form_MDP{
 /* 	position: absolute;*/
 /* 	font-family : cursive;*/
 /* 	    font-size: 30px;*/
-/*     margin-left: 57.5%;*/
-/*     margin-top: -10.5%;*/
+/*     margin-left: 60.75%;*/
+/*     margin-top: -11.65%;*/
 /*         border: none;*/
 /*         background: none;*/
 /*     background-color: initial;*/

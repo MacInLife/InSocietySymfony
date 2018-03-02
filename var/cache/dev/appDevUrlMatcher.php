@@ -120,19 +120,37 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::calendrierAction',  '_route' => 'calendrier',);
         }
 
-        // docs
-        if ($pathinfo === '/docs') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadAction',  '_route' => 'docs',);
+        if (0 === strpos($pathinfo, '/d')) {
+            // docs
+            if ($pathinfo === '/docs') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadAction',  '_route' => 'docs',);
+            }
+
+            // delete
+            if ($pathinfo === '/delete') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'delete',);
+            }
+
         }
 
         // events
         if ($pathinfo === '/events') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::eventAction',  '_route' => 'events',);
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::addEvtAction',  '_route' => 'events',);
+        }
+
+        // deleteEvt
+        if ($pathinfo === '/deleteEvt') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deleteEvtAction',  '_route' => 'deleteEvt',);
         }
 
         // salles
         if ($pathinfo === '/salles') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::salleAction',  '_route' => 'salles',);
+        }
+
+        // contact
+        if ($pathinfo === '/contact') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
         }
 
         // ancarebeca_full_calendar_load

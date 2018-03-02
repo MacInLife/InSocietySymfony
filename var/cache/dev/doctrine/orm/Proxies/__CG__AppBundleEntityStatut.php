@@ -173,4 +173,41 @@ class Statut extends \AppBundle\Entity\Statut implements \Doctrine\ORM\Proxy\Pro
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function setLibeller($libeller)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLibeller', [$libeller]);
+
+        return parent::setLibeller($libeller);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLibeller()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLibeller', []);
+
+        return parent::getLibeller();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdStatut()
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getIdStatut();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdStatut', []);
+
+        return parent::getIdStatut();
+    }
+
 }

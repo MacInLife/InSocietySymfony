@@ -3,12 +3,13 @@
 {% block title %}Salles de réunion !{% endblock %}
 {% block body %}  
 <div class="bloc" id="acc">
-	<p> Réserver une salle de réunion :</p>
 
 <div id="bodysal">
   <table width="80%" border="1" align="center"> 
-    <tr>
-    <td align="center" width="10%"><b>Nom de la Salle</b></td>
+  	  <caption>Voir &amp; Réserver une salle de réunion</caption>
+
+    <tr id="tit">
+    <td align="center" width="12%"><b>Nom de la Salle</b></td>
     <td align="center" width="9%"><b>Nombre Total de place</b></td>
     <td align="center" width="10%"><b>Nombre de personne prévu</b></td>
     <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>
@@ -17,27 +18,29 @@
     <td align="center" width="8%"><b>Statut</b></td>
     <td align="center" width="6%" colspan=2><b>Outils</b></td> 
     </tr>
-    
+          {% for salle in liste %}
+       {% set fooo = salle.idSr|split('.') %}
+    <tr id="scroll">
+      <td id="d" >{{salle.nomsr}}</td>
+      <td id="d" align="right">{{salle.nbplacetotal}}</td>
+      <td id="d" align="right">{{salle.nbpers}}</td>
+      <td id="d">{{salle.dateD|date('d-m-Y H:i:s')}}</td>
+      <td id="d">{{salle.dateF|date('d-m-Y H:i:s')}}</td>
+      <td id="d" align="center">{{salle.lieu}}</td>
+      <td id="d" align="center">{{salle.idStatut.libeller}}</td>
+     </tr>
+   			 {% endfor %} 
 
     </table>
     
 </div>
 
 <hr>
-	<section id="list">
-	<ul>
-		<li> Choisir le lieu :</li>
-		<li> Choisir la salle :</li>
-		<li> Choix du nombre de personne prévu :</li>
-	</ul><ul>
+ <section id="list">{{ form(sallesform)}}</section>
 
-		<li>Date &amp; Heure de début :</li>
-		<li>Date &amp; Heure de fin :</li>
-	</ul>
-	</section>
-	<button> Réserver </button>
 </div> 
 <style type="text/css">
+td{margin : auto;}
 div#acc{
     width: 98.9%;
     height : 450px;
@@ -46,19 +49,27 @@ div#acc{
   background-color : white; 
   
 }
-p{
+
+caption{
     font-family: 'BlackChancery';
     text-decoration: bold;
     font-size : 20px;
 }
-
+label{
+    font-family: 'BlackChancery';
+    text-decoration: bold;
+    font-size : 20px;
+}
 section#list{ column-count: 2; }
+tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
+tr,td{padding-left:5px;}
+table{ height : 40px; overflow: auto; }
 button{
 	 font-family:'BlackChancery' ; 
 	 font-size:  24px ;
 	 border-radius: 5px;
 	
-    margin-left: 85%;
+    margin-left: 60%;
     margin-right: 45%;
     background-color: black;
     color:white;
