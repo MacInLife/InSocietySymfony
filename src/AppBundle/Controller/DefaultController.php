@@ -500,24 +500,16 @@ $salle = $repository->findOneBy(  array('idSr' => $idSr));
        //Création de Formulaire Page Events
  $form = $this->createFormBuilder()
             ->add('lieu', EntityType::class,  array('class' => 'AppBundle:SalleReunion', 'label' => 'Choisir le Lieu :', 'choice_label' => function ($lieu){ return $lieu->getLieu();}, 
-                  'placeholder' => 'Choississez le lieu'))
+                  'placeholder' => ''))
                   // ,'data' => $salle->getLieu()))
             ->add('nomsr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
-                  'placeholder' => 'Choississez le nom'))
+                  'placeholder' => ''))
                   //'data' => $salle->getNomsr()))
             ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
                   //'data' => $salle->getNbpers()))
             ->add('dateD', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Début :'))
             ->add('dateF', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Fin :'))
-               
-          
-           /* -            ->add('idSR', EntityType::class, 
-                 array('class' => 'AppBundle:SalleReunion', 
-                        'label' => 'Salle :',
-                         'choice_label' => function($nomsr){
-                            return $nomsr->getNomsr();
-                        },
-                        'placeholder' => 'Choississez ...'))*/
+     
             ->add('Réserver', SubmitType::class, array('label' => 'Réserver'))
             ->getForm();
                 

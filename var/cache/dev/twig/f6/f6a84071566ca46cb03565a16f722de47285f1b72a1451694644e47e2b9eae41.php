@@ -22,38 +22,38 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_02a4736fa10a2c6be28420d70e92eb5ce259cce714eccb0b49b543444cb5dd81 = $this->env->getExtension("native_profiler");
-        $__internal_02a4736fa10a2c6be28420d70e92eb5ce259cce714eccb0b49b543444cb5dd81->enter($__internal_02a4736fa10a2c6be28420d70e92eb5ce259cce714eccb0b49b543444cb5dd81_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/salles.html.twig"));
+        $__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15 = $this->env->getExtension("native_profiler");
+        $__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15->enter($__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/salles.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_02a4736fa10a2c6be28420d70e92eb5ce259cce714eccb0b49b543444cb5dd81->leave($__internal_02a4736fa10a2c6be28420d70e92eb5ce259cce714eccb0b49b543444cb5dd81_prof);
+        $__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15->leave($__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_13c00b8bdcca8aa1c8d38291892c7cf2a4fa92f3618289dbffcdca32788f1d96 = $this->env->getExtension("native_profiler");
-        $__internal_13c00b8bdcca8aa1c8d38291892c7cf2a4fa92f3618289dbffcdca32788f1d96->enter($__internal_13c00b8bdcca8aa1c8d38291892c7cf2a4fa92f3618289dbffcdca32788f1d96_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d = $this->env->getExtension("native_profiler");
+        $__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d->enter($__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Salles de réunion !";
         
-        $__internal_13c00b8bdcca8aa1c8d38291892c7cf2a4fa92f3618289dbffcdca32788f1d96->leave($__internal_13c00b8bdcca8aa1c8d38291892c7cf2a4fa92f3618289dbffcdca32788f1d96_prof);
+        $__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d->leave($__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d_prof);
 
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
-        $__internal_402c713f0ebe1ca4d4bfe361dce7dcdde400c296fae5caa96858f4d8d0b0020f = $this->env->getExtension("native_profiler");
-        $__internal_402c713f0ebe1ca4d4bfe361dce7dcdde400c296fae5caa96858f4d8d0b0020f->enter($__internal_402c713f0ebe1ca4d4bfe361dce7dcdde400c296fae5caa96858f4d8d0b0020f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d = $this->env->getExtension("native_profiler");
+        $__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d->enter($__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "  
 <div class=\"bloc\" id=\"acc\">
 
 <div id=\"bodysal\">
-  <table width=\"80%\" border=\"1\" align=\"center\"> 
+  <table  border=\"1\" align=\"center\"> 
   \t  <caption>Voir &amp; Réserver une salle de réunion</caption>
 
     <tr id=\"tit\">
@@ -62,9 +62,9 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
     <td align=\"center\" width=\"10%\"><b>Nombre de personne prévu</b></td>
     <td align=\"center\" width=\"12%\"><b>Date &amp; Heure d'occupation début</b></td>
     <td align=\"center\" width=\"12%\"><b>Date &amp; Heure d'occupation fin</b></td>
-    <td align=\"center\" width=\"8%\"><b>Lieu</b></td>
-    <td align=\"center\" width=\"8%\"><b>Statut</b></td>
-    <td align=\"center\" width=\"6%\" colspan=2><b>Outils</b></td> 
+    <td align=\"center\" width=\"5%\"><b>Lieu</b></td>
+    <td align=\"center\" width=\"5%\"><b>Statut</b></td>
+    <td align=\"center\" width=\"3%\" colspan=2><b>Outils</b></td> 
     </tr>
           ";
         // line 21
@@ -90,11 +90,11 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
             echo "</td>
       <td id=\"d\">";
             // line 27
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["salle"], "dateD", array()), "d-m-Y H:i:s"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["salle"], "dateD", array()), "d-m-Y    H:i:s"), "html", null, true);
             echo "</td>
       <td id=\"d\">";
             // line 28
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["salle"], "dateF", array()), "d-m-Y H:i:s"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["salle"], "dateF", array()), "d-m-Y    H:i:s"), "html", null, true);
             echo "</td>
       <td id=\"d\" align=\"center\">";
             // line 29
@@ -125,16 +125,7 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
 
 </div> 
 <style type=\"text/css\">
-td{margin : auto;}
-div#acc{
-    width: 98.9%;
-    height : 450px;
-    margin-top:10px;
-    margin-left: 10px;
-  background-color : white; 
-  
-}
-
+div#acc{ height: 500px; }
 caption{
     font-family: 'BlackChancery';
     text-decoration: bold;
@@ -145,17 +136,30 @@ label{
     text-decoration: bold;
     font-size : 20px;
 }
-section#list{ column-count: 2; }
+section#list{ margin-top : 20px; margin-left :20px; margin-right:20px; background-color:#dcdcdc; column-count: 5;}
 tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
 tr,td{padding-left:5px;}
-table{ height : 40px; overflow: auto; }
+table{   margin-left:5px; margin-right:5px; overflow: scroll; }
+input#form_nbpers{ width :40px; }
+select{
+\tbackground:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;
+\tborder-radius: 15px;
+\tfont-family: cursive;
+\tfont-size: 14px;
+}
+input{
+\tbackground:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;
+\tborder-radius: 15px;
+\tfont-family: cursive;
+\tfont-size: 14px;
+}
+input#form_dateD_date{ \twidth: 126px;  } input#form_dateD_time { width: 65px; }
+input#form_dateF_date{ \twidth: 126px; } input#form_dateF_time { width: 65px; }
 button{
 \t font-family:'BlackChancery' ; 
 \t font-size:  24px ;
 \t border-radius: 5px;
-\t
-    margin-left: 60%;
-    margin-right: 45%;
+\tmargin-top: 5%;
     background-color: black;
     color:white;
     height: 50px;
@@ -166,7 +170,7 @@ button{
 
 ";
         
-        $__internal_402c713f0ebe1ca4d4bfe361dce7dcdde400c296fae5caa96858f4d8d0b0020f->leave($__internal_402c713f0ebe1ca4d4bfe361dce7dcdde400c296fae5caa96858f4d8d0b0020f_prof);
+        $__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d->leave($__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d_prof);
 
     }
 
@@ -192,7 +196,7 @@ button{
 /* <div class="bloc" id="acc">*/
 /* */
 /* <div id="bodysal">*/
-/*   <table width="80%" border="1" align="center"> */
+/*   <table  border="1" align="center"> */
 /*   	  <caption>Voir &amp; Réserver une salle de réunion</caption>*/
 /* */
 /*     <tr id="tit">*/
@@ -201,9 +205,9 @@ button{
 /*     <td align="center" width="10%"><b>Nombre de personne prévu</b></td>*/
 /*     <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>*/
 /*     <td align="center" width="12%"><b>Date &amp; Heure d'occupation fin</b></td>*/
-/*     <td align="center" width="8%"><b>Lieu</b></td>*/
-/*     <td align="center" width="8%"><b>Statut</b></td>*/
-/*     <td align="center" width="6%" colspan=2><b>Outils</b></td> */
+/*     <td align="center" width="5%"><b>Lieu</b></td>*/
+/*     <td align="center" width="5%"><b>Statut</b></td>*/
+/*     <td align="center" width="3%" colspan=2><b>Outils</b></td> */
 /*     </tr>*/
 /*           {% for salle in liste %}*/
 /*        {% set fooo = salle.idSr|split('.') %}*/
@@ -211,8 +215,8 @@ button{
 /*       <td id="d" >{{salle.nomsr}}</td>*/
 /*       <td id="d" align="right">{{salle.nbplacetotal}}</td>*/
 /*       <td id="d" align="right">{{salle.nbpers}}</td>*/
-/*       <td id="d">{{salle.dateD|date('d-m-Y H:i:s')}}</td>*/
-/*       <td id="d">{{salle.dateF|date('d-m-Y H:i:s')}}</td>*/
+/*       <td id="d">{{salle.dateD|date('d-m-Y    H:i:s')}}</td>*/
+/*       <td id="d">{{salle.dateF|date('d-m-Y    H:i:s')}}</td>*/
 /*       <td id="d" align="center">{{salle.lieu}}</td>*/
 /*       <td id="d" align="center">{{salle.idStatut.libeller}}</td>*/
 /*      </tr>*/
@@ -227,16 +231,7 @@ button{
 /* */
 /* </div> */
 /* <style type="text/css">*/
-/* td{margin : auto;}*/
-/* div#acc{*/
-/*     width: 98.9%;*/
-/*     height : 450px;*/
-/*     margin-top:10px;*/
-/*     margin-left: 10px;*/
-/*   background-color : white; */
-/*   */
-/* }*/
-/* */
+/* div#acc{ height: 500px; }*/
 /* caption{*/
 /*     font-family: 'BlackChancery';*/
 /*     text-decoration: bold;*/
@@ -247,17 +242,30 @@ button{
 /*     text-decoration: bold;*/
 /*     font-size : 20px;*/
 /* }*/
-/* section#list{ column-count: 2; }*/
+/* section#list{ margin-top : 20px; margin-left :20px; margin-right:20px; background-color:#dcdcdc; column-count: 5;}*/
 /* tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }*/
 /* tr,td{padding-left:5px;}*/
-/* table{ height : 40px; overflow: auto; }*/
+/* table{   margin-left:5px; margin-right:5px; overflow: scroll; }*/
+/* input#form_nbpers{ width :40px; }*/
+/* select{*/
+/* 	background:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;*/
+/* 	border-radius: 15px;*/
+/* 	font-family: cursive;*/
+/* 	font-size: 14px;*/
+/* }*/
+/* input{*/
+/* 	background:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;*/
+/* 	border-radius: 15px;*/
+/* 	font-family: cursive;*/
+/* 	font-size: 14px;*/
+/* }*/
+/* input#form_dateD_date{ 	width: 126px;  } input#form_dateD_time { width: 65px; }*/
+/* input#form_dateF_date{ 	width: 126px; } input#form_dateF_time { width: 65px; }*/
 /* button{*/
 /* 	 font-family:'BlackChancery' ; */
 /* 	 font-size:  24px ;*/
 /* 	 border-radius: 5px;*/
-/* 	*/
-/*     margin-left: 60%;*/
-/*     margin-right: 45%;*/
+/* 	margin-top: 5%;*/
 /*     background-color: black;*/
 /*     color:white;*/
 /*     height: 50px;*/

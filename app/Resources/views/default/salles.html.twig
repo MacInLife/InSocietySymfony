@@ -5,7 +5,7 @@
 <div class="bloc" id="acc">
 
 <div id="bodysal">
-  <table width="80%" border="1" align="center"> 
+  <table  border="1" align="center"> 
   	  <caption>Voir &amp; Réserver une salle de réunion</caption>
 
     <tr id="tit">
@@ -14,9 +14,9 @@
     <td align="center" width="10%"><b>Nombre de personne prévu</b></td>
     <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>
     <td align="center" width="12%"><b>Date &amp; Heure d'occupation fin</b></td>
-    <td align="center" width="8%"><b>Lieu</b></td>
-    <td align="center" width="8%"><b>Statut</b></td>
-    <td align="center" width="6%" colspan=2><b>Outils</b></td> 
+    <td align="center" width="5%"><b>Lieu</b></td>
+    <td align="center" width="5%"><b>Statut</b></td>
+    <td align="center" width="3%" colspan=2><b>Outils</b></td> 
     </tr>
           {% for salle in liste %}
        {% set fooo = salle.idSr|split('.') %}
@@ -24,8 +24,8 @@
       <td id="d" >{{salle.nomsr}}</td>
       <td id="d" align="right">{{salle.nbplacetotal}}</td>
       <td id="d" align="right">{{salle.nbpers}}</td>
-      <td id="d">{{salle.dateD|date('d-m-Y H:i:s')}}</td>
-      <td id="d">{{salle.dateF|date('d-m-Y H:i:s')}}</td>
+      <td id="d">{{salle.dateD|date('d-m-Y    H:i:s')}}</td>
+      <td id="d">{{salle.dateF|date('d-m-Y    H:i:s')}}</td>
       <td id="d" align="center">{{salle.lieu}}</td>
       <td id="d" align="center">{{salle.idStatut.libeller}}</td>
      </tr>
@@ -40,16 +40,7 @@
 
 </div> 
 <style type="text/css">
-td{margin : auto;}
-div#acc{
-    width: 98.9%;
-    height : 450px;
-    margin-top:10px;
-    margin-left: 10px;
-  background-color : white; 
-  
-}
-
+div#acc{ height: 500px; }
 caption{
     font-family: 'BlackChancery';
     text-decoration: bold;
@@ -60,17 +51,30 @@ label{
     text-decoration: bold;
     font-size : 20px;
 }
-section#list{ column-count: 2; }
+section#list{ margin-top : 20px; margin-left :20px; margin-right:20px; background-color:#dcdcdc; column-count: 5;}
 tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
 tr,td{padding-left:5px;}
-table{ height : 40px; overflow: auto; }
+table{   margin-left:5px; margin-right:5px; overflow: scroll; }
+input#form_nbpers{ width :40px; }
+select{
+	background:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;
+	border-radius: 15px;
+	font-family: cursive;
+	font-size: 14px;
+}
+input{
+	background:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;
+	border-radius: 15px;
+	font-family: cursive;
+	font-size: 14px;
+}
+input#form_dateD_date{ 	width: 126px;  } input#form_dateD_time { width: 65px; }
+input#form_dateF_date{ 	width: 126px; } input#form_dateF_time { width: 65px; }
 button{
 	 font-family:'BlackChancery' ; 
 	 font-size:  24px ;
 	 border-radius: 5px;
-	
-    margin-left: 60%;
-    margin-right: 45%;
+	margin-top: 5%;
     background-color: black;
     color:white;
     height: 50px;
