@@ -22,39 +22,45 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15 = $this->env->getExtension("native_profiler");
-        $__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15->enter($__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/salles.html.twig"));
+        $__internal_a12b1b0292dea13560568252dde43e558962dbbfbce4468fc021b3f95db31049 = $this->env->getExtension("native_profiler");
+        $__internal_a12b1b0292dea13560568252dde43e558962dbbfbce4468fc021b3f95db31049->enter($__internal_a12b1b0292dea13560568252dde43e558962dbbfbce4468fc021b3f95db31049_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/salles.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15->leave($__internal_66364958d3a617104cb764de8e93f46139669279f97310fedf218563b88b8f15_prof);
+        $__internal_a12b1b0292dea13560568252dde43e558962dbbfbce4468fc021b3f95db31049->leave($__internal_a12b1b0292dea13560568252dde43e558962dbbfbce4468fc021b3f95db31049_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d = $this->env->getExtension("native_profiler");
-        $__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d->enter($__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_5b99b63301b3c37262c36ee188b05bcebb37f3bd4121f30fef49a5d97f47a803 = $this->env->getExtension("native_profiler");
+        $__internal_5b99b63301b3c37262c36ee188b05bcebb37f3bd4121f30fef49a5d97f47a803->enter($__internal_5b99b63301b3c37262c36ee188b05bcebb37f3bd4121f30fef49a5d97f47a803_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Salles de réunion !";
         
-        $__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d->leave($__internal_4027a10e7f031666163856bff082ef5a948a83f9157921cd1acd9c3ad2b9758d_prof);
+        $__internal_5b99b63301b3c37262c36ee188b05bcebb37f3bd4121f30fef49a5d97f47a803->leave($__internal_5b99b63301b3c37262c36ee188b05bcebb37f3bd4121f30fef49a5d97f47a803_prof);
 
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
-        $__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d = $this->env->getExtension("native_profiler");
-        $__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d->enter($__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_fced5c46f9ad8e55f87000cb5d366b53c470b4d8c631f201549a1c05992dc62a = $this->env->getExtension("native_profiler");
+        $__internal_fced5c46f9ad8e55f87000cb5d366b53c470b4d8c631f201549a1c05992dc62a->enter($__internal_fced5c46f9ad8e55f87000cb5d366b53c470b4d8c631f201549a1c05992dc62a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "  
 <div class=\"bloc\" id=\"acc\">
+<section id=\"list\">";
+        // line 6
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["sallesform"]) ? $context["sallesform"] : $this->getContext($context, "sallesform")), 'form');
+        echo "</section>
 
+<br>
+<hr>
 <div id=\"bodysal\">
   <table  border=\"1\" align=\"center\"> 
-  \t  <caption>Voir &amp; Réserver une salle de réunion</caption>
+  \t  <caption><b>Voir &amp; Réserver une salle de réunion</b></caption>
 
     <tr id=\"tit\">
     <td align=\"center\" width=\"12%\"><b>Nom de la Salle</b></td>
@@ -67,41 +73,41 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
     <td align=\"center\" width=\"3%\" colspan=2><b>Outils</b></td> 
     </tr>
           ";
-        // line 21
+        // line 24
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["liste"]) ? $context["liste"] : $this->getContext($context, "liste")));
         foreach ($context['_seq'] as $context["_key"] => $context["salle"]) {
-            // line 22
+            // line 25
             echo "       ";
             $context["fooo"] = twig_split_filter($this->env, $this->getAttribute($context["salle"], "idSr", array()), ".");
-            // line 23
+            // line 26
             echo "    <tr id=\"scroll\">
       <td id=\"d\" >";
-            // line 24
+            // line 27
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "nomsr", array()), "html", null, true);
             echo "</td>
       <td id=\"d\" align=\"right\">";
-            // line 25
+            // line 28
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "nbplacetotal", array()), "html", null, true);
             echo "</td>
       <td id=\"d\" align=\"right\">";
-            // line 26
+            // line 29
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "nbpers", array()), "html", null, true);
             echo "</td>
       <td id=\"d\">";
-            // line 27
+            // line 30
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["salle"], "dateD", array()), "d-m-Y    H:i:s"), "html", null, true);
             echo "</td>
       <td id=\"d\">";
-            // line 28
+            // line 31
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["salle"], "dateF", array()), "d-m-Y    H:i:s"), "html", null, true);
             echo "</td>
       <td id=\"d\" align=\"center\">";
-            // line 29
+            // line 32
             echo twig_escape_filter($this->env, $this->getAttribute($context["salle"], "lieu", array()), "html", null, true);
             echo "</td>
       <td id=\"d\" align=\"center\">";
-            // line 30
+            // line 33
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["salle"], "idStatut", array()), "libeller", array()), "html", null, true);
             echo "</td>
      </tr>
@@ -110,22 +116,18 @@ class __TwigTemplate_59122d7d812009189b9ea2aef571b12e7d8095c3df39247b6ed61137287
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['salle'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
+        // line 35
         echo " 
 
     </table>
     
 </div>
-
-<hr>
- <section id=\"list\">";
-        // line 39
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["sallesform"]) ? $context["sallesform"] : $this->getContext($context, "sallesform")), 'form');
-        echo "</section>
+ 
 
 </div> 
 <style type=\"text/css\">
 div#acc{ height: 500px; }
+div#bodysal{ margin-top: 2%; }
 caption{
     font-family: 'BlackChancery';
     text-decoration: bold;
@@ -170,7 +172,7 @@ button{
 
 ";
         
-        $__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d->leave($__internal_b34edce949672407407c15d0d413e39ff8ad2654e3c796a483b11d50ae44a19d_prof);
+        $__internal_fced5c46f9ad8e55f87000cb5d366b53c470b4d8c631f201549a1c05992dc62a->leave($__internal_fced5c46f9ad8e55f87000cb5d366b53c470b4d8c631f201549a1c05992dc62a_prof);
 
     }
 
@@ -186,7 +188,7 @@ button{
 
     public function getDebugInfo()
     {
-        return array (  123 => 39,  114 => 32,  105 => 30,  101 => 29,  97 => 28,  93 => 27,  89 => 26,  85 => 25,  81 => 24,  78 => 23,  75 => 22,  71 => 21,  47 => 4,  35 => 3,  11 => 1,);
+        return array (  120 => 35,  111 => 33,  107 => 32,  103 => 31,  99 => 30,  95 => 29,  91 => 28,  87 => 27,  84 => 26,  81 => 25,  77 => 24,  56 => 6,  47 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'menu.html.twig' %}*/
@@ -194,10 +196,13 @@ button{
 /* {% block title %}Salles de réunion !{% endblock %}*/
 /* {% block body %}  */
 /* <div class="bloc" id="acc">*/
+/* <section id="list">{{ form(sallesform)}}</section>*/
 /* */
+/* <br>*/
+/* <hr>*/
 /* <div id="bodysal">*/
 /*   <table  border="1" align="center"> */
-/*   	  <caption>Voir &amp; Réserver une salle de réunion</caption>*/
+/*   	  <caption><b>Voir &amp; Réserver une salle de réunion</b></caption>*/
 /* */
 /*     <tr id="tit">*/
 /*     <td align="center" width="12%"><b>Nom de la Salle</b></td>*/
@@ -225,13 +230,12 @@ button{
 /*     </table>*/
 /*     */
 /* </div>*/
-/* */
-/* <hr>*/
-/*  <section id="list">{{ form(sallesform)}}</section>*/
+/*  */
 /* */
 /* </div> */
 /* <style type="text/css">*/
 /* div#acc{ height: 500px; }*/
+/* div#bodysal{ margin-top: 2%; }*/
 /* caption{*/
 /*     font-family: 'BlackChancery';*/
 /*     text-decoration: bold;*/

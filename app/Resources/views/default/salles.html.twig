@@ -3,10 +3,13 @@
 {% block title %}Salles de réunion !{% endblock %}
 {% block body %}  
 <div class="bloc" id="acc">
+<section id="list">{{ form(sallesform)}}</section>
 
+<br>
+<hr>
 <div id="bodysal">
   <table  border="1" align="center"> 
-  	  <caption>Voir &amp; Réserver une salle de réunion</caption>
+  	  <caption><b>Voir &amp; Réserver une salle de réunion</b></caption>
 
     <tr id="tit">
     <td align="center" width="12%"><b>Nom de la Salle</b></td>
@@ -34,13 +37,12 @@
     </table>
     
 </div>
-
-<hr>
- <section id="list">{{ form(sallesform)}}</section>
+ 
 
 </div> 
 <style type="text/css">
 div#acc{ height: 500px; }
+div#bodysal{ margin-top: 2%; }
 caption{
     font-family: 'BlackChancery';
     text-decoration: bold;
