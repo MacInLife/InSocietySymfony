@@ -31,15 +31,32 @@
       <td id="d">{{salle.dateF|date('d-m-Y    H:i:s')}}</td>
       <td id="d" align="center">{{salle.lieu}}</td>
       <td id="d" align="center">{{salle.idStatut.libeller}}</td>
+      <td id="d" align="center"> 
+       <a onclick="modif()" href="/salles?idSr={{salle.idSr}}" >
+      	<img src="img/modif.png" width="15px" height="15px">
+      	</a>
+      </td>
      </tr>
    			 {% endfor %} 
 
     </table>
     
 </div>
- 
+  <dialog id="editSal"> {{ form(sallesMform)}}</dialog>
 
 </div> 
+<script type="text/javascript">
+	 function modif(){
+	// body...
+
+
+	addEventListener('click', function(){
+	document.getElementById('editSal').showModal();
+	});
+
+
+}
+</script>
 <style type="text/css">
 div#acc{ height: 500px; }
 div#bodysal{ margin-top: 2%; height:325px; overflow: scroll; }
@@ -70,6 +87,7 @@ input{
 	font-family: cursive;
 	font-size: 14px;
 }
+
 input#form_dateD_date{ 	width: 126px;  } input#form_dateD_time { width: 65px; }
 input#form_dateF_date{ 	width: 126px; } input#form_dateF_time { width: 65px; }
 button{
@@ -82,6 +100,35 @@ button{
     height: 50px;
     width: 150px;
 
+}
+dialog#editSal{ width: 25%;  height: 30%; }
+button#form_Modifier{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+ float: left;
+}
+button#form_Annuler{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+    float: right;
 }
 </style>
 

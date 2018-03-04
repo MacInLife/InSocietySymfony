@@ -1,0 +1,44 @@
+{% extends 'menu.html.twig' %}
+
+{% block title %}Annuaire !{% endblock %}
+{% block body %}  
+	<div id="bodypers">
+  <table  border="1" align="center"> 
+  	  <caption><b>Voir &amp; Réserver une salle de réunion</b></caption>
+
+   <tr id="tit">
+   	<td align="center" width="12%"><b>Login</b></td>
+    <td align="center" width="12%"><b>Nom</b></td>
+    <td align="center" width="12%"><b>Prénom</b></td>
+    <td align="center" width="12%"><b>Mail</b></td>
+    <td align="center" width="12%"><b>Tel</b></td>
+    <td align="center" width="12%"><b>Role</b></td>
+    <td align="center" width="12%"><b>Service</b></td>
+   </tr>
+   <tr>
+   	 {% for pers in liste %}
+       {% set fooo = pers.idPers|split('.') %}
+    <tr id="scroll">
+    	<td id="d" >{{pers.login}}</td>
+    	<td id="d" >{{pers.nom}}</td>
+    	<td id="d" >{{pers.prenom}}</td>
+    	<td id="d" >{{pers.mail}}</td>
+    	<td id="d" >{{pers.tel}}</td>
+    	<td id="d" >{{pers.idRole.nomRole}}</td>
+    	<td id="d" >{{pers.idService.typeService}}</td>
+    </tr>
+   			 {% endfor %} 
+   </table>
+    
+</div>
+<style type="text/css">
+div#bodypers{ margin-top: 2%; height:475px; overflow: scroll; }
+caption{
+    font-family: 'BlackChancery';
+    text-decoration: bold;
+    font-size : 20px;
+}
+tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
+table{   margin-left:5px; margin-right:5px; overflow: scroll; }
+</style>
+	{% endblock %}

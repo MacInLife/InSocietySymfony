@@ -228,7 +228,7 @@ return $this->render('default/accueil.html.twig');
     /**
      * @Route("/events", name="events")
      */
-    public function addEvtAction(Request $request)
+    public function EventAction(Request $request)
     {
      $em = $this->getDoctrine()->getManager();
          $listeEvt = $em->getRepository(Evenement::class)->findAll();
@@ -532,13 +532,74 @@ $salle = $repository->findOneBy(  array('idSr' => $idSr));
         $salle->setDateD($dateD);
         $salle->setDateF($dateF);
         
-
+ $em->persist($salle);
 dump($salle); 
       
         $em->flush();
     }
   
-        return $this->render('default/salles.html.twig',['sallesform'=>$form->createView(), 'liste' => $listeSal]  ) ;
+       // return $this->render('default/salles.html.twig',['sallesform'=>$form->createView(), 'liste' => $listeSal]  ) ;
+//////////////////////Modif Reservation//////////////////
+          $idSr = $request->get('idSr');    
+       
+ $formModif = $this->createFormBuilder()->getForm();
+if(!empty($idSr)){
+
+    dump( $idSr);
+
+     $repository = $this->getDoctrine()->getRepository(SalleReunion::class);
+
+// recherche d'un seul évènement correspondant au id indiqué
+$salleM = $repository->findOneBy(array('idSr' => $idSr));
+
+dump($salleM);
+
+       //Création de Formulaire Page Events
+ $formModif = $this->createFormBuilder()
+            ->add('lieu', EntityType::class,  array('class' => 'AppBundle:SalleReunion', 'label' => 'Choisir le Lieu :', 'choice_label' => function ($lieu){ return $lieu->getLieu();}, 
+                  'placeholder' => ''))
+                  // ,'data' => $salle->getLieu()))
+            ->add('nomsr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
+                  'placeholder' => ''))
+                  //'data' => $salle->getNomsr()))
+            ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
+                  //'data' => $salle->getNbpers()))
+            ->add('dateD', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Début :'))
+            ->add('dateF', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Fin :'))
+     
+            ->add('Réserver', SubmitType::class, array('label' => 'Réserver'))
+            ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
+            ->getForm();
+                
+            $formModif->handleRequest($request);
+           
+ //Validation  du formulaire avec le bouton Ajouter (Submit)
+            if($formModif->isValid()){
+                
+              $infoSalle = $form->getData();
+                $lieu = $infoSalle['lieu'];
+                $nomsr = $infoSalle['nomsr'];
+                $nbpers = $infoSalle['nbpers'];
+                $DateD = $infoSalle['dateD'];
+                $DateF = $infoSalle['dateF'];
+            
+       
+        $salle->setLieu($lieu);
+        $salle->setNomsr($nomsr);
+        $salle->setNbpers($nbpers);
+        $salle->setDateD($dateD);
+        $salle->setDateF($dateF);
+ 
+
+dump($salleM); 
+      
+        $em->flush();
+       // return $this->render($this->generateUrl('default/events.html.twig'));
+            }
+        }
+        return $this->render('default/salles.html.twig',['sallesform'=>$form->createView(), 'sallesMform'=>$formModif->createView(),'liste' => $listeSal]);
+   
+    
     }
 
 
@@ -549,4 +610,31 @@ dump($salle);
     {    
         return $this->render('default/contact.html.twig') ;
     }
+
+
+    /**
+     * @Route("/annuaire", name="annuaire")
+     */
+    public function annuaireAction(Request $request)
+    {    
+      $em = $this->getDoctrine()->getManager();
+       $listePers = $em->getRepository(Personnel::class)->findAll();
+
+
+$idPers = $request->get('idPers');
+        return $this->render('default/annuaire.html.twig', ['liste' => $listePers]) ;
+    }
+
+
+ /**
+     * @Route("/plan", name="plan")
+     */
+    public function planAction(Request $request)
+    {    
+        return $this->render('default/plan.html.twig') ;
+    }
+
+
+
+    
 }
