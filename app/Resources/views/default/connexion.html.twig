@@ -4,28 +4,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>Se Connecter</title>
-       
+     
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
     	<h1>Bienvenue sur l'Intranet de InSociety</h1>
-    	
-    	<div>
-
-			<img id="imgmenu" src="img/InSociety0.png" width="300px"> 
-			{{ form(connectform)}}
-			<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">
-				<strike>&#128065;</strike>
-			</button>
-			
-		</div>
-		<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>
-       
-
+   	<div>
+		<img id="imgmenu" src="img/InSociety0.png" width="300px"> 
+		{{ form(connectform)}}
+		<button id="unmask" type="button" onclick="unmask()" title="Mask/Unmask password to check content">
+			<strike>&#128065;</strike>
+		</button>
+	</div>
+	<h4>Webmaster - Réalisé par MAC, Portail Collaboratif </h4>    
 </body>
 <script>
 function unmask(){ 	
-  
   if( document.getElementById('form_MDP').type == "password" ){
 	document.getElementById('form_MDP').type="text";
 	document.getElementById('unmask').innerHTML = "&#128065;";
@@ -36,87 +30,31 @@ function unmask(){
 }
 </script>
 <style>
-
-
-body{
-background-color :  #9edae5;
-  font-family: cursive;
-}
-
-h1{
-	font-family:'BlackChancery' ; 
-	 font-size:  24px ;
-	 text-align: center;
-	 margin-top: 5%;
-}
-h4{
-	font-family:'BlackChancery' ; 
-	 font-size:  24px ;
-	 text-align: center;
-	 color:#6b6b6b;
-}
-
-div{
-	margin-top: 5%;
-}
+body{ background-color :  #9edae5;	  font-family: cursive;	}
+h1{ font-family:'BlackChancery' ; 	 font-size:  24px ;		text-align: center; 	 margin-top: 5%; }
+h4{ font-family:'BlackChancery' ; 	 font-size:  24px ;		text-align: center; 	 color:#6b6b6b; }
+div{ 	margin-top: 5%;	}
 img#imgmenu{ position: absolute; margin-left: 100px; margin-top: 40px; }
 div#form{
-background-color: white;
-margin : auto;
-margin-top: 5%;
-	border-radius: 20px;
-	border :1px solid;
-    border-color: #91efffe5;
-    width: 40%;   
+background-color: white; 	margin : auto;	margin-top: 5%;		border-radius: 20px;	border :1px solid;
+    border-color: #91efffe5;	  width: 40%;   
 }
 button#unmask{
-	position: absolute;
-	font-family : cursive;
-	    font-size: 30px;
-    margin-left: 60.75%;
-    margin-top: -11.65%;
-        border: none;
-        background: none;
-    background-color: initial;
-    outline: none;
-    color:grey;
+	position: absolute; 	font-family : cursive;	font-size: 30px;	margin-left: 60.75%;
+    margin-top: -11.65%;	border: none; 	        background: none;	 background-color: initial;
+    outline: none;		    color:grey;
 }
 button#form_Connexion{
-	 font-family:'BlackChancery' ; 
-	 font-size:  24px ;
-	 border-radius: 5px;
-	 margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 40%;
-    margin-right: 45%;
-    background-color: black;
-    color:white;
-    height: 50px;
-    width: 150px;
-
+	 font-family:'BlackChancery' ; 	 font-size:  24px ;	  border-radius: 5px;	 margin-bottom: 5%;
+    margin-top: 5%;		margin-left: 40%;	margin-right: 45%;		background-color: black;
+    color:white;	    height: 50px;		width: 150px;
 }
-label{
-	margin-top: 5%;
-	margin-left: 20%;
-}
-
+label{  margin-top: 5%;	   margin-left: 20%; }
 input#form_Login{
-	border-radius: 5px;
-	height: 20px;
-	margin-top: 5%;
-	margin-left: 5%;
-	margin-top: 5%;
+	border-radius: 5px;		height: 20px;	margin-top: 5%;		margin-left: 5%;	margin-top: 5%;
 	font-size:  18px ;
-
 }
-
 input#form_MDP{
-	border-radius: 5px;
-	height: 20px;
-	margin-left: 12%;
-	margin-top: 5%;
-	font-size:  18px ;
-	
-
+	border-radius: 5px;		height: 20px;	margin-left: 12%;	margin-top: 5%;		font-size:  18px ;
 }
 </style>
