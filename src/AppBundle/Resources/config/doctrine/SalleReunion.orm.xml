@@ -12,13 +12,6 @@
         <option name="unsigned"/>
       </options>
     </field>
-    <field name="nbpers" type="integer" column="nbPers" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="dateD" type="datetime" column="date_d" nullable="true"/>
-    <field name="dateF" type="datetime" column="date_f" nullable="true"/>
     <field name="nomsr" type="string" column="nomSR" length="50" nullable="true">
       <options>
         <option name="fixed"/>

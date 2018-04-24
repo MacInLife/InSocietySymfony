@@ -40,7 +40,7 @@ class Statut
     public function setLibeller($libeller)
     {
         $this->libeller = $libeller;
-
+    
         return $this;
     }
 

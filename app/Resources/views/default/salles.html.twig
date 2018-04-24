@@ -8,39 +8,56 @@
 <br>
 <hr>
 <div id="bodysal">
-  <table  border="1" align="center"> 
-  	  <caption><b>Voir &amp; Réserver une salle de réunion</b></caption>
+  <table  id="Un" border="1" align="center"> 
+    <tbody>
+  	  <caption><b>Voir les salles de réunion</b></caption>
 
     <tr id="tit">
     <td align="center" width="12%"><b>Nom de la Salle</b></td>
-    <td align="center" width="9%"><b>Nombre Total de place</b></td>
-    <td align="center" width="10%"><b>Nombre de personne prévu</b></td>
-    <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>
-    <td align="center" width="12%"><b>Date &amp; Heure d'occupation fin</b></td>
-    <td align="center" width="5%"><b>Lieu</b></td>
-    <td align="center" width="5%"><b>Statut</b></td>
-    <td align="center" width="3%" colspan=2><b>Outils</b></td> 
-    </tr>
-          {% for salle in liste %}
-       {% set fooo = salle.idSr|split('.') %}
-    <tr id="scroll">
-      <td id="d" >{{salle.nomsr}}</td>
-      <td id="d" align="right">{{salle.nbplacetotal}}</td>
-      <td id="d" align="right">{{salle.nbpers}}</td>
-      <td id="d">{{salle.dateD|date('d-m-Y    H:i:s')}}</td>
-      <td id="d">{{salle.dateF|date('d-m-Y    H:i:s')}}</td>
-      <td id="d" align="center">{{salle.lieu}}</td>
-      <td id="d" align="center">{{salle.idStatut.libeller}}</td>
-      <td id="d" align="center"> 
-       <a onclick="modif()" href="/salles?idSr={{salle.idSr}}" >
-      	<img src="img/modif.png" width="15px" height="15px">
-      	</a>
-      </td>
-     </tr>
-   			 {% endfor %} 
+    <td align="center" width="5%"><b>Nombre Total de place</b></td>
+    <td align="center" width="3%"><b>Lieu</b></td>
 
-    </table>
-    
+    </tr>
+     
+ {% for sal in listes %}
+       {% set fooo = sal.idSr %}
+    <tr id="scroll">
+      <td id="d">{{sal.nomsr}}</td>
+      <td id="d" align="right">{{sal.nbplacetotal}}</td>
+       <td id="d" align="center">{{sal.lieu}}</td>    
+     
+{% endfor %} 
+  </tr>
+     </table>
+     </tbody>
+
+
+    <table id="Deux" border="1" align="center">
+       <caption><b>Voir les Réservations</b></caption>
+      <tr id="tit">
+        <td align="center" width="12%"><b>Nom de la Salle</b></td>
+        <td align="center" width="10%"><b>Nombre de personne prévu</b></td>
+        <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>
+        <td align="center" width="12%"><b>Date &amp; Heure d'occupation fin</b></td>
+        <td align="center" width="6%"><b>Outils</b></td>
+      </tr>
+
+   {% for res in liste %}
+       {% set fooo = res.idRes %}
+       <tr id="scroll">
+      <td id="d">{{res.idSr.nomsr}}</td>
+      <td id="d" align="right">{{res.nbpers}}</td>
+      <td id="d">{{res.dateD|date('d-m-Y    H:i:s')}}</td>
+      <td id="d">{{res.dateF|date('d-m-Y    H:i:s')}}</td>
+      <td id="d" align="center">
+        <img onclick="modif()" src="img/modif.png" width="30px" height="30px">
+         <a href="/deleteRes?idRes={{res.idRes}}"><img src="img/poubelles.png" width="30px" height="30px"></a>
+      </td>
+    </tr> 
+   {% endfor %}    
+     </tr>
+         
+</table>
 </div>
   <dialog id="editSal"> {{ form(sallesMform)}}</dialog>
 
@@ -59,7 +76,8 @@
 </script>
 <style type="text/css">
 div#acc{ height: 500px; }
-div#bodysal{ margin-top: 2%; height:325px; overflow: scroll; }
+div#bodysal{ margin-top: 2%; height:359px; overflow: scroll; }
+
 caption{
     font-family: 'BlackChancery';
     text-decoration: bold;
@@ -73,6 +91,8 @@ label{
 section#list{ margin-top : 20px; margin-left :20px; margin-right:20px; background-color:#dcdcdc; column-count: 5;}
 tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
 tr,td{padding-left:5px;}
+table#Un{ width: 35%; float : left;}
+table#Deux{ width: 60%; float: right; }
 table{   margin-left:5px; margin-right:5px; overflow: scroll; }
 input#form_nbpers{ width :40px; }
 select{
@@ -131,5 +151,4 @@ button#form_Annuler{
     float: right;
 }
 </style>
-
-{% endblock %}
+{% endblock %} 

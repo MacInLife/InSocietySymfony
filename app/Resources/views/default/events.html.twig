@@ -23,11 +23,11 @@
 
 <div id="bodyevt">
   <table width="80%" border="1"> 
-    <tr>
+    <tr id="tit">
     <td align="center" width="15%"><b>Nom de l'évènement</b></td>
     <td align="center" width="15%"><b>Description/Type</b></td>
     <td align="center" width="10%"><b>Date de Début</b></td>
-    <td align="center" width="8%"><b>Date de Fin</b></td>
+    <td align="center" width="10%"><b>Date de Fin</b></td>
     <td align="center" width="12%"><b>Heure de Début</b></td>
     <td align="center" width="10%"><b>Heure de Fin</b></td>
     <td align="center" width="10%"><b>Lieu</b></td>
@@ -46,16 +46,30 @@
       <td>{{evt.lieu}}</td>
       <td>{{evt.idSr.nomsr}}</td>
       <td align="center"><!--<a href="/events?idEvt={{evt.idEvent}}">-->
-     <a onclick="modif()" href="/events?idEvt={{evt.idEvent}}" ><img src="img/modif.png" width="30px" height="30px"></a>
+     <img onclick="modif()" src="img/modif.png" width="30px" height="30px">
       	<!--</a>-->
+
       </td>
       <td align="center">
-          <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/supp.png" width="30px" height="30px" ></a>
+          <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/poubelles.png" width="30px" height="30px" ></a>
       </td>
     </tr>
+    <script type="text/javascript">
+      		function modif(){
+	// body...
+	var x = {{evt.idEvent}};
+alert(x);
+		
+	document.getElementById('editEvt').showModal();
+	location.href = "/events?idEvt="+ x;
+	return false ;
+
+	
+}
+      	</script>
     {% endfor %} 
     </table>
-    
+  
 </div>
  </nav>
 
@@ -66,19 +80,6 @@
  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
 
  	<script>
-
- function modif(){
-	// body...
-
-
-	addEventListener('click', function(){
-	document.getElementById('editEvt').showModal();
-	});
-
-
-}
-
-
   //Action image add
   (function() {
     var updateButton = document.getElementById('add');
@@ -127,14 +128,16 @@ function refresh(){
 
 
 <style type="text/css">
-table{ margin-left: 9%; position: absolute; }
+div#bodyevt{  height:483px; overflow: scroll; }
+table{ margin-left: 9%; overflow: scroll;}
+tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
 img#add { margin-right: 2.5%; }
 img#fresh {     margin-top: 8%;    margin-right: -5%; }
 
 
 input{
   border-radius: 5px;
-  margin-left: 2%;
+  margin-left: -50%;
   margin-right: 2%;
   float: right;  
 }

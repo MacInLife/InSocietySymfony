@@ -39,5 +39,62 @@ class Notes
     private $idAdmin;
 
 
-}
 
+    /**
+     * Set txtNot
+     *
+     * @param string $txtNot
+     *
+     * @return Notes
+     */
+    public function setTxtNot($txtNot)
+    {
+        $this->txtNot = $txtNot;
+    
+        return $this;
+    }
+
+    /**
+     * Get txtNot
+     *
+     * @return string
+     */
+    public function getTxtNot()
+    {
+        return $this->txtNot;
+    }
+
+    /**
+     * Get idNotes
+     *
+     * @return integer
+     */
+    public function getIdNotes()
+    {
+        return $this->idNotes;
+    }
+
+    /**
+     * Set idAdmin
+     *
+     * @param \AppBundle\Entity\Personnel $idAdmin
+     *
+     * @return Notes
+     */
+    public function setIdAdmin(\AppBundle\Entity\Personnel $idAdmin = null)
+    {
+        $this->idAdmin = $idAdmin;
+    
+        return $this;
+    }
+
+    /**
+     * Get idAdmin
+     *
+     * @return \AppBundle\Entity\Personnel
+     */
+    public function getIdAdmin()
+    {
+        return $this->idAdmin;
+    }
+}

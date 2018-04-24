@@ -140,7 +140,7 @@ class Personnel
     public function setNom($nom)
     {
         $this->nom = $nom;
-
+    
         return $this;
     }
 
@@ -164,7 +164,7 @@ class Personnel
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-
+    
         return $this;
     }
 
@@ -188,7 +188,7 @@ class Personnel
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-
+    
         return $this;
     }
 
@@ -212,7 +212,7 @@ class Personnel
     public function setMail($mail)
     {
         $this->mail = $mail;
-
+    
         return $this;
     }
 
@@ -236,7 +236,7 @@ class Personnel
     public function setTel($tel)
     {
         $this->tel = $tel;
-
+    
         return $this;
     }
 
@@ -260,7 +260,7 @@ class Personnel
     public function setLogin($login)
     {
         $this->login = $login;
-
+    
         return $this;
     }
 
@@ -284,7 +284,7 @@ class Personnel
     public function setDateNaissance($dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
-
+    
         return $this;
     }
 
@@ -308,7 +308,7 @@ class Personnel
     public function setLocalisation($localisation)
     {
         $this->localisation = $localisation;
-
+    
         return $this;
     }
 
@@ -332,7 +332,7 @@ class Personnel
     public function setMdp($mdp)
     {
         $this->mdp = $mdp;
-
+    
         return $this;
     }
 
@@ -366,7 +366,7 @@ class Personnel
     public function setIdStatut(\AppBundle\Entity\Statut $idStatut = null)
     {
         $this->idStatut = $idStatut;
-
+    
         return $this;
     }
 
@@ -390,7 +390,7 @@ class Personnel
     public function setIdService(\AppBundle\Entity\Service $idService = null)
     {
         $this->idService = $idService;
-
+    
         return $this;
     }
 
@@ -414,7 +414,7 @@ class Personnel
     public function setIdRole(\AppBundle\Entity\Role $idRole = null)
     {
         $this->idRole = $idRole;
-
+    
         return $this;
     }
 
@@ -438,7 +438,7 @@ class Personnel
     public function addIdEvent(\AppBundle\Entity\Evenement $idEvent)
     {
         $this->idEvent[] = $idEvent;
-
+    
         return $this;
     }
 

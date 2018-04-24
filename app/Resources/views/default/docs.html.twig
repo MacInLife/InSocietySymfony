@@ -3,20 +3,35 @@
 {% block title %}Document !{% endblock %}
 {% block body %}  
 
- <dialog id="addDoc">   {{ form(docsform)}}   </dialog>
+  <div class="js-page">
+ 
+  <div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1" class="c-dialog">
+    <div role="document" class="c-dialog__box">
+      <img src="img/supp.png" width="30px" height="30px" id="close" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog"></img>
+       <object  width="400" height="200" type="text/html" data="{{path('add')}}" ></object>
+         <button  id="form_Annuler" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog">Annuler</button>
+
+         </object>
+    </div>
+  </div>
+</div>
+
  <menu>
-    <img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
+  <main class="js-document">
+    <img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right" aria-haspopup="dialog" aria-controls="dialog">
+  </main>
+
     <img id="fresh" onclick="refresh()" src="img/refresh.png" width="85px" height="85px" align="right">
  </menu>
 
 <div id="body">
 	<table width="80%" border="1">
    <center><font color="red"><b>Veuillez déposer vos documents ou images de type : PDF, PNG, JPG, JPEG, TXT, SQL ! <b></font></center>
-    <tr>
+    <tr id="tit">
     <td align="center" width="20%"><b>Nom du Fichier</b></td>
     <td align="center" width="20%"><b>Type de Fichier</b></td>
     <td align="center" width="10%"><b>Vue</b></td>
-    <td align="center" width="5%" ><b>Supprimer</b></td>
+    <td align="center" width="5%"><b>Supprimer</b></td>
     </tr>
      
 	{% for undoc in liste %}
@@ -25,7 +40,9 @@
         <td>{{foo[1] }}</td>
         <td>{{ undoc.typeDoc }}</td>
         <td><a href="../uploads/documents/{{ undoc.fileDoc }}" target="_blank">Voir le Fichier</a></td>
-        <td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}"><img id="supp" src="img/supp.png" width="30px" height="30px" ></a></td>
+        <td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}">
+          <img id="supp" src="img/poubelles.png" width="30px" height="30px">
+        </a></td>
         </tr>
    {% endfor %} 
 
@@ -33,66 +50,195 @@
     
 </div>
 
-    <script> 
-  (function() {
-    var updateButton = document.getElementById('add');
-    var cancelButton = document.getElementById('form_Annuler');
+ 
+ 
+    <script type="text/javascript">
+    const triggers = document.querySelectorAll('[aria-haspopup="dialog"]');
+    const doc = document.querySelector('.js-document');
+    const focusableElementsArray = [
+      '[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ];
+    const keyCodes = {
+      tab: 9,
+      enter: 13,
+      escape: 27,
+    };
 
-    // Update button opens a modal dialog
-    updateButton.addEventListener('click', function() {
-      document.getElementById('addDoc').showModal();
+    const open = function (dialog) {
+      const focusableElements = dialog.querySelectorAll(focusableElementsArray);
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+      dialog.setAttribute('aria-hidden', false);
+      doc.setAttribute('aria-hidden', true);
+
+      // return if no focusable element
+      if (!firstFocusableElement) {
+        return;
+      }
+
+      window.setTimeout(() => {
+        firstFocusableElement.focus();
+
+        // trapping focus inside the dialog
+        focusableElements.forEach((focusableElement) => {
+          if (focusableElement.addEventListener) {
+            focusableElement.addEventListener('keydown', (event) => {
+              const tab = event.which === keyCodes.tab;
+
+              if (!tab) {
+                return;
+              }
+
+              if (event.shiftKey) {
+                if (event.target === firstFocusableElement) { // shift + tab
+                  event.preventDefault();
+
+                  lastFocusableElement.focus();
+                }
+              } else if (event.target === lastFocusableElement) { // tab
+                event.preventDefault();
+
+                firstFocusableElement.focus();
+              }
+            });
+          }
+        });
+      }, 100);
+    };
+
+    const close = function (dialog, trigger) {
+      dialog.setAttribute('aria-hidden', true);
+      doc.setAttribute('aria-hidden', false);
+
+      // restoring focus
+      trigger.focus();
+    };
+
+    triggers.forEach((trigger) => {
+      const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
+      const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');
+
+      // open dialog
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        open(dialog);
+      });
+
+      trigger.addEventListener('keydown', (event) => {
+        if (event.which === keyCodes.enter) {
+          event.preventDefault();
+
+          open(dialog);
+        }  
+      });
+
+      // close dialog
+      dialog.addEventListener('keydown', (event) => {
+        if (event.which === keyCodes.escape) {
+          close(dialog, trigger);
+        }      
+      });
+
+      dismissTriggers.forEach((dismissTrigger) => {
+        const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);
+
+        dismissTrigger.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          close(dismissDialog, trigger);
+        });
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          close(dialog, trigger);
+        }
+      }); 
     });
+   
 
-    // Bouton pour fermer la boîte de dialogue
-    cancelButton.addEventListener('click', function() {
-      document.getElementById('addDoc').close();
-    });
 
-  })();
 function refresh(){
     location.reload();
 }
 </script>
 <style type="text/css">
-b{ text-align: center; }
 img#add{ margin-right: 3%; }
-img#fresh {     margin-top: 8%;    margin-right: -5%; }
-table{ margin-left: 5%; }
-dialog{ width: 30%; }
-input#form_Fichier{
-    font-family:'BlackChancery' ; 
-  margin-left: 2%;
-  margin-right: 12%;
-  font-size: 18px;
-  float : right;
-}
-button#form_Envoyer{
-  font-family:'BlackChancery' ; 
-   font-size:  24px ;
-   border-radius: 5px;
-   margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    background-color: black;
-    color:white;
-    height: 50px;
-    width: 150px;
- float: left;
+img#fresh {     margin-top: 8%;    margin-right: -6%; }
+div#body{height:483px; overflow: scroll;}
+table{ margin-left: 5%; margin-top: 1%}
+tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
+img#close{
+
+    position: fixed;
+    left: 60.5%;
+    top: 38.5%;
+    font-family:  cursive;
+    font-size: 25px;
+    padding:  auto;
+    /* padding: 1%; */
+    border-style:  none;
+    background:  -webkit-linear-gradient(bottom , #e29494 0pt, #f60000 50%, #ff1d1d 51%, #eca0a0 100%) repeat scroll 0 0 #19191900;
+    border-radius: 36%;
+
 }
 button#form_Annuler{
   font-family:'BlackChancery' ; 
    font-size:  24px ;
    border-radius: 5px;
-   margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
     background-color: black;
     color:white;
     height: 50px;
     width: 150px;
-    float: right;
+    position : absolute;
+    top : 51.5%;
+    left : 51%;
+}
+.c-dialog {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  
+    margin: auto;
+  background-color: rgba(black, .75);
+ 
+}
+
+
+.c-dialog__box { 
+
+    margin: auto;
+    padding: 0px;
+    border: 7px double #000;
+	background-color:#eceeef;
+	  -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 5%;
+        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+        -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);      
+
+  
+}
+
+
+.c-dialog[aria-hidden="true"] {
+  visibility: hidden;
+  opacity: 0;
 }
 </style>
 

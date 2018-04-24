@@ -9,11 +9,10 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="typeDoc" type="string" column="type_doc" length="30" nullable="true">
+    <field name="typeDoc" type="string" column="type_doc" length="30" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-   
   </entity>
 </doctrine-mapping>

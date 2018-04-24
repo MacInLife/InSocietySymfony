@@ -43,5 +43,86 @@ class Messagerie
     private $idMsgrie;
 
 
-}
 
+    /**
+     * Set jour
+     *
+     * @param \DateTime $jour
+     *
+     * @return Messagerie
+     */
+    public function setJour($jour)
+    {
+        $this->jour = $jour;
+    
+        return $this;
+    }
+
+    /**
+     * Get jour
+     *
+     * @return \DateTime
+     */
+    public function getJour()
+    {
+        return $this->jour;
+    }
+
+    /**
+     * Set heure
+     *
+     * @param \DateTime $heure
+     *
+     * @return Messagerie
+     */
+    public function setHeure($heure)
+    {
+        $this->heure = $heure;
+    
+        return $this;
+    }
+
+    /**
+     * Get heure
+     *
+     * @return \DateTime
+     */
+    public function getHeure()
+    {
+        return $this->heure;
+    }
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Messagerie
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+    
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * Get idMsgrie
+     *
+     * @return integer
+     */
+    public function getIdMsgrie()
+    {
+        return $this->idMsgrie;
+    }
+}

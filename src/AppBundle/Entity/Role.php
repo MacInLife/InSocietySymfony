@@ -40,7 +40,7 @@ class Role
     public function setNomRole($nomRole)
     {
         $this->nomRole = $nomRole;
-
+    
         return $this;
     }
 

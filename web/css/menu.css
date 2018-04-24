@@ -14,7 +14,7 @@ h1{
      text-align: center;
      color:#6b6b6b;
     position: fixed;
-    bottom: 60px;
+    bottom: 10px;
      text-decoration-line: none;
    left : 4%;
    right : 0;
@@ -92,7 +92,7 @@ ul{
 footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
   /*column-width: 24em; /* Disposition de la page en colonnes de taille dix fois supérieure à la normale */
       position: absolute;
-    bottom: 140px;
+    bottom: 100px;
     left: 140px;
     right: 0;
 }
@@ -130,7 +130,7 @@ footer#menu{  column-count: 3;  /* Disposition de la page en trois colonnes */
      color : white;
      height: 20px;
      width: 150px;
-     margin: 1%;
+     margin: 0%;
      padding: 5%;
      border-left: 1px solid #555;
      border-right: 1px solid #888;

@@ -40,7 +40,7 @@ class Service
     public function setTypeService($typeService)
     {
         $this->typeService = $typeService;
-
+    
         return $this;
     }
 

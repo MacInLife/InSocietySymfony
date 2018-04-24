@@ -23,7 +23,8 @@ use AppBundle\Entity\Personnel;
 use AppBundle\Entity\Evenement;
 use AppBundle\Entity\Document;
 use AppBundle\Entity\SalleReunion;
-;
+use AppBundle\Entity\Reservation;
+
 class DefaultController extends Controller
 {
     /**
@@ -64,12 +65,14 @@ $personnel = $repository->findOneBy(
 //var_dump($personnel->getPrenom());
  $nom = $personnel->getNom() ;
  $prenom = $personnel->getPrenom() ;
+ $idPers = $personnel->getIdPers();
 //session recuperer nom prénom
                      if($personnel != null){
 
                           $session =  $request->getSession();
                           $session->set('nom', $nom);
                          $session->set('prenom', $prenom);
+                         $session->set('idPers', $idPers);
 
 
               return  $this->render('default/accueil.html.twig' ,[ 'nom'=> $nom, 'prenom'=> $prenom]);
@@ -120,28 +123,28 @@ $personnel = $repository->findOneBy(
      */
     public function docAction(Request $request)
     {
-
-
    
-    
-        return $this->render('default/docs.html.twig'  ) ;
+          $liste= $this->getAlldocument() ;
+        $path=  $this->getParameter('brochures_directory');
+
+        return $this->render('default/docs.html.twig', ['liste'=>$liste, 'path'=> $path]) ;
     }
 
 
         /**
-     * @Route("/docs", name="docs")
+     * @Route("/add", name="add")
      */
     public function uploadAction(Request $request)
     {
         
         $form = $this->createFormBuilder()->add('Fichier',FileType::class)
                                           ->add('Envoyer', SubmitType::class)
-                                          ->add('Annuler', ResetType::class)
                                           ->getForm();
-
+   
         // remplacer le code exemple par ce dont vous avez besoin
-                                          $liste= $this->getAlldocument() ;
-                                          $path=  $this->getParameter('brochures_directory');
+                        
+                                    
+
          $form->handleRequest($request);
 
          if($form->isValid())
@@ -167,12 +170,14 @@ $personnel = $repository->findOneBy(
           // exécute réellement les requêtes (i. e. la requête INSÉRER)
           $em->flush();
 
-          
-          $GLOBALS['liste']= $this->getAlldocument() ;
-       
+         
          }
-         return $this->render('default/docs.html.twig', ["docsform"=>$form->createView(), 'liste'=>$liste, 'path'=> $path]);
+
+
+         return $this->render('default/docsAdd.html.twig' , array('docsform'=>$form->createView()));
     }
+
+
     
   /**
      * @Route("/delete", name="delete")
@@ -181,8 +186,9 @@ $personnel = $repository->findOneBy(
     public function deleteAction(Request $request)
     {
       $idDoc = $request->get('id');
-       
-       dump( $idDoc);
+      
+   if(!empty($idDoc)){                                    
+     
 $em = $this->getDoctrine()->getManager();
 
 
@@ -192,11 +198,12 @@ $em = $this->getDoctrine()->getManager();
 $document = $repository->findOneBy(  array('idDoc' => $idDoc));
        
 
-       dump($document);
+     //  dump($document);
         $em->remove($document);
         $em->flush();
-return $this->render('default/accueil.html.twig');
-
+ return $this->redirectToRoute('docs');
+}
+return $this->render('default/docsDel.html.twig');
    
     }
 
@@ -228,7 +235,7 @@ return $this->render('default/accueil.html.twig');
     /**
      * @Route("/events", name="events")
      */
-    public function EventAction(Request $request)
+    public function eventAction(Request $request)
     {
      $em = $this->getDoctrine()->getManager();
          $listeEvt = $em->getRepository(Evenement::class)->findAll();
@@ -269,7 +276,7 @@ return $this->render('default/accueil.html.twig');
                 $hFin = $infoEvent['hFin'];
                 $lieu = $infoEvent['lieu'];
                 $idSR = $infoEvent['idSR'];
- dump($idSR[0]->getIdSr());
+ dump($idSR);
              
         $event = new Evenement();
         $event->setNomevt($nomEvt);
@@ -279,13 +286,14 @@ return $this->render('default/accueil.html.twig');
         $event->setHDebut($hDebut);
         $event->setHFin($hFin);
         $event->setLieu($lieu);
-        $event->setIdSR($idSR[0]);
+        $event->setIdSR($idSR);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
        $em->persist($event);
 
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
+        return $this->redirectToRoute('events');
  // On redirige vers la page de visualisation de l'annonce nouvellement créée
       //return $this->redirect($this->generateUrl('default/events.html.twig', array('idEvent' => $event->getIdEvent())));
 
@@ -342,7 +350,7 @@ dump($eventM);
                 $hFin = $infoEvent['hFin'];
                 $lieu = $infoEvent['lieu'];
                 $idSR = $infoEvent['idSR'];
- dump($idSR[0]->getIdSr());
+ dump($idSR->getIdSr());
              
        
         $eventM->setNomevt($nomEvt);
@@ -352,7 +360,7 @@ dump($eventM);
         $eventM->setHDebut($hDebut);
         $eventM->setHFin($hFin);
         $eventM->setLieu($lieu);
-        $eventM->setIdSR($idSR[0]);
+        $eventM->setIdSR($idSR);
  
 
 dump($eventM); 
@@ -366,7 +374,7 @@ dump($eventM);
    
     
       //  return $this->render('default/events.html.twig'  ) ;*/
-    }
+ }
 
 
      /*
@@ -451,26 +459,21 @@ dump($event);
     public function deleteEvtAction(Request $request)
     {
       $idEvent = $request->get('idEvt');
-       
-       dump( $idEvent);
+  if(!empty($idEvent)){
+      // dump($idEvent);
 $em = $this->getDoctrine()->getManager();
-
-
      $repository = $this->getDoctrine()->getRepository(Evenement::class);
 
 // recherche d'un seul évènement correspondant au id indiqué
 $event = $repository->findOneBy(  array('idEvent' => $idEvent));
        
-
-       dump($event);
+      // dump($event);
         $em->remove($event);
-      
         $em->flush();
-        
-return $this->render('default/accueil.html.twig');
-
-   
-    }
+        return $this->redirectToRoute('events');
+      }  
+return $this->render('default/deleteEvt.html.twig');
+}
 
     /**
      * @Route("/salles", name="salles")
@@ -478,32 +481,18 @@ return $this->render('default/accueil.html.twig');
     public function salleAction(Request $request)
     {
 
-      $em = $this->getDoctrine()->getManager();
-       $listeSal = $em->getRepository(SalleReunion::class)->findAll();
-
-
-$idSr = $request->get('idSr');
-       
-
-      
-       dump( $idSr);
-$em = $this->getDoctrine()->getManager();
-       $listeSal = $em->getRepository(SalleReunion::class)->findAll();
-
-     $repository = $this->getDoctrine()->getRepository(SalleReunion::class);
-
-// recherche d'un seul évènement correspondant au id indiqué
-$salle = $repository->findOneBy(  array('idSr' => $idSr));
- dump($salle);
-       $em = $this->getDoctrine()->getManager();
+    $em = $this->getDoctrine()->getManager();
+        $listeRes = $em->getRepository(Reservation::class)->findAll();
+    $am = $this->getDoctrine()->getManager();
+        $listeSal = $am->getRepository(SalleReunion::class)->findAll();
 
        //Création de Formulaire Page Events
  $form = $this->createFormBuilder()
-            ->add('lieu', EntityType::class,  array('class' => 'AppBundle:SalleReunion', 'label' => 'Choisir le Lieu :', 'choice_label' => function ($lieu){ return $lieu->getLieu();}, 
-                  'placeholder' => ''))
+            
                   // ,'data' => $salle->getLieu()))
-            ->add('nomsr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
-                  'placeholder' => ''))
+       
+            ->add('idSr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
+                  'placeholder' => '...'))
                   //'data' => $salle->getNomsr()))
             ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
                   //'data' => $salle->getNbpers()))
@@ -517,49 +506,64 @@ $salle = $repository->findOneBy(  array('idSr' => $idSr));
 
              //Validation  du formulaire avec le bouton Ajouter (Submit)
             if($form->isValid()){
-                
+               
                 $infoSalle = $form->getData();
-                $lieu = $infoSalle['lieu'];
-                $nomsr = $infoSalle['nomsr'];
+               
+                $idSr = $infoSalle['idSr'];
+              
                 $nbpers = $infoSalle['nbpers'];
                 $DateD = $infoSalle['dateD'];
                 $DateF = $infoSalle['dateF'];
+
+
+                          $session =  $request->getSession();
+                          
+                     $idPers = $session->get('idPers');
+
+       $repository = $this->getDoctrine()->getRepository(Personnel::class);
+$personnel = $repository->findByIdPers($idPers);    
+/*dump($personnel[0]);  */
              
-       
-        $salle->setLieu($lieu);
-        $salle->setNomsr($nomsr);
-        $salle->setNbpers($nbpers);
-        $salle->setDateD($dateD);
-        $salle->setDateF($dateF);
+       $reservation = new reservation();
+   
+        $reservation->setIdSr($idSr);
+        $reservation->setNbpers($nbpers);
+        $reservation->setDateD($DateD);
+        $reservation->setDateF($DateF);
+      
+       $reservation->setIdPers($personnel[0]);
         
- $em->persist($salle);
-dump($salle); 
+
+ $em->persist($reservation);
+ 
+
       
         $em->flush();
+        return $this->redirectToRoute('salles');
     }
   
        // return $this->render('default/salles.html.twig',['sallesform'=>$form->createView(), 'liste' => $listeSal]  ) ;
 //////////////////////Modif Reservation//////////////////
-          $idSr = $request->get('idSr');    
+          $idRes = $request->get('idRes');  
+         
        
  $formModif = $this->createFormBuilder()->getForm();
-if(!empty($idSr)){
+if(!empty($idRes)){
 
-    dump( $idSr);
+    dump( $idRes);
 
      $repository = $this->getDoctrine()->getRepository(SalleReunion::class);
+     $repository = $this->getDoctrine()->getRepository(Reservation::class);
 
 // recherche d'un seul évènement correspondant au id indiqué
-$salleM = $repository->findOneBy(array('idSr' => $idSr));
+$salleM = $repository->findOneBy(array('idRes' => $idRes));
 
 dump($salleM);
 
        //Création de Formulaire Page Events
  $formModif = $this->createFormBuilder()
-            ->add('lieu', EntityType::class,  array('class' => 'AppBundle:SalleReunion', 'label' => 'Choisir le Lieu :', 'choice_label' => function ($lieu){ return $lieu->getLieu();}, 
-                  'placeholder' => ''))
-                  // ,'data' => $salle->getLieu()))
-            ->add('nomsr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
+                                        // ,'data' => $salle->getLieu()))
+            ->add('idSr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
                   'placeholder' => ''))
                   //'data' => $salle->getNomsr()))
             ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
@@ -574,33 +578,69 @@ dump($salleM);
             $formModif->handleRequest($request);
            
  //Validation  du formulaire avec le bouton Ajouter (Submit)
-            if($formModif->isValid()){
-                
-              $infoSalle = $form->getData();
-                $lieu = $infoSalle['lieu'];
-                $nomsr = $infoSalle['nomsr'];
+            if($form->isValid()){
+               
+                $infoSalle = $form->getData();
+               
+                $idSr = $infoSalle['idSr'];
+              
                 $nbpers = $infoSalle['nbpers'];
                 $DateD = $infoSalle['dateD'];
                 $DateF = $infoSalle['dateF'];
-            
-       
-        $salle->setLieu($lieu);
-        $salle->setNomsr($nomsr);
-        $salle->setNbpers($nbpers);
-        $salle->setDateD($dateD);
-        $salle->setDateF($dateF);
- 
 
+
+                          $session =  $request->getSession();
+                          
+                     $idPers = $session->get('idPers');
+
+       $repository = $this->getDoctrine()->getRepository(Personnel::class);
+$personnel = $repository->findByIdPers($idPers);    
+/*dump($personnel[0]);  */
+             
+       $reservation = new reservation();
+   
+        $reservation->setIdSr($idSr);
+        $reservation->setNbpers($nbpers);
+        $reservation->setDateD($DateD);
+        $reservation->setDateF($DateF);
+      
+       $reservation->setIdPers($personnel[0]);
 dump($salleM); 
       
         $em->flush();
        // return $this->render($this->generateUrl('default/events.html.twig'));
             }
         }
-        return $this->render('default/salles.html.twig',['sallesform'=>$form->createView(), 'sallesMform'=>$formModif->createView(),'liste' => $listeSal]);
-   
-    
+        return $this->render('default/salles.html.twig',array(
+                                                             'sallesform'=>$form->createView(), 
+                                                             'sallesMform'=>$formModif->createView(),
+                                                             'liste' => $listeRes,
+                                                             'listes' => $listeSal
+                                                         ));    
     }
+
+    /**
+     * @Route("/deleteRes", name="deleteRes")
+     */
+   
+    public function deleteResAction(Request $request)
+    {
+      $idRes = $request->get('idRes');
+  if(!empty($idRes)){
+      // dump($idRes);
+$em = $this->getDoctrine()->getManager();
+     $repository = $this->getDoctrine()->getRepository(Reservation::class);
+
+// recherche d'un seul évènement correspondant au id indiqué
+$reservation = $repository->findOneBy(  array('idRes' => $idRes));
+       
+      // dump($reservation);
+        $em->remove($reservation);
+        $em->flush();
+        return $this->redirectToRoute('salles');
+      }  
+return $this->render('default/deleteRes.html.twig');
+}
 
 
     /**

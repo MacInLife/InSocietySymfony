@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Reservation" table="reservation">
+    <indexes>
+      <index name="id_SR" columns="id_SR"/>
+      <index name="id_pers" columns="id_pers"/>
+    </indexes>
+    <id name="idRes" type="integer" column="id_Res">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nbpers" type="integer" column="nbPers" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dateD" type="datetime" column="date_d" nullable="false"/>
+    <field name="dateF" type="datetime" column="date_f" nullable="false"/>
+    <many-to-one field="idPers" target-entity="Personnel" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_pers" referenced-column-name="id_pers"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSr" target-entity="SalleReunion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_SR" referenced-column-name="id_SR"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

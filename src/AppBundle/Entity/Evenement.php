@@ -114,7 +114,7 @@ class Evenement
     public function setNomevt($nomevt)
     {
         $this->nomevt = $nomevt;
-
+    
         return $this;
     }
 
@@ -138,7 +138,7 @@ class Evenement
     public function setJourD($jourD)
     {
         $this->jourD = $jourD;
-
+    
         return $this;
     }
 
@@ -162,7 +162,7 @@ class Evenement
     public function setJourF($jourF)
     {
         $this->jourF = $jourF;
-
+    
         return $this;
     }
 
@@ -186,7 +186,7 @@ class Evenement
     public function setHDebut($hDebut)
     {
         $this->hDebut = $hDebut;
-
+    
         return $this;
     }
 
@@ -210,7 +210,7 @@ class Evenement
     public function setHFin($hFin)
     {
         $this->hFin = $hFin;
-
+    
         return $this;
     }
 
@@ -234,7 +234,7 @@ class Evenement
     public function setType($type)
     {
         $this->type = $type;
-
+    
         return $this;
     }
 
@@ -258,7 +258,7 @@ class Evenement
     public function setLieu($lieu)
     {
         $this->lieu = $lieu;
-
+    
         return $this;
     }
 
@@ -292,7 +292,7 @@ class Evenement
     public function setIdSr(\AppBundle\Entity\SalleReunion $idSr = null)
     {
         $this->idSr = $idSr;
-
+    
         return $this;
     }
 
@@ -316,7 +316,7 @@ class Evenement
     public function addIdPer(\AppBundle\Entity\Personnel $idPer)
     {
         $this->idPers[] = $idPer;
-
+    
         return $this;
     }
 

@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Document
@@ -16,19 +15,16 @@ class Document
     /**
      * @var string
      *
-     * @ORM\Column(name="file", type="string", length=100, nullable=false)
+     * @ORM\Column(name="file_doc", type="string", length=100, nullable=false)
      */
     private $fileDoc;
 
     /**
-     * @ORM\Column(type="string")
+     * @var string
      *
-     * @Assert\NotBlank(message="Please, upload the bestiaire brochure as a PDF file.")
-     * @Assert\File(mimeTypes={ "application/pdf" })
+     * @ORM\Column(name="type_doc", type="string", length=30, nullable=false)
      */
     private $typeDoc;
-
- 
 
     /**
      * @var integer
@@ -42,16 +38,16 @@ class Document
 
 
     /**
-     * Set file
+     * Set fileDoc
      *
-     * @param string $file
+     * @param string $fileDoc
      *
      * @return Document
      */
     public function setFileDoc($fileDoc)
     {
         $this->fileDoc = $fileDoc;
-
+    
         return $this;
     }
 
@@ -66,21 +62,21 @@ class Document
     }
 
     /**
-     * Set typeDdoc
+     * Set typeDoc
      *
-     * @param string $type
+     * @param string $typeDoc
      *
      * @return Document
      */
     public function setTypeDoc($typeDoc)
     {
         $this->typeDoc = $typeDoc;
-
+    
         return $this;
     }
 
     /**
-     * Get type_doc
+     * Get typeDoc
      *
      * @return string
      */
@@ -89,9 +85,8 @@ class Document
         return $this->typeDoc;
     }
 
-
     /**
-     * Get id_doc
+     * Get idDoc
      *
      * @return integer
      */

@@ -36,5 +36,62 @@ class Respevent
     private $keyp;
 
 
-}
 
+    /**
+     * Set idPers
+     *
+     * @param integer $idPers
+     *
+     * @return Respevent
+     */
+    public function setIdPers($idPers)
+    {
+        $this->idPers = $idPers;
+    
+        return $this;
+    }
+
+    /**
+     * Get idPers
+     *
+     * @return integer
+     */
+    public function getIdPers()
+    {
+        return $this->idPers;
+    }
+
+    /**
+     * Set idEvent
+     *
+     * @param integer $idEvent
+     *
+     * @return Respevent
+     */
+    public function setIdEvent($idEvent)
+    {
+        $this->idEvent = $idEvent;
+    
+        return $this;
+    }
+
+    /**
+     * Get idEvent
+     *
+     * @return integer
+     */
+    public function getIdEvent()
+    {
+        return $this->idEvent;
+    }
+
+    /**
+     * Get keyp
+     *
+     * @return integer
+     */
+    public function getKeyp()
+    {
+        return $this->keyp;
+    }
+}

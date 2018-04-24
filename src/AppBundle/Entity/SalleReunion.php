@@ -20,27 +20,6 @@ class SalleReunion
     private $nbplacetotal;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="nbPers", type="integer", nullable=false)
-     */
-    private $nbpers;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_d", type="datetime", nullable=true)
-     */
-    private $dateD;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_f", type="datetime", nullable=true)
-     */
-    private $dateF;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="nomSR", type="string", length=50, nullable=true)
@@ -85,7 +64,7 @@ class SalleReunion
     public function setNbplacetotal($nbplacetotal)
     {
         $this->nbplacetotal = $nbplacetotal;
-
+    
         return $this;
     }
 
@@ -100,78 +79,6 @@ class SalleReunion
     }
 
     /**
-     * Set nbpers
-     *
-     * @param integer $nbpers
-     *
-     * @return SalleReunion
-     */
-    public function setNbpers($nbpers)
-    {
-        $this->nbpers = $nbpers;
-
-        return $this;
-    }
-
-    /**
-     * Get nbpers
-     *
-     * @return integer
-     */
-    public function getNbpers()
-    {
-        return $this->nbpers;
-    }
-
-    /**
-     * Set dateD
-     *
-     * @param \DateTime $dateD
-     *
-     * @return SalleReunion
-     */
-    public function setDateD($dateD)
-    {
-        $this->dateD = $dateD;
-
-        return $this;
-    }
-
-    /**
-     * Get dateD
-     *
-     * @return \DateTime
-     */
-    public function getDateD()
-    {
-        return $this->dateD;
-    }
-
-    /**
-     * Set dateF
-     *
-     * @param \DateTime $dateF
-     *
-     * @return SalleReunion
-     */
-    public function setDateF($dateF)
-    {
-        $this->dateF = $dateF;
-
-        return $this;
-    }
-
-    /**
-     * Get dateF
-     *
-     * @return \DateTime
-     */
-    public function getDateF()
-    {
-        return $this->dateF;
-    }
-
-    /**
      * Set nomsr
      *
      * @param string $nomsr
@@ -181,7 +88,7 @@ class SalleReunion
     public function setNomsr($nomsr)
     {
         $this->nomsr = $nomsr;
-
+    
         return $this;
     }
 
@@ -205,7 +112,7 @@ class SalleReunion
     public function setLieu($lieu)
     {
         $this->lieu = $lieu;
-
+    
         return $this;
     }
 
@@ -239,7 +146,7 @@ class SalleReunion
     public function setIdStatut(\AppBundle\Entity\Statut $idStatut = null)
     {
         $this->idStatut = $idStatut;
-
+    
         return $this;
     }
 
