@@ -22,69 +22,75 @@ class __TwigTemplate_a41bd5f9eb4eb70811f0a2bdd5a9787ee8e8bdfa27338871d2db7d95b51
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_46675342630c53f22a06c6de67a79f5ff79fd7e84163c8274c19281106ef37ae = $this->env->getExtension("native_profiler");
-        $__internal_46675342630c53f22a06c6de67a79f5ff79fd7e84163c8274c19281106ef37ae->enter($__internal_46675342630c53f22a06c6de67a79f5ff79fd7e84163c8274c19281106ef37ae_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/events.html.twig"));
+        $__internal_f2f91e766c9f5b53570ab9b2953b85c0a39e83667cdc57a280844924b96e8300 = $this->env->getExtension("native_profiler");
+        $__internal_f2f91e766c9f5b53570ab9b2953b85c0a39e83667cdc57a280844924b96e8300->enter($__internal_f2f91e766c9f5b53570ab9b2953b85c0a39e83667cdc57a280844924b96e8300_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "default/events.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_46675342630c53f22a06c6de67a79f5ff79fd7e84163c8274c19281106ef37ae->leave($__internal_46675342630c53f22a06c6de67a79f5ff79fd7e84163c8274c19281106ef37ae_prof);
+        $__internal_f2f91e766c9f5b53570ab9b2953b85c0a39e83667cdc57a280844924b96e8300->leave($__internal_f2f91e766c9f5b53570ab9b2953b85c0a39e83667cdc57a280844924b96e8300_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_1c87540c5d52a00b33eed77a87e14555606f637ee4d0941d3868b7ed19886020 = $this->env->getExtension("native_profiler");
-        $__internal_1c87540c5d52a00b33eed77a87e14555606f637ee4d0941d3868b7ed19886020->enter($__internal_1c87540c5d52a00b33eed77a87e14555606f637ee4d0941d3868b7ed19886020_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_5bc7f2f0630fafdd03f0e31c77e3a059e0f67840f2b8d95b53a2147b9dbff7cd = $this->env->getExtension("native_profiler");
+        $__internal_5bc7f2f0630fafdd03f0e31c77e3a059e0f67840f2b8d95b53a2147b9dbff7cd->enter($__internal_5bc7f2f0630fafdd03f0e31c77e3a059e0f67840f2b8d95b53a2147b9dbff7cd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Evènement !";
         
-        $__internal_1c87540c5d52a00b33eed77a87e14555606f637ee4d0941d3868b7ed19886020->leave($__internal_1c87540c5d52a00b33eed77a87e14555606f637ee4d0941d3868b7ed19886020_prof);
+        $__internal_5bc7f2f0630fafdd03f0e31c77e3a059e0f67840f2b8d95b53a2147b9dbff7cd->leave($__internal_5bc7f2f0630fafdd03f0e31c77e3a059e0f67840f2b8d95b53a2147b9dbff7cd_prof);
 
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
-        $__internal_6792b181e06918e53843dc4a50be4c1871845928164b36e866ef6094e8db6a4f = $this->env->getExtension("native_profiler");
-        $__internal_6792b181e06918e53843dc4a50be4c1871845928164b36e866ef6094e8db6a4f->enter($__internal_6792b181e06918e53843dc4a50be4c1871845928164b36e866ef6094e8db6a4f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_fed9e62b57c4062ab8fe8b80cbff5c79d4375ae7a560d0f271c4294421c35498 = $this->env->getExtension("native_profiler");
+        $__internal_fed9e62b57c4062ab8fe8b80cbff5c79d4375ae7a560d0f271c4294421c35498->enter($__internal_fed9e62b57c4062ab8fe8b80cbff5c79d4375ae7a560d0f271c4294421c35498_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         echo "  
 
 
-<nav>
  
+<div class=\"js-page\">
+  <div id=\"dialog\" role=\"dialog\" aria-labelledby=\"dialog-title\" aria-describedby=\"dialog-desc\" aria-modal=\"true\" aria-hidden=\"true\" tabindex=\"-1\" class=\"c-dialog\">
+    <div role=\"document\" class=\"c-dialog_box\">
+      <img src=\"img/supp.png\" width=\"30px\" height=\"30px\" id=\"close\" type=\"button\" aria-label=\"Fermer\" title=\"Fermer cette fenêtre modale\" data-dismiss=\"dialog\"></img>
+       <object  width=\"500\" height=\"500\" type=\"text/html\" data=\"";
+        // line 12
+        echo $this->env->getExtension('routing')->getPath("editEvt");
+        echo "\" ></object>
+         <button  id=\"form_Fermer\" type=\"button\" aria-label=\"Fermer\" title=\"Fermer cette fenêtre modale\" data-dismiss=\"dialog\">Annuler</button>
+
+         </object>
+    </div>
+  </div>
+</div>
 
 
- <dialog id=\"addEvt\">   ";
-        // line 11
+<nav>
+  <dialog id=\"addEvt\">   ";
+        // line 22
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["eventform"]) ? $context["eventform"] : $this->getContext($context, "eventform")), 'form');
         echo "  </dialog>
- 
- <dialog id=\"editEvt\"> ";
-        // line 13
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["eventMform"]) ? $context["eventMform"] : $this->getContext($context, "eventMform")), 'form');
-        echo "</dialog>
-
  <menu>
    <a id=\"cal\" href=\"";
-        // line 16
+        // line 24
         echo $this->env->getExtension('routing')->getPath("calendrier");
         echo "\"><img id=\"ag\" src=\"img/agenda.png\" width=\"80px\" height=\"80px\" align=\"left\"></a>
  \t<img id=\"add\" src=\"img/PlusBleu0.png\" width=\"85px\" height=\"85px\" align=\"right\">
   <img id=\"fresh\" onclick=\"refresh()\" src=\"img/refresh.png\" width=\"85px\" height=\"85px\" align=\"right\">
-  
-
- </menu>
+</menu>
 
 
 <div id=\"bodyevt\">
   <table width=\"80%\" border=\"1\"> 
-    <tr>
+    <tr id=\"tit\">
     <td align=\"center\" width=\"15%\"><b>Nom de l'évènement</b></td>
     <td align=\"center\" width=\"15%\"><b>Description/Type</b></td>
     <td align=\"center\" width=\"10%\"><b>Date de Début</b></td>
-    <td align=\"center\" width=\"8%\"><b>Date de Fin</b></td>
+    <td align=\"center\" width=\"10%\"><b>Date de Fin</b></td>
     <td align=\"center\" width=\"12%\"><b>Heure de Début</b></td>
     <td align=\"center\" width=\"10%\"><b>Heure de Fin</b></td>
     <td align=\"center\" width=\"10%\"><b>Lieu</b></td>
@@ -92,110 +98,204 @@ class __TwigTemplate_a41bd5f9eb4eb70811f0a2bdd5a9787ee8e8bdfa27338871d2db7d95b51
     <td align=\"center\" width=\"6%\" colspan=2><b>Outils</b></td> 
     </tr>
       ";
-        // line 37
+        // line 43
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["liste"]) ? $context["liste"] : $this->getContext($context, "liste")));
         foreach ($context['_seq'] as $context["_key"] => $context["evt"]) {
-            // line 38
+            // line 44
             echo "       ";
             $context["fooo"] = twig_split_filter($this->env, $this->getAttribute($context["evt"], "idEvent", array()), ".");
-            // line 39
+            // line 45
             echo "    <tr>
       <td>";
-            // line 40
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute($context["evt"], "nomevt", array()), "html", null, true);
             echo "</td>
       <td>";
-            // line 41
+            // line 47
             echo twig_escape_filter($this->env, $this->getAttribute($context["evt"], "type", array()), "html", null, true);
             echo "</td>
       <td>";
-            // line 42
+            // line 48
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["evt"], "jourD", array()), "d-m-Y"), "html", null, true);
             echo "</td>
       <td>";
-            // line 43
+            // line 49
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["evt"], "jourF", array()), "d-m-Y"), "html", null, true);
             echo "</td>
       <td>";
-            // line 44
+            // line 50
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["evt"], "hDebut", array()), "H:i:s"), "html", null, true);
             echo "</td>
       <td>";
-            // line 45
+            // line 51
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["evt"], "hFin", array()), "H:i:s"), "html", null, true);
             echo "</td>
       <td>";
-            // line 46
+            // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($context["evt"], "lieu", array()), "html", null, true);
             echo "</td>
       <td>";
-            // line 47
+            // line 53
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["evt"], "idSr", array()), "nomsr", array()), "html", null, true);
             echo "</td>
-      <td align=\"center\"><!--<a href=\"/events?idEvt=";
-            // line 48
-            echo twig_escape_filter($this->env, $this->getAttribute($context["evt"], "idEvent", array()), "html", null, true);
-            echo "\">-->
-     <a onclick=\"modif()\" href=\"/events?idEvt=";
-            // line 49
-            echo twig_escape_filter($this->env, $this->getAttribute($context["evt"], "idEvent", array()), "html", null, true);
-            echo "\" ><img src=\"img/modif.png\" width=\"30px\" height=\"30px\"></a>
-      \t<!--</a>-->
-      </td>
+      <td align=\"center\">
+        <main class=\"js-document\">
+             <img id=\"editEvt\" src=\"img/modif.png\" width=\"30px\" height=\"30px\" align=\"center\" aria-haspopup=\"dialog\" aria-controls=\"dialog\">
+          </main>
+       </td>
       <td align=\"center\">
           <a href=\"/deleteEvt?idEvt=";
-            // line 53
+            // line 60
             echo twig_escape_filter($this->env, $this->getAttribute($context["evt"], "idEvent", array()), "html", null, true);
-            echo "\"><img src=\"img/supp.png\" width=\"30px\" height=\"30px\" ></a>
+            echo "\"><img src=\"img/poubelles.png\" width=\"30px\" height=\"30px\" ></a>
       </td>
     </tr>
+ 
     ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['evt'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 56
+        // line 64
         echo " 
     </table>
-    
+  
 </div>
  </nav>
 
  <link rel=\"stylesheet\" href=\"";
-        // line 62
+        // line 70
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css"), "html", null, true);
         echo "\" />
  <script type=\"text/javascript\" src=\"";
-        // line 63
+        // line 71
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js"), "html", null, true);
         echo "\"></script>
  <script type=\"text/javascript\" src=\"";
-        // line 64
+        // line 72
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/lib/moment.min.js"), "html", null, true);
         echo "\"></script>
  <script type=\"text/javascript\" src=\"";
-        // line 65
+        // line 73
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js"), "html", null, true);
         echo "\"></script>
  <script type=\"text/javascript\" src=\"";
-        // line 66
+        // line 74
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js"), "html", null, true);
         echo "\"></script>
 
- \t<script>
+ \t  <script type=\"text/javascript\">
+    const triggers = document.querySelectorAll('[aria-haspopup=\"dialog\"]');
+    const doc = document.querySelector('.js-document');
+    const focusableElementsArray = [
+      '[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex=\"-1\"])',
+    ];
+    const keyCodes = {
+      tab: 9,
+      enter: 13,
+      escape: 27,
+    };
 
- function modif(){
-\t// body...
+    const open = function (dialog) {
+      const focusableElements = dialog.querySelectorAll(focusableElementsArray);
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
+      dialog.setAttribute('aria-hidden', false);
+      doc.setAttribute('aria-hidden', true);
 
-\taddEventListener('click', function(){
-\tdocument.getElementById('editEvt').showModal();
-\t});
+      // return if no focusable element
+      if (!firstFocusableElement) {
+        return;
+      }
 
+      window.setTimeout(() => {
+        firstFocusableElement.focus();
 
-}
+        // trapping focus inside the dialog
+        focusableElements.forEach((focusableElement) => {
+          if (focusableElement.addEventListener) {
+            focusableElement.addEventListener('keydown', (event) => {
+              const tab = event.which === keyCodes.tab;
 
+              if (!tab) {
+                return;
+              }
+
+              if (event.shiftKey) {
+                if (event.target === firstFocusableElement) { // shift + tab
+                  event.preventDefault();
+
+                  lastFocusableElement.focus();
+                }
+              } else if (event.target === lastFocusableElement) { // tab
+                event.preventDefault();
+
+                firstFocusableElement.focus();
+              }
+            });
+          }
+        });
+      }, 100);
+    };
+
+    const close = function (dialog, trigger) {
+      dialog.setAttribute('aria-hidden', true);
+      doc.setAttribute('aria-hidden', false);
+
+      // restoring focus
+      trigger.focus();
+    };
+
+    triggers.forEach((trigger) => {
+      const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
+      const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');
+
+      // open dialog
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        open(dialog);
+      });
+
+      trigger.addEventListener('keydown', (event) => {
+        if (event.which === keyCodes.enter) {
+          event.preventDefault();
+
+          open(dialog);
+        }  
+      });
+
+      // close dialog
+      dialog.addEventListener('keydown', (event) => {
+        if (event.which === keyCodes.escape) {
+          close(dialog, trigger);
+        }      
+      });
+
+      dismissTriggers.forEach((dismissTrigger) => {
+        const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);
+
+        dismissTrigger.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          close(dismissDialog, trigger);
+        });
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          close(dialog, trigger);
+        }
+      }); 
+    });
+   
 
   //Action image add
   (function() {
@@ -215,24 +315,6 @@ class __TwigTemplate_a41bd5f9eb4eb70811f0a2bdd5a9787ee8e8bdfa27338871d2db7d95b51
 
   })();
 
-    //Action image edit
- /* (function() {
-    var updateButton = document.getElementById('edit');
-    var cancelButton = document.getElementById('form_Annuler');
-
-
-    // Update button opens a modal dialog
-    updateButton.addEventListener('click', function() {
-      document.getElementById('editEvt').showModal();
-    });
-
-    // Bouton pour fermer la boîte de dialogue
-    cancelButton.addEventListener('click', function() {
-      document.getElementById('editEvt').close();
-    });
-
-  })();*/
-
 
   //Rafraichissement
 function refresh(){
@@ -245,14 +327,29 @@ function refresh(){
 
 
 <style type=\"text/css\">
-table{ margin-left: 9%; position: absolute; }
+div#bodyevt{  height:483px; overflow: scroll; }
+table{ margin-left: 9%; overflow: scroll;}
+tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
 img#add { margin-right: 2.5%; }
 img#fresh {     margin-top: 8%;    margin-right: -5%; }
+img#close{
 
+    position: fixed;
+    left: 60.5%;
+    top: 38.5%;
+    font-family:  cursive;
+    font-size: 25px;
+    padding:  auto;
+    /* padding: 1%; */
+    border-style:  none;
+    background:  -webkit-linear-gradient(bottom , #e29494 0pt, #f60000 50%, #ff1d1d 51%, #eca0a0 100%) repeat scroll 0 0 #19191900;
+    border-radius: 36%;
+
+}
 
 input{
   border-radius: 5px;
-  margin-left: 2%;
+  margin-left: -50%;
   margin-right: 2%;
   float: right;  
 }
@@ -270,8 +367,8 @@ div#form_hFin{ float: right; }
 
 
 dialog#addEvt{ width: 25%;  height: 30%; }
-dialog#editEvt{ width: 25%;  height: 30%; }
-button#Fermer{
+
+button#form_Fermer{
   font-family:'BlackChancery' ; 
    font-size:  24px ;
    border-radius: 5px;
@@ -299,20 +396,7 @@ button#form_Ajouter{
     width: 150px;
  float: left;
 }
-button#form_Modifier{
-  font-family:'BlackChancery' ; 
-   font-size:  24px ;
-   border-radius: 5px;
-   margin-bottom: 5%;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    background-color: black;
-    color:white;
-    height: 50px;
-    width: 150px;
- float: left;
-}
+
 button#form_Annuler{
   font-family:'BlackChancery' ; 
    font-size:  24px ;
@@ -327,11 +411,50 @@ button#form_Annuler{
     width: 150px;
     float: right;
 }
+.c-dialog {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  
+    margin: auto;
+  background-color: rgba(black, .75);
+ 
+}
+
+
+.c-dialog_box { 
+
+    margin: auto;
+    padding: 0px;
+    border: 7px double #000;
+  background-color:#eceeef;
+    -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 5%;
+        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+        -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);      
+
+  
+}
+
+
+.c-dialog[aria-hidden=\"true\"] {
+  visibility: hidden;
+  opacity: 0;
+}
 </style> 
 
  ";
         
-        $__internal_6792b181e06918e53843dc4a50be4c1871845928164b36e866ef6094e8db6a4f->leave($__internal_6792b181e06918e53843dc4a50be4c1871845928164b36e866ef6094e8db6a4f_prof);
+        $__internal_fed9e62b57c4062ab8fe8b80cbff5c79d4375ae7a560d0f271c4294421c35498->leave($__internal_fed9e62b57c4062ab8fe8b80cbff5c79d4375ae7a560d0f271c4294421c35498_prof);
 
     }
 
@@ -347,7 +470,7 @@ button#form_Annuler{
 
     public function getDebugInfo()
     {
-        return array (  183 => 66,  179 => 65,  175 => 64,  171 => 63,  167 => 62,  159 => 56,  149 => 53,  142 => 49,  138 => 48,  134 => 47,  130 => 46,  126 => 45,  122 => 44,  118 => 43,  114 => 42,  110 => 41,  106 => 40,  103 => 39,  100 => 38,  96 => 37,  72 => 16,  66 => 13,  61 => 11,  47 => 4,  35 => 3,  11 => 1,);
+        return array (  185 => 74,  181 => 73,  177 => 72,  173 => 71,  169 => 70,  161 => 64,  150 => 60,  140 => 53,  136 => 52,  132 => 51,  128 => 50,  124 => 49,  120 => 48,  116 => 47,  112 => 46,  109 => 45,  106 => 44,  102 => 43,  80 => 24,  75 => 22,  62 => 12,  47 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'menu.html.twig' %}*/
@@ -356,30 +479,36 @@ button#form_Annuler{
 /* {% block body %}  */
 /* */
 /* */
+/*  */
+/* <div class="js-page">*/
+/*   <div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1" class="c-dialog">*/
+/*     <div role="document" class="c-dialog_box">*/
+/*       <img src="img/supp.png" width="30px" height="30px" id="close" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog"></img>*/
+/*        <object  width="500" height="500" type="text/html" data="{{path('editEvt')}}" ></object>*/
+/*          <button  id="form_Fermer" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog">Annuler</button>*/
+/* */
+/*          </object>*/
+/*     </div>*/
+/*   </div>*/
+/* </div>*/
+/* */
+/* */
 /* <nav>*/
-/*  */
-/* */
-/* */
-/*  <dialog id="addEvt">   {{ form(eventform)}}  </dialog>*/
-/*  */
-/*  <dialog id="editEvt"> {{ form(eventMform)}}</dialog>*/
-/* */
+/*   <dialog id="addEvt">   {{ form(eventform)}}  </dialog>*/
 /*  <menu>*/
 /*    <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="img/agenda.png" width="80px" height="80px" align="left"></a>*/
 /*  	<img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">*/
 /*   <img id="fresh" onclick="refresh()" src="img/refresh.png" width="85px" height="85px" align="right">*/
-/*   */
-/* */
-/*  </menu>*/
+/* </menu>*/
 /* */
 /* */
 /* <div id="bodyevt">*/
 /*   <table width="80%" border="1"> */
-/*     <tr>*/
+/*     <tr id="tit">*/
 /*     <td align="center" width="15%"><b>Nom de l'évènement</b></td>*/
 /*     <td align="center" width="15%"><b>Description/Type</b></td>*/
 /*     <td align="center" width="10%"><b>Date de Début</b></td>*/
-/*     <td align="center" width="8%"><b>Date de Fin</b></td>*/
+/*     <td align="center" width="10%"><b>Date de Fin</b></td>*/
 /*     <td align="center" width="12%"><b>Heure de Début</b></td>*/
 /*     <td align="center" width="10%"><b>Heure de Fin</b></td>*/
 /*     <td align="center" width="10%"><b>Lieu</b></td>*/
@@ -397,17 +526,19 @@ button#form_Annuler{
 /*       <td>{{evt.hFin|date('H:i:s')}}</td>*/
 /*       <td>{{evt.lieu}}</td>*/
 /*       <td>{{evt.idSr.nomsr}}</td>*/
-/*       <td align="center"><!--<a href="/events?idEvt={{evt.idEvent}}">-->*/
-/*      <a onclick="modif()" href="/events?idEvt={{evt.idEvent}}" ><img src="img/modif.png" width="30px" height="30px"></a>*/
-/*       	<!--</a>-->*/
-/*       </td>*/
 /*       <td align="center">*/
-/*           <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/supp.png" width="30px" height="30px" ></a>*/
+/*         <main class="js-document">*/
+/*              <img id="editEvt" src="img/modif.png" width="30px" height="30px" align="center" aria-haspopup="dialog" aria-controls="dialog">*/
+/*           </main>*/
+/*        </td>*/
+/*       <td align="center">*/
+/*           <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/poubelles.png" width="30px" height="30px" ></a>*/
 /*       </td>*/
 /*     </tr>*/
+/*  */
 /*     {% endfor %} */
 /*     </table>*/
-/*     */
+/*   */
 /* </div>*/
 /*  </nav>*/
 /* */
@@ -417,19 +548,117 @@ button#form_Annuler{
 /*  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>*/
 /*  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>*/
 /* */
-/*  	<script>*/
+/*  	  <script type="text/javascript">*/
+/*     const triggers = document.querySelectorAll('[aria-haspopup="dialog"]');*/
+/*     const doc = document.querySelector('.js-document');*/
+/*     const focusableElementsArray = [*/
+/*       '[href]',*/
+/*       'button:not([disabled])',*/
+/*       'input:not([disabled])',*/
+/*       'select:not([disabled])',*/
+/*       'textarea:not([disabled])',*/
+/*       '[tabindex]:not([tabindex="-1"])',*/
+/*     ];*/
+/*     const keyCodes = {*/
+/*       tab: 9,*/
+/*       enter: 13,*/
+/*       escape: 27,*/
+/*     };*/
 /* */
-/*  function modif(){*/
-/* 	// body...*/
+/*     const open = function (dialog) {*/
+/*       const focusableElements = dialog.querySelectorAll(focusableElementsArray);*/
+/*       const firstFocusableElement = focusableElements[0];*/
+/*       const lastFocusableElement = focusableElements[focusableElements.length - 1];*/
 /* */
+/*       dialog.setAttribute('aria-hidden', false);*/
+/*       doc.setAttribute('aria-hidden', true);*/
 /* */
-/* 	addEventListener('click', function(){*/
-/* 	document.getElementById('editEvt').showModal();*/
-/* 	});*/
+/*       // return if no focusable element*/
+/*       if (!firstFocusableElement) {*/
+/*         return;*/
+/*       }*/
 /* */
+/*       window.setTimeout(() => {*/
+/*         firstFocusableElement.focus();*/
 /* */
-/* }*/
+/*         // trapping focus inside the dialog*/
+/*         focusableElements.forEach((focusableElement) => {*/
+/*           if (focusableElement.addEventListener) {*/
+/*             focusableElement.addEventListener('keydown', (event) => {*/
+/*               const tab = event.which === keyCodes.tab;*/
 /* */
+/*               if (!tab) {*/
+/*                 return;*/
+/*               }*/
+/* */
+/*               if (event.shiftKey) {*/
+/*                 if (event.target === firstFocusableElement) { // shift + tab*/
+/*                   event.preventDefault();*/
+/* */
+/*                   lastFocusableElement.focus();*/
+/*                 }*/
+/*               } else if (event.target === lastFocusableElement) { // tab*/
+/*                 event.preventDefault();*/
+/* */
+/*                 firstFocusableElement.focus();*/
+/*               }*/
+/*             });*/
+/*           }*/
+/*         });*/
+/*       }, 100);*/
+/*     };*/
+/* */
+/*     const close = function (dialog, trigger) {*/
+/*       dialog.setAttribute('aria-hidden', true);*/
+/*       doc.setAttribute('aria-hidden', false);*/
+/* */
+/*       // restoring focus*/
+/*       trigger.focus();*/
+/*     };*/
+/* */
+/*     triggers.forEach((trigger) => {*/
+/*       const dialog = document.getElementById(trigger.getAttribute('aria-controls'));*/
+/*       const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');*/
+/* */
+/*       // open dialog*/
+/*       trigger.addEventListener('click', (event) => {*/
+/*         event.preventDefault();*/
+/* */
+/*         open(dialog);*/
+/*       });*/
+/* */
+/*       trigger.addEventListener('keydown', (event) => {*/
+/*         if (event.which === keyCodes.enter) {*/
+/*           event.preventDefault();*/
+/* */
+/*           open(dialog);*/
+/*         }  */
+/*       });*/
+/* */
+/*       // close dialog*/
+/*       dialog.addEventListener('keydown', (event) => {*/
+/*         if (event.which === keyCodes.escape) {*/
+/*           close(dialog, trigger);*/
+/*         }      */
+/*       });*/
+/* */
+/*       dismissTriggers.forEach((dismissTrigger) => {*/
+/*         const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);*/
+/* */
+/*         dismissTrigger.addEventListener('click', (event) => {*/
+/*           event.preventDefault();*/
+/* */
+/*           close(dismissDialog, trigger);*/
+/*         });*/
+/*       });*/
+/* */
+/*       window.addEventListener('click', (event) => {*/
+/*         if (event.target === dialog) {*/
+/*           close(dialog, trigger);*/
+/*         }*/
+/*       }); */
+/*     });*/
+/*    */
 /* */
 /*   //Action image add*/
 /*   (function() {*/
@@ -449,24 +678,6 @@ button#form_Annuler{
 /* */
 /*   })();*/
 /* */
-/*     //Action image edit*/
-/*  /* (function() {*/
-/*     var updateButton = document.getElementById('edit');*/
-/*     var cancelButton = document.getElementById('form_Annuler');*/
-/* */
-/* */
-/*     // Update button opens a modal dialog*/
-/*     updateButton.addEventListener('click', function() {*/
-/*       document.getElementById('editEvt').showModal();*/
-/*     });*/
-/* */
-/*     // Bouton pour fermer la boîte de dialogue*/
-/*     cancelButton.addEventListener('click', function() {*/
-/*       document.getElementById('editEvt').close();*/
-/*     });*/
-/* */
-/*   })();*//* */
-/* */
 /* */
 /*   //Rafraichissement*/
 /* function refresh(){*/
@@ -479,14 +690,29 @@ button#form_Annuler{
 /* */
 /* */
 /* <style type="text/css">*/
-/* table{ margin-left: 9%; position: absolute; }*/
+/* div#bodyevt{  height:483px; overflow: scroll; }*/
+/* table{ margin-left: 9%; overflow: scroll;}*/
+/* tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }*/
 /* img#add { margin-right: 2.5%; }*/
 /* img#fresh {     margin-top: 8%;    margin-right: -5%; }*/
+/* img#close{*/
 /* */
+/*     position: fixed;*/
+/*     left: 60.5%;*/
+/*     top: 38.5%;*/
+/*     font-family:  cursive;*/
+/*     font-size: 25px;*/
+/*     padding:  auto;*/
+/*     /* padding: 1%; *//* */
+/*     border-style:  none;*/
+/*     background:  -webkit-linear-gradient(bottom , #e29494 0pt, #f60000 50%, #ff1d1d 51%, #eca0a0 100%) repeat scroll 0 0 #19191900;*/
+/*     border-radius: 36%;*/
+/* */
+/* }*/
 /* */
 /* input{*/
 /*   border-radius: 5px;*/
-/*   margin-left: 2%;*/
+/*   margin-left: -50%;*/
 /*   margin-right: 2%;*/
 /*   float: right;  */
 /* }*/
@@ -504,8 +730,8 @@ button#form_Annuler{
 /* */
 /* */
 /* dialog#addEvt{ width: 25%;  height: 30%; }*/
-/* dialog#editEvt{ width: 25%;  height: 30%; }*/
-/* button#Fermer{*/
+/* */
+/* button#form_Fermer{*/
 /*   font-family:'BlackChancery' ; */
 /*    font-size:  24px ;*/
 /*    border-radius: 5px;*/
@@ -533,20 +759,7 @@ button#form_Annuler{
 /*     width: 150px;*/
 /*  float: left;*/
 /* }*/
-/* button#form_Modifier{*/
-/*   font-family:'BlackChancery' ; */
-/*    font-size:  24px ;*/
-/*    border-radius: 5px;*/
-/*    margin-bottom: 5%;*/
-/*     margin-top: 5%;*/
-/*     margin-left: 5%;*/
-/*     margin-right: 5%;*/
-/*     background-color: black;*/
-/*     color:white;*/
-/*     height: 50px;*/
-/*     width: 150px;*/
-/*  float: left;*/
-/* }*/
+/* */
 /* button#form_Annuler{*/
 /*   font-family:'BlackChancery' ; */
 /*    font-size:  24px ;*/
@@ -560,6 +773,45 @@ button#form_Annuler{
 /*     height: 50px;*/
 /*     width: 150px;*/
 /*     float: right;*/
+/* }*/
+/* .c-dialog {*/
+/*   position: fixed;*/
+/*   z-index: 1;*/
+/*   top: 0;*/
+/*   right: 0;*/
+/*   bottom: 0;*/
+/*   left: 0;*/
+/*   display: flex;*/
+/*   */
+/*     margin: auto;*/
+/*   background-color: rgba(black, .75);*/
+/*  */
+/* }*/
+/* */
+/* */
+/* .c-dialog_box { */
+/* */
+/*     margin: auto;*/
+/*     padding: 0px;*/
+/*     border: 7px double #000;*/
+/*   background-color:#eceeef;*/
+/*     -webkit-background-clip: padding-box;*/
+/*         -moz-background-clip: padding;*/
+/*         background-clip: padding-box;*/
+/*         -webkit-border-radius: 10px;*/
+/*         -moz-border-radius: 10px;*/
+/*         border-radius: 5%;*/
+/*         -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);*/
+/*         -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);*/
+/*         box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);      */
+/* */
+/*   */
+/* }*/
+/* */
+/* */
+/* .c-dialog[aria-hidden="true"] {*/
+/*   visibility: hidden;*/
+/*   opacity: 0;*/
 /* }*/
 /* </style> */
 /* */

@@ -25,8 +25,7 @@ use AppBundle\Entity\Document;
 use AppBundle\Entity\SalleReunion;
 use AppBundle\Entity\Reservation;
 
-class SallesResController extends Controller
-{
+class SallesResController extends Controller {
 
     /**
      * @Route("/salles", name="salles")
@@ -44,9 +43,15 @@ class SallesResController extends Controller
             
                   // ,'data' => $salle->getLieu()))
        
-            ->add('idSr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
-                  'placeholder' => '...'))
+            ->add('idSr', EntityType::class, array('class' => 'AppBundle:SalleReunion',
+                                                    'label' => 'Choisir la Salle :',
+                                                    'choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
+                                                    'placeholder' => '...'))
                   //'data' => $salle->getNomsr()))
+              ->add('lieu', EntityType::class, array('class' => 'AppBundle:SalleReunion',
+                                                    'label' => 'Choisir le Lieu :',
+                                                    'choice_label' => function ($lieu){ return $lieu->getLieu();},
+                                                    'placeholder' => '...'))
             ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
                   //'data' => $salle->getNbpers()))
             ->add('dateD', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Début :'))
@@ -63,7 +68,7 @@ class SallesResController extends Controller
                 $infoSalle = $form->getData();
                
                 $idSr = $infoSalle['idSr'];
-              
+                $lieu = $infoSalle['lieu'];
                 $nbpers = $infoSalle['nbpers'];
                 $DateD = $infoSalle['dateD'];
                 $DateF = $infoSalle['dateF'];
@@ -80,6 +85,7 @@ $personnel = $repository->findByIdPers($idPers);
        $reservation = new reservation();
    
         $reservation->setIdSr($idSr);
+        $reservation->setLieu($lieu);
         $reservation->setNbpers($nbpers);
         $reservation->setDateD($DateD);
         $reservation->setDateF($DateF);
@@ -97,6 +103,7 @@ $personnel = $repository->findByIdPers($idPers);
      
         return $this->render('default/salles.html.twig', array('sallesform'=>$form->createView(),'liste' => $listeRes, 'listes' => $listeSal));
  }
+
   
 /**
      * @Route("/editRes", name="editRes")
@@ -126,6 +133,10 @@ dump($salleM);
             ->add('idSr', EntityType::class, array('class' => 'AppBundle:SalleReunion','label' => 'Choisir la Salle :','choice_label' => function ($nomsr){ return $nomsr->getNomsr();},
                   'placeholder' => ''))
                   //'data' => $salle->getNomsr()))
+            ->add('lieu', EntityType::class, array('class' => 'AppBundle:SalleReunion',
+                                                    'label' => 'Choisir le Lieu :',
+                                                    'choice_label' => function ($lieu){ return $lieu->getLieu();},
+                                                    'placeholder' => '...'))
             ->add('nbpers', TextType::class , array('label' => 'Choix du Nombre de personne prévu :'))
                   //'data' => $salle->getNbpers()))
             ->add('dateD', DateTimeType::class, array('date_widget' => 'single_text','time_widget' => 'single_text','label' => 'Date & heure de Début :'))
@@ -134,7 +145,7 @@ dump($salleM);
             ->add('Réserver', SubmitType::class, array('label' => 'Réserver'))
             ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
             ->getForm();
-                
+
             $formModif->handleRequest($request);
            
  //Validation  du formulaire avec le bouton Ajouter (Submit)
@@ -143,7 +154,7 @@ dump($salleM);
                 $infoSalle = $form->getData();
                
                 $idSr = $infoSalle['idSr'];
-              
+               $lieu = $infoSalle['lieu'];
                 $nbpers = $infoSalle['nbpers'];
                 $DateD = $infoSalle['dateD'];
                 $DateF = $infoSalle['dateF'];
@@ -160,6 +171,7 @@ $personnel = $repository->findByIdPers($idPers);
        $reservation = new reservation();
    
         $reservation->setIdSr($idSr);
+         $reservation->setLieu($lieu);
         $reservation->setNbpers($nbpers);
         $reservation->setDateD($DateD);
         $reservation->setDateF($DateF);
@@ -184,17 +196,17 @@ dump($salleM);
       $idRes = $request->get('idRes');
   if(!empty($idRes)){
       // dump($idRes);
-$em = $this->getDoctrine()->getManager();
+	$em = $this->getDoctrine()->getManager();
      $repository = $this->getDoctrine()->getRepository(Reservation::class);
 
 // recherche d'un seul évènement correspondant au id indiqué
-$reservation = $repository->findOneBy(  array('idRes' => $idRes));
+	$reservation = $repository->findOneBy(  array('idRes' => $idRes));
        
       // dump($reservation);
         $em->remove($reservation);
         $em->flush();
         return $this->redirectToRoute('salles');
       }  
-return $this->render('default/deleteRes.html.twig');
-}
+	return $this->render('default/deleteRes.html.twig');
+	}
 }

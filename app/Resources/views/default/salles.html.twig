@@ -2,6 +2,19 @@
 
 {% block title %}Salles de réunion !{% endblock %}
 {% block body %}  
+
+<div class="js-page">
+  <div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1" class="c-dialog">
+    <div role="document" class="c-dialog_box">
+      <img src="img/supp.png" width="30px" height="30px" id="close" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog"></img>
+       <object  width="500" height="500" type="text/html" data="{{path('editRes')}}" ></object>
+         <button  id="form_Fermer" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog">Annuler</button>
+
+         </object>
+    </div>
+  </div>
+</div>
+
 <div class="bloc" id="acc">
 <section id="list">{{ form(sallesform)}}</section>
 
@@ -35,11 +48,12 @@
     <table id="Deux" border="1" align="center">
        <caption><b>Voir les Réservations</b></caption>
       <tr id="tit">
-        <td align="center" width="12%"><b>Nom de la Salle</b></td>
-        <td align="center" width="10%"><b>Nombre de personne prévu</b></td>
-        <td align="center" width="12%"><b>Date &amp; Heure d'occupation début</b></td>
-        <td align="center" width="12%"><b>Date &amp; Heure d'occupation fin</b></td>
-        <td align="center" width="6%"><b>Outils</b></td>
+        <td align="center" width="10%"><b>Nom de la Salle</b></td>
+        <td align="center" width="5%"><b>Nombre de personne prévu</b></td>
+        <td align="center" width="10%"colspan=2><b>Date &amp; Heure d'occupation début</b></td>
+        <td align="center" width="10%"colspan=2><b>Date &amp; Heure d'occupation fin</b></td>
+        <td align="center" width="8%"><b>Lieu </b></td>
+        <td align="center" width="6%" colspan=2><b>Outils</b></td>
       </tr>
 
    {% for res in liste %}
@@ -47,10 +61,17 @@
        <tr id="scroll">
       <td id="d">{{res.idSr.nomsr}}</td>
       <td id="d" align="right">{{res.nbpers}}</td>
-      <td id="d">{{res.dateD|date('d-m-Y    H:i:s')}}</td>
-      <td id="d">{{res.dateF|date('d-m-Y    H:i:s')}}</td>
-      <td id="d" align="center">
-        <img onclick="modif()" src="img/modif.png" width="30px" height="30px">
+      <td id="d">{{res.dateD|date('d-m-Y')}} </td>
+        <td id="d">{{res.dateD|date('H:i:s')}}</td>
+      <td id="d">{{res.dateF|date('d-m-Y ')}}</td>
+       <td id="d">{{res.dateD|date(' H:i:s')}}</td>
+       <td id="d">{{res.idSr.lieu}}</td>
+      <td align="center">
+    <main class="js-document">
+             <img id="editRes" src="img/modif.png" width="30px" height="30px" align="center" aria-haspopup="dialog" aria-controls="dialog">
+          </main>
+      </td>
+      <td align="center">
          <a href="/deleteRes?idRes={{res.idRes}}"><img src="img/poubelles.png" width="30px" height="30px"></a>
       </td>
     </tr> 
@@ -62,7 +83,117 @@
 
 
 </div> 
-<script type="text/javascript">
+  <script type="text/javascript">
+    const triggers = document.querySelectorAll('[aria-haspopup="dialog"]');
+    const doc = document.querySelector('.js-document');
+    const focusableElementsArray = [
+      '[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ];
+    const keyCodes = {
+      tab: 9,
+      enter: 13,
+      escape: 27,
+    };
+
+    const open = function (dialog) {
+      const focusableElements = dialog.querySelectorAll(focusableElementsArray);
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+      dialog.setAttribute('aria-hidden', false);
+      doc.setAttribute('aria-hidden', true);
+
+      // return if no focusable element
+      if (!firstFocusableElement) {
+        return;
+      }
+
+      window.setTimeout(() => {
+        firstFocusableElement.focus();
+
+        // trapping focus inside the dialog
+        focusableElements.forEach((focusableElement) => {
+          if (focusableElement.addEventListener) {
+            focusableElement.addEventListener('keydown', (event) => {
+              const tab = event.which === keyCodes.tab;
+
+              if (!tab) {
+                return;
+              }
+
+              if (event.shiftKey) {
+                if (event.target === firstFocusableElement) { // shift + tab
+                  event.preventDefault();
+
+                  lastFocusableElement.focus();
+                }
+              } else if (event.target === lastFocusableElement) { // tab
+                event.preventDefault();
+
+                firstFocusableElement.focus();
+              }
+            });
+          }
+        });
+      }, 100);
+    };
+
+    const close = function (dialog, trigger) {
+      dialog.setAttribute('aria-hidden', true);
+      doc.setAttribute('aria-hidden', false);
+
+      // restoring focus
+      trigger.focus();
+    };
+
+    triggers.forEach((trigger) => {
+      const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
+      const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');
+
+      // open dialog
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        open(dialog);
+      });
+
+      trigger.addEventListener('keydown', (event) => {
+        if (event.which === keyCodes.enter) {
+          event.preventDefault();
+
+          open(dialog);
+        }  
+      });
+
+      // close dialog
+      dialog.addEventListener('keydown', (event) => {
+        if (event.which === keyCodes.escape) {
+          close(dialog, trigger);
+        }      
+      });
+
+      dismissTriggers.forEach((dismissTrigger) => {
+        const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);
+
+        dismissTrigger.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          close(dismissDialog, trigger);
+        });
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          close(dialog, trigger);
+        }
+      }); 
+    });
+   
 
 </script>
 <style type="text/css">
@@ -79,11 +210,11 @@ label{
     text-decoration: bold;
     font-size : 20px;
 }
-section#list{ margin-top : 20px; margin-left :20px; margin-right:20px; background-color:#dcdcdc; column-count: 5;}
+section#list{ margin-top : 20px; margin-left :20px; margin-right:20px; background-color:#dcdcdc; column-count: 6;}
 tr#tit{ background: -webkit-linear-gradient(bottom , #badeec 0pt, #bfdbe6 50%, #bfdbe6 51%, #f7f2d0 100%) repeat scroll 0 0 transparent; }
-tr,td{padding-left:5px;}
-table#Un{ width: 35%; float : left;}
-table#Deux{ width: 60%; float: right; }
+tr,td#d{padding-left:5px; }
+table#Un{ width: 25%; float : left;}
+table#Deux{ width: 70%; float: right; }
 table{   margin-left:5px; margin-right:5px; overflow: scroll; }
 input#form_nbpers{ width :40px; }
 select{
@@ -99,13 +230,13 @@ input{
 	font-size: 14px;
 }
 
-input#form_dateD_date{ 	width: 126px;  } input#form_dateD_time { width: 65px; }
-input#form_dateF_date{ 	width: 126px; } input#form_dateF_time { width: 65px; }
-button{
+input#form_dateD_date{ 	width: 130px;  } input#form_dateD_time { width: 75px; }
+input#form_dateF_date{ 	width: 130px; } input#form_dateF_time { width: 75px; }
+button#form_Réserver{
 	 font-family:'BlackChancery' ; 
 	 font-size:  24px ;
 	 border-radius: 5px;
-	margin-top: 5%;
+	margin-top: 1%;
     background-color: black;
     color:white;
     height: 50px;
@@ -140,6 +271,46 @@ button#form_Annuler{
     height: 50px;
     width: 150px;
     float: right;
+}
+
+.c-dialog {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  
+    margin: auto;
+  background-color: rgba(black, .75);
+ 
+}
+
+
+.c-dialog_box { 
+
+    margin: auto;
+    padding: 0px;
+    border: 7px double #000;
+  background-color:#eceeef;
+    -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+        background-clip: padding-box;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 5%;
+        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+        -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);      
+
+  
+}
+
+
+.c-dialog[aria-hidden="true"] {
+  visibility: hidden;
+  opacity: 0;
 }
 </style>
 {% endblock %} 

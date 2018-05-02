@@ -101,10 +101,10 @@ class EventsController extends Controller
      public function EditEvtAction(Request $request){
 
             $idEvent = $request->get('idEvt');    
-       
+                  
 if(!empty($idEvent)){
 
-    dump( $idEvent);
+   // dump( $idEvent);
 $em = $this->getDoctrine()->getManager();
      $repository = $this->getDoctrine()->getRepository(Evenement::class);
 
@@ -131,7 +131,7 @@ dump($eventM);
                         },
                         'placeholder' => 'Choississez ...'))
             ->add('Modifier', SubmitType::class, array('label' => 'Modifier'))
-            ->add('Annuler', ResetType::class, array('label' => 'Annuler'))
+            
             ->getForm();
                 
             $formModif->handleRequest($request);
@@ -193,4 +193,5 @@ $event = $repository->findOneBy(  array('idEvent' => $idEvent));
       }  
 return $this->render('default/deleteEvt.html.twig');
 }
+
 }

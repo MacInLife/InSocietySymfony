@@ -115,42 +115,75 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::myspaceAction',  '_route' => 'myspace',);
         }
 
-        // calendrier
-        if ($pathinfo === '/calendrier') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::calendrierAction',  '_route' => 'calendrier',);
-        }
-
-        if (0 === strpos($pathinfo, '/d')) {
-            // docs
-            if ($pathinfo === '/docs') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadAction',  '_route' => 'docs',);
+        if (0 === strpos($pathinfo, '/c')) {
+            // calendrier
+            if ($pathinfo === '/calendrier') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::calendrierAction',  '_route' => 'calendrier',);
             }
 
-            // delete
-            if ($pathinfo === '/delete') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deleteAction',  '_route' => 'delete',);
+            // contact
+            if ($pathinfo === '/contact') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
             }
 
         }
 
-        // events
-        if ($pathinfo === '/events') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::addEvtAction',  '_route' => 'events',);
+        // annuaire
+        if ($pathinfo === '/annuaire') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::annuaireAction',  '_route' => 'annuaire',);
+        }
+
+        // plan
+        if ($pathinfo === '/plan') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::planAction',  '_route' => 'plan',);
+        }
+
+        // docs
+        if ($pathinfo === '/docs') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DocumentController::docAction',  '_route' => 'docs',);
+        }
+
+        // add
+        if ($pathinfo === '/add') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DocumentController::uploadAction',  '_route' => 'add',);
+        }
+
+        // delete
+        if ($pathinfo === '/delete') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DocumentController::deleteAction',  '_route' => 'delete',);
+        }
+
+        if (0 === strpos($pathinfo, '/e')) {
+            // events
+            if ($pathinfo === '/events') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::eventAction',  '_route' => 'events',);
+            }
+
+            // editEvt
+            if ($pathinfo === '/editEvt') {
+                return array (  '_controller' => 'AppBundle\\Controller\\EventsController::EditEvtAction',  '_route' => 'editEvt',);
+            }
+
         }
 
         // deleteEvt
         if ($pathinfo === '/deleteEvt') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deleteEvtAction',  '_route' => 'deleteEvt',);
+            return array (  '_controller' => 'AppBundle\\Controller\\EventsController::deleteEvtAction',  '_route' => 'deleteEvt',);
         }
 
         // salles
         if ($pathinfo === '/salles') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::salleAction',  '_route' => 'salles',);
+            return array (  '_controller' => 'AppBundle\\Controller\\SallesResController::salleAction',  '_route' => 'salles',);
         }
 
-        // contact
-        if ($pathinfo === '/contact') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::contactAction',  '_route' => 'contact',);
+        // editRes
+        if ($pathinfo === '/editRes') {
+            return array (  '_controller' => 'AppBundle\\Controller\\SallesResController::EditResAction',  '_route' => 'editRes',);
+        }
+
+        // deleteRes
+        if ($pathinfo === '/deleteRes') {
+            return array (  '_controller' => 'AppBundle\\Controller\\SallesResController::deleteResAction',  '_route' => 'deleteRes',);
         }
 
         // ancarebeca_full_calendar_load
