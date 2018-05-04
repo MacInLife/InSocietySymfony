@@ -96,23 +96,12 @@ class EventsController extends Controller
  }
 
 /**
-     * @Route("/editEvt", name="editEvt")
+     * @Route("/{idEvent}/editEvt", name="editEvt")
      */   
-     public function EditEvtAction(Request $request){
-
-            $idEvent = $request->get('idEvt');    
-                  
-if(!empty($idEvent)){
-
-   // dump( $idEvent);
+     public function EditEvtAction(Request $request, Evenement $eventM){
 $em = $this->getDoctrine()->getManager();
-     $repository = $this->getDoctrine()->getRepository(Evenement::class);
-
-// recherche d'un seul évènement correspondant au id indiqué
-$eventM = $repository->findOneBy(array('idEvent' => $idEvent));
 
 dump($eventM);
-
        //Création de Formulaire Page Events
  $formModif = $this->createFormBuilder()
             ->add('nomEvt', TextType::class,  array('label' => 'Nom de l\'évènement :' ,'data' => $eventM->getNomevt()))
@@ -129,17 +118,16 @@ dump($eventM);
                          'choice_label' => function($nomsr){
                             return $nomsr->getNomsr();
                         },
-                        'placeholder' => 'Choississez ...'))
-            ->add('Modifier', SubmitType::class, array('label' => 'Modifier'))
-            
+                        'data'=> $eventM->getIdSr()))
+            ->add('Modifier', SubmitType::class, array('label' => 'Modifier'))  
             ->getForm();
                 
             $formModif->handleRequest($request);
            
  //Validation  du formulaire avec le bouton Ajouter (Submit)
-            if($formModif->isValid()){
+            if($formModif->isSubmitted() && $formModif->isValid()){
                 
-                $infoEvent = $form->getData();
+                $infoEvent = $formModif->getData();
                 $nomEvt = $infoEvent['nomEvt'];
                 $type = $infoEvent['type'];
                 $jourD = $infoEvent['jourD'];
@@ -148,8 +136,7 @@ dump($eventM);
                 $hFin = $infoEvent['hFin'];
                 $lieu = $infoEvent['lieu'];
                 $idSR = $infoEvent['idSR'];
- dump($idSR->getIdSr());
-             
+
        
         $eventM->setNomevt($nomEvt);
         $eventM->setType($type);
@@ -159,16 +146,13 @@ dump($eventM);
         $eventM->setHFin($hFin);
         $eventM->setLieu($lieu);
         $eventM->setIdSR($idSR);
- 
 
 dump($eventM); 
       
         $em->flush();
-      
+           return $this->redirectToRoute('events');
             }
-              return $this->redirectToRoute('events');
-        }
-        return $this->render('default/eventsEdit.html.twig', array('eventMform'=>$formModif->createView()));
+        return $this->render('default/eventsEdit.html.twig', array('eventMform'=>$formModif->createView(), 'Evenement' => $eventM));
     }
 
 

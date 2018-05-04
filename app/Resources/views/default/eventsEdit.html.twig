@@ -1,9 +1,11 @@
-
+{% extends 'menu.html.twig' %}
 {% block body %}  
 
 <div align="center" id="editform">
+  
 {{ form(eventMform)}}
-<p> Coucou</p>
+  <a href="{{ path ('events')}}"><button  id="form_Annuler" type="button">Annuler</button></a>
+
 </div>
 
 <style>
@@ -35,6 +37,20 @@ button#form_Modifier{
     height: 50px;
     width: 150px;
  float: left;
+}
+button#form_Annuler{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+    float: right;
 }
 </style>
  {% endblock %}

@@ -1,7 +1,9 @@
+{% extends 'menu.html.twig' %}
 {% block body %}  
 
 <div align="center" id="editform">
 {{ form(sallesMform)}}
+<a href="{{ path ('salles')}}"><button  id="form_Annuler" type="button">Annuler</button></a>
 </div>
 <script type="text/javascript">
 
@@ -12,16 +14,8 @@ label.required{
     font-family: cursive; 
   font-size: 18px;
 }
-input#form_Fichier{
-    font-family:'BlackChancery' ; 
-  margin-left: 2%;
-  margin-right: 12%;
-  margin-top:5%;
-  margin-bottom: 5%;
-  font-size: 18px;
-  float : right;
-}
-button#form_Envoyer{
+
+button#form_Modifier{
   font-family:'BlackChancery' ; 
    font-size:  24px ;
    border-radius: 5px;
@@ -35,7 +29,20 @@ button#form_Envoyer{
     width: 150px;
  float: left;
 }
-
+button#form_Annuler{
+  font-family:'BlackChancery' ; 
+   font-size:  24px ;
+   border-radius: 5px;
+   margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: black;
+    color:white;
+    height: 50px;
+    width: 150px;
+    float: right;
+}
 
 </style>
  {% endblock %}

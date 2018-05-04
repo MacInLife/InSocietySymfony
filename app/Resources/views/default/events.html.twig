@@ -4,22 +4,10 @@
 {% block body %}  
 
 
- 
-<div class="js-page">
-  <div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1" class="c-dialog">
-    <div role="document" class="c-dialog_box">
-      <img src="img/supp.png" width="30px" height="30px" id="close" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog"></img>
-       <object  width="500" height="500" type="text/html" data="{{path('editEvt')}}" ></object>
-         <button  id="form_Fermer" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog">Annuler</button>
-
-         </object>
-    </div>
-  </div>
-</div>
-
 
 <nav>
   <dialog id="addEvt">   {{ form(eventform)}}  </dialog>
+
  <menu>
    <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="img/agenda.png" width="80px" height="80px" align="left"></a>
  	<img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
@@ -41,7 +29,7 @@
     <td align="center" width="6%" colspan=2><b>Outils</b></td> 
     </tr>
       {% for evt in liste %}
-       {% set fooo = evt.idEvent|split('.') %}
+       {% set fooo = evt.idEvent %}
     <tr>
       <td>{{evt.nomevt}}</td>
       <td>{{evt.type}}</td>
@@ -52,15 +40,18 @@
       <td>{{evt.lieu}}</td>
       <td>{{evt.idSr.nomsr}}</td>
       <td align="center">
-        <main class="js-document">
-             <img id="editEvt" src="img/modif.png" width="30px" height="30px" align="center" aria-haspopup="dialog" aria-controls="dialog">
-          </main>
+         <a href="{{path ('editEvt', {'idEvent' : evt.idEvent }) }}">
+          	<img src="img/modif.png" width="30px" height="30px" align="center" >
+          </a>
+
+ 
+
        </td>
       <td align="center">
           <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/poubelles.png" width="30px" height="30px" ></a>
       </td>
     </tr>
- 
+
     {% endfor %} 
     </table>
   
@@ -74,116 +65,6 @@
  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
 
  	  <script type="text/javascript">
-    const triggers = document.querySelectorAll('[aria-haspopup="dialog"]');
-    const doc = document.querySelector('.js-document');
-    const focusableElementsArray = [
-      '[href]',
-      'button:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      'textarea:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])',
-    ];
-    const keyCodes = {
-      tab: 9,
-      enter: 13,
-      escape: 27,
-    };
-
-    const open = function (dialog) {
-      const focusableElements = dialog.querySelectorAll(focusableElementsArray);
-      const firstFocusableElement = focusableElements[0];
-      const lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-      dialog.setAttribute('aria-hidden', false);
-      doc.setAttribute('aria-hidden', true);
-
-      // return if no focusable element
-      if (!firstFocusableElement) {
-        return;
-      }
-
-      window.setTimeout(() => {
-        firstFocusableElement.focus();
-
-        // trapping focus inside the dialog
-        focusableElements.forEach((focusableElement) => {
-          if (focusableElement.addEventListener) {
-            focusableElement.addEventListener('keydown', (event) => {
-              const tab = event.which === keyCodes.tab;
-
-              if (!tab) {
-                return;
-              }
-
-              if (event.shiftKey) {
-                if (event.target === firstFocusableElement) { // shift + tab
-                  event.preventDefault();
-
-                  lastFocusableElement.focus();
-                }
-              } else if (event.target === lastFocusableElement) { // tab
-                event.preventDefault();
-
-                firstFocusableElement.focus();
-              }
-            });
-          }
-        });
-      }, 100);
-    };
-
-    const close = function (dialog, trigger) {
-      dialog.setAttribute('aria-hidden', true);
-      doc.setAttribute('aria-hidden', false);
-
-      // restoring focus
-      trigger.focus();
-    };
-
-    triggers.forEach((trigger) => {
-      const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
-      const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');
-
-      // open dialog
-      trigger.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        open(dialog);
-      });
-
-      trigger.addEventListener('keydown', (event) => {
-        if (event.which === keyCodes.enter) {
-          event.preventDefault();
-
-          open(dialog);
-        }  
-      });
-
-      // close dialog
-      dialog.addEventListener('keydown', (event) => {
-        if (event.which === keyCodes.escape) {
-          close(dialog, trigger);
-        }      
-      });
-
-      dismissTriggers.forEach((dismissTrigger) => {
-        const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);
-
-        dismissTrigger.addEventListener('click', (event) => {
-          event.preventDefault();
-
-          close(dismissDialog, trigger);
-        });
-      });
-
-      window.addEventListener('click', (event) => {
-        if (event.target === dialog) {
-          close(dialog, trigger);
-        }
-      }); 
-    });
-   
 
   //Action image add
   (function() {
@@ -235,14 +116,21 @@ img#close{
 
 }
 
+
+select{
+	background:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;
+	border-radius: 5px;
+	font-family: cursive;
+	font-size: 14px;
+}
 input{
-  border-radius: 5px;
-  margin-left: -50%;
+	background:-webkit-linear-gradient(bottom , #dad4d4 0pt, #f9f9f9 50%, #fffbfb 51%, #e2e2e2 100%) repeat scroll 0 0 transparent;
+	border-radius: 5px;
+	font-family: cursive;
+	font-size: 14px;    
+	 margin-left: -76%;
   margin-right: 2%;
   float: right;  
-}
-select{
-  border-radius: 5px;
 }
 select#form_idSR{ float: right; }
 label#form_nomEvt{ float: left; }
@@ -299,45 +187,8 @@ button#form_Annuler{
     width: 150px;
     float: right;
 }
-.c-dialog {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  
-    margin: auto;
-  background-color: rgba(black, .75);
- 
-}
 
 
-.c-dialog_box { 
-
-    margin: auto;
-    padding: 0px;
-    border: 7px double #000;
-  background-color:#eceeef;
-    -webkit-background-clip: padding-box;
-        -moz-background-clip: padding;
-        background-clip: padding-box;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 5%;
-        -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
-        -moz-box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, .4),inset 0 1px 0 rgba(255, 255, 255, .5);      
-
-  
-}
-
-
-.c-dialog[aria-hidden="true"] {
-  visibility: hidden;
-  opacity: 0;
-}
 </style> 
 
  {% endblock %}
