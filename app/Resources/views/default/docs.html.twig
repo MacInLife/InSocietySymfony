@@ -40,7 +40,9 @@
         <td>{{foo[1] }}</td>
         <td>{{ undoc.typeDoc }}</td>
         <td><a href="../uploads/documents/{{ undoc.fileDoc }}" target="_blank">Voir le Fichier</a></td>
-        <td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}">
+        <!--<td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}">-->
+    <td id="suppDoc" align="center"> <a href="{{ path('delete', {'id': undoc.idDoc})}}">
+
           <img id="supp" src="img/poubelles.png" width="30px" height="30px">
         </a></td>
         </tr>
