@@ -60,12 +60,12 @@
       <td align="center">
     <main class="js-document">
              <a href="{{path ('editRes', {'idRes' : res.idRes }) }}">
-                <img src="img/modif.png" width="30px" height="30px" align="center">
+                <img src="{{ asset('img/modif.png')}}" width="30px" height="30px" align="center">
               </a>
           </main>
       </td>
       <td align="center">
-         <a href="/deleteRes?idRes={{res.idRes}}"><img src="img/poubelles.png" width="30px" height="30px"></a>
+         <a href="{{ path ('deleteRes' , { idRes : res.idRes}) }}"><img src="{{ asset('img/poubelles.png')}}" width="30px" height="30px"></a>
       </td>
     </tr> 
    {% endfor %}    

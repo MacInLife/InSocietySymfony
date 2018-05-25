@@ -126,7 +126,7 @@ dump($salleM);
             $formModif->handleRequest($request);
            
  //Validation  du formulaire avec le bouton Ajouter (Submit)
-            if($formModif->isSubmitted() && $form->isValid()){
+            if($formModif->isSubmitted() && $formModif->isValid()){
                
                 $infoSalle = $formModif->getData();
                

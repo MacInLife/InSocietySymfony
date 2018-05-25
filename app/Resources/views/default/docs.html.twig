@@ -7,7 +7,7 @@
  
   <div id="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true" aria-hidden="true" tabindex="-1" class="c-dialog">
     <div role="document" class="c-dialog__box">
-      <img src="img/supp.png" width="30px" height="30px" id="close" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog"></img>
+      <img src="{{ asset('img/supp.png')}}" width="30px" height="30px" id="close" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog"></img>
        <object  width="400" height="200" type="text/html" data="{{path('add')}}" ></object>
          <button  id="form_Annuler" type="button" aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog">Annuler</button>
 
@@ -18,10 +18,10 @@
 
  <menu>
   <main class="js-document">
-    <img id="add" src=""{{ asset('img/PlusBleu0.png')}}" width="85px" height="85px" align="right" aria-haspopup="dialog" aria-controls="dialog">
+    <img id="add" src="{{ asset('img/PlusBleu0.png')}}" width="85px" height="85px" align="right" aria-haspopup="dialog" aria-controls="dialog">
   </main>
 
-    <img id="fresh" onclick="refresh()" src="img/refresh.png" width="85px" height="85px" align="right">
+    <img id="fresh" onclick="refresh()" src="{{ asset('img/refresh.png')}}" width="85px" height="85px" align="right">
  </menu>
 
 <div id="body">
@@ -43,7 +43,7 @@
         <!--<td id="suppDoc" align="center"> <a href="/delete?id={{undoc.idDoc}}">-->
     <td id="suppDoc" align="center"> <a href="{{ path('delete', {'id': undoc.idDoc})}}">
 
-          <img id="supp" src="img/poubelles.png" width="30px" height="30px">
+          <img id="supp" src="{{ asset('img/poubelles.png')}}" width="30px" height="30px">
         </a></td>
         </tr>
    {% endfor %} 

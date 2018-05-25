@@ -9,9 +9,9 @@
   <dialog id="addEvt">   {{ form(eventform)}}  </dialog>
 
  <menu>
-   <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="img/agenda.png" width="80px" height="80px" align="left"></a>
- 	<img id="add" src="img/PlusBleu0.png" width="85px" height="85px" align="right">
-  <img id="fresh" onclick="refresh()" src="img/refresh.png" width="85px" height="85px" align="right">
+   <a id="cal" href="{{path('calendrier')}}"><img id="ag" src="{{ asset('img/agenda.png')}}" width="80px" height="80px" align="left"></a>
+ 	<img id="add" src="{{ asset('img/PlusBleu0.png')}}" width="85px" height="85px" align="right">
+  <img id="fresh" onclick="refresh()" src="{{ asset('img/refresh.png')}}" width="85px" height="85px" align="right">
 </menu>
 
 
@@ -41,14 +41,14 @@
       <td>{{evt.idSr.nomsr}}</td>
       <td align="center">
          <a href="{{path ('editEvt', {'idEvent' : evt.idEvent }) }}">
-          	<img src="img/modif.png" width="30px" height="30px" align="center" >
+          	<img src="{{ asset('img/modif.png')}}" width="30px" height="30px" align="center" >
           </a>
 
  
 
        </td>
       <td align="center">
-          <a href="/deleteEvt?idEvt={{evt.idEvent}}"><img src="img/poubelles.png" width="30px" height="30px" ></a>
+          <a href="{{ path('deleteEvt' , { idEvt : evt.idEvent}) }}"><img src="{{ asset('img/poubelles.png')}}" width="30px" height="30px" ></a>
       </td>
     </tr>
 
