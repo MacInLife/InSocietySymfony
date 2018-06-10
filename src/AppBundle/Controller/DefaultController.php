@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
@@ -38,7 +39,10 @@ class DefaultController extends Controller
 //Création de Formulaire Page Connexion
  $form = $this->createFormBuilder()
             ->add('Login', TextType::class,  array('label' => 'Login / Identifiant :') )
-            ->add('MDP', PasswordType::class, array('label' => 'Mot de passe :'))
+            ->add('MDP', PasswordType::class, array('label' => 'Mot de passe :',         
+                'invalid_message' => 'Mot de passe incorrect'
+            ))
+           // ->add('MDP', PasswordType::class, array('label' => 'Mot de passe :'))
             ->add('Connexion', SubmitType::class, array('label' => 'Connexion'))
 
             ->getForm();
@@ -77,7 +81,7 @@ $personnel = $repository->findOneBy(
 
               return  $this->render('default/accueil.html.twig' ,[ 'nom'=> $nom, 'prenom'=> $prenom]);
                     }
-            }
+            }          
         return $this->render('default/connexion.html.twig', ['connectform'=>$form->createView()])  ;
    
   }

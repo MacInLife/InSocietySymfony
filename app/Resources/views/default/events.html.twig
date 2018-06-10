@@ -28,8 +28,12 @@
     <td align="center" width="10%"><b>Salle</b></td>
     <td align="center" width="6%" colspan=2><b>Outils</b></td> 
     </tr>
+<script type="text/javascript">
+      var message = "";
+      </script>
       {% for evt in liste %}
        {% set fooo = evt.idEvent %}
+
     <tr>
       <td>{{evt.nomevt}}</td>
       <td>{{evt.type}}</td>
@@ -43,18 +47,20 @@
          <a href="{{path ('editEvt', {'idEvent' : evt.idEvent }) }}">
           	<img src="{{ asset('img/modif.png')}}" width="30px" height="30px" align="center" >
           </a>
-
- 
-
        </td>
       <td align="center">
           <a href="{{ path('deleteEvt' , { idEvt : evt.idEvent}) }}"><img src="{{ asset('img/poubelles.png')}}" width="30px" height="30px" ></a>
       </td>
     </tr>
-
-    {% endfor %} 
+   <!--/*<script type="text/javascript">
+    
+      if ( new Date("{{evt.jourD|date('m-d-Y')}}")< new Date() && new Date("{{evt.jourF|date('m-d-Y')}}") > new Date()) {
+         message = message + "{{evt.nomevt}}" + "\n";
+      }
+    </script>!*/-->
+      {% endfor %} 
+    
     </table>
-  
 </div>
  </nav>
 
@@ -64,7 +70,7 @@
  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
  <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
 
- 	  <script type="text/javascript">
+    <script type="text/javascript">
 
   //Action image add
   (function() {
@@ -89,6 +95,10 @@
 function refresh(){
     location.reload();
 }
+
+      if ( message !== "")
+        alert("les evenements du jours sont : "+ message);
+
 
 
 
