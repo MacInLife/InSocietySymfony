@@ -16,34 +16,38 @@ use Symfony\Component\Cache\Adapter\RedisAdapter;
 
 class PredisAdapterTest extends AbstractRedisAdapterTest
 {
-    public static function setupBeforeClass()
+    public static function setUpBeforeClass()
     {
-        parent::setupBeforeClass();
-        self::$redis = new \Predis\Client();
+        parent::setUpBeforeClass();
+        self::$redis = new \Predis\Client(['host' => getenv('REDIS_HOST')]);
     }
 
     public function testCreateConnection()
     {
-        $redis = RedisAdapter::createConnection('redis://localhost/1', array('class' => \Predis\Client::class, 'timeout' => 3));
+        $redisHost = getenv('REDIS_HOST');
+
+        $redis = RedisAdapter::createConnection('redis://'.$redisHost.'/1', ['class' => \Predis\Client::class, 'timeout' => 3]);
         $this->assertInstanceOf(\Predis\Client::class, $redis);
 
         $connection = $redis->getConnection();
         $this->assertInstanceOf(StreamConnection::class, $connection);
 
-        $params = array(
+        $params = [
             'scheme' => 'tcp',
-            'host' => 'localhost',
+            'host' => $redisHost,
             'path' => '',
             'dbindex' => '1',
             'port' => 6379,
             'class' => 'Predis\Client',
             'timeout' => 3,
             'persistent' => 0,
+            'persistent_id' => null,
             'read_timeout' => 0,
             'retry_interval' => 0,
+            'lazy' => false,
             'database' => '1',
             'password' => null,
-        );
+        ];
         $this->assertSame($params, $connection->getParameters()->toArray());
     }
 }

@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Ldap\Tests;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Ldap\Adapter\CollectionInterface;
 use Symfony\Component\Ldap\Adapter\QueryInterface;
 use Symfony\Component\Ldap\Entry;
@@ -20,16 +21,16 @@ use Symfony\Component\Ldap\LdapInterface;
 /**
  * @group legacy
  */
-class LdapClientTest extends \PHPUnit_Framework_TestCase
+class LdapClientTest extends LdapTestCase
 {
     /** @var LdapClient */
     private $client;
-    /** @var \PHPUnit_Framework_MockObject_MockObject */
+    /** @var MockObject */
     private $ldap;
 
     protected function setUp()
     {
-        $this->ldap = $this->getMock(LdapInterface::class);
+        $this->ldap = $this->getMockBuilder(LdapInterface::class)->getMock();
 
         $this->client = new LdapClient(null, 389, 3, false, false, false, $this->ldap);
     }
@@ -59,122 +60,86 @@ class LdapClientTest extends \PHPUnit_Framework_TestCase
         $this->ldap
             ->expects($this->once())
             ->method('query')
-            ->with('foo', 'bar', array('baz'))
+            ->with('foo', 'bar', ['baz'])
         ;
-        $this->client->query('foo', 'bar', array('baz'));
+        $this->client->query('foo', 'bar', ['baz']);
     }
 
     public function testLdapFind()
     {
-        $collection = $this->getMock(CollectionInterface::class);
+        $collection = $this->getMockBuilder(CollectionInterface::class)->getMock();
         $collection
             ->expects($this->once())
             ->method('getIterator')
-            ->will($this->returnValue(new \ArrayIterator(array(
-                new Entry('cn=qux,dc=foo,dc=com', array(
-                    'dn' => array('cn=qux,dc=foo,dc=com'),
-                    'cn' => array('qux'),
-                    'dc' => array('com', 'foo'),
-                    'givenName' => array('Qux'),
-                )),
-                new Entry('cn=baz,dc=foo,dc=com', array(
-                    'dn' => array('cn=baz,dc=foo,dc=com'),
-                    'cn' => array('baz'),
-                    'dc' => array('com', 'foo'),
-                    'givenName' => array('Baz'),
-                )),
-            ))))
+            ->willReturn(new \ArrayIterator([
+                new Entry('cn=qux,dc=foo,dc=com', [
+                    'cn' => ['qux'],
+                    'dc' => ['com', 'foo'],
+                    'givenName' => ['Qux'],
+                ]),
+                new Entry('cn=baz,dc=foo,dc=com', [
+                    'cn' => ['baz'],
+                    'dc' => ['com', 'foo'],
+                    'givenName' => ['Baz'],
+                ]),
+            ]))
         ;
-        $query = $this->getMock(QueryInterface::class);
+        $query = $this->getMockBuilder(QueryInterface::class)->getMock();
         $query
             ->expects($this->once())
             ->method('execute')
-            ->will($this->returnValue($collection))
+            ->willReturn($collection)
         ;
         $this->ldap
             ->expects($this->once())
             ->method('query')
-            ->with('dc=foo,dc=com', 'bar', array('filter' => 'baz'))
+            ->with('dc=foo,dc=com', 'bar', ['filter' => 'baz'])
             ->willReturn($query)
         ;
 
-        $expected = array(
+        $expected = [
             'count' => 2,
-            0 => array(
-                'count' => 4,
-                0 => array(
-                    'count' => 1,
-                    0 => 'cn=qux,dc=foo,dc=com',
-                ),
-                'dn' => array(
-                    'count' => 1,
-                    0 => 'cn=qux,dc=foo,dc=com',
-                ),
-                1 => array(
+            0 => [
+                'count' => 3,
+                0 => 'cn',
+                'cn' => [
                     'count' => 1,
                     0 => 'qux',
-                ),
-                'cn' => array(
-                    'count' => 1,
-                    0 => 'qux',
-                ),
-                2 => array(
+                ],
+                1 => 'dc',
+                'dc' => [
                     'count' => 2,
                     0 => 'com',
                     1 => 'foo',
-                ),
-                'dc' => array(
-                    'count' => 2,
-                    0 => 'com',
-                    1 => 'foo',
-                ),
-                3 => array(
+                ],
+                2 => 'givenname',
+                'givenname' => [
                     'count' => 1,
                     0 => 'Qux',
-                ),
-                'givenName' => array(
-                    'count' => 1,
-                    0 => 'Qux',
-                ),
-            ),
-            1 => array(
-                'count' => 4,
-                0 => array(
-                    'count' => 1,
-                    0 => 'cn=baz,dc=foo,dc=com',
-                ),
-                'dn' => array(
-                    'count' => 1,
-                    0 => 'cn=baz,dc=foo,dc=com',
-                ),
-                1 => array(
+                ],
+                'dn' => 'cn=qux,dc=foo,dc=com',
+            ],
+            1 => [
+                'count' => 3,
+                0 => 'cn',
+                'cn' => [
                     'count' => 1,
                     0 => 'baz',
-                ),
-                'cn' => array(
-                    'count' => 1,
-                    0 => 'baz',
-                ),
-                2 => array(
+                ],
+                1 => 'dc',
+                'dc' => [
                     'count' => 2,
                     0 => 'com',
                     1 => 'foo',
-                ),
-                'dc' => array(
-                    'count' => 2,
-                    0 => 'com',
-                    1 => 'foo',
-                ),
-                3 => array(
+                ],
+                2 => 'givenname',
+                'givenname' => [
                     'count' => 1,
                     0 => 'Baz',
-                ),
-                'givenName' => array(
-                    'count' => 1,
-                    0 => 'Baz',
-                ),
-            ),
-        );
+                ],
+                'dn' => 'cn=baz,dc=foo,dc=com',
+            ],
+        ];
         $this->assertEquals($expected, $this->client->find('dc=foo,dc=com', 'bar', 'baz'));
     }
 
@@ -187,60 +152,79 @@ class LdapClientTest extends \PHPUnit_Framework_TestCase
         $reflMethod = $reflObj->getMethod('normalizeConfig');
         $reflMethod->setAccessible(true);
         array_unshift($args, $this->client);
-        $this->assertEquals($expected, call_user_func_array(array($reflMethod, 'invoke'), $args));
+        $this->assertEquals($expected, \call_user_func_array([$reflMethod, 'invoke'], $args));
+    }
+
+    /**
+     * @group functional
+     * @requires extension ldap
+     */
+    public function testLdapClientFunctional()
+    {
+        $config = $this->getLdapConfig();
+        $ldap = new LdapClient($config['host'], $config['port']);
+        $ldap->bind('cn=admin,dc=symfony,dc=com', 'symfony');
+        $result = $ldap->find('dc=symfony,dc=com', '(&(objectclass=person)(ou=Maintainers))');
+
+        $con = @ldap_connect($config['host'], $config['port']);
+        @ldap_bind($con, 'cn=admin,dc=symfony,dc=com', 'symfony');
+        $search = @ldap_search($con, 'dc=symfony,dc=com', '(&(objectclass=person)(ou=Maintainers))', ['*']);
+        $expected = @ldap_get_entries($con, $search);
+
+        $this->assertSame($expected, $result);
     }
 
     public function provideConfig()
     {
-        return array(
-            array(
-                array('localhost', 389, 3, true, false, false),
-                array(
+        return [
+            [
+                ['localhost', 389, 3, true, false, false],
+                [
                     'host' => 'localhost',
                     'port' => 389,
                     'encryption' => 'ssl',
-                    'options' => array(
+                    'options' => [
                         'protocol_version' => 3,
                         'referrals' => false,
-                    ),
-                ),
-            ),
-            array(
-                array('localhost', 389, 3, false, true, false),
-                array(
+                    ],
+                ],
+            ],
+            [
+                ['localhost', 389, 3, false, true, false],
+                [
                     'host' => 'localhost',
                     'port' => 389,
                     'encryption' => 'tls',
-                    'options' => array(
+                    'options' => [
                         'protocol_version' => 3,
                         'referrals' => false,
-                    ),
-                ),
-            ),
-            array(
-                array('localhost', 389, 3, false, false, false),
-                array(
+                    ],
+                ],
+            ],
+            [
+                ['localhost', 389, 3, false, false, false],
+                [
                     'host' => 'localhost',
                     'port' => 389,
                     'encryption' => 'none',
-                    'options' => array(
+                    'options' => [
                         'protocol_version' => 3,
                         'referrals' => false,
-                    ),
-                ),
-            ),
-            array(
-                array('localhost', 389, 3, false, false, false),
-                array(
+                    ],
+                ],
+            ],
+            [
+                ['localhost', 389, 3, false, false, false],
+                [
                     'host' => 'localhost',
                     'port' => 389,
                     'encryption' => 'none',
-                    'options' => array(
+                    'options' => [
                         'protocol_version' => 3,
                         'referrals' => false,
-                    ),
-                ),
-            ),
-        );
+                    ],
+                ],
+            ],
+        ];
     }
 }

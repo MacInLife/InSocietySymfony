@@ -19,22 +19,46 @@ namespace Symfony\Component\HttpKernel\ControllerMetadata;
 final class ArgumentMetadataFactory implements ArgumentMetadataFactoryInterface
 {
     /**
+     * If the ...$arg functionality is available.
+     *
+     * Requires at least PHP 5.6.0 or HHVM 3.9.1
+     *
+     * @var bool
+     */
+    private $supportsVariadic;
+
+    /**
+     * If the reflection supports the getType() method to resolve types.
+     *
+     * Requires at least PHP 7.0.0 or HHVM 3.11.0
+     *
+     * @var bool
+     */
+    private $supportsParameterType;
+
+    public function __construct()
+    {
+        $this->supportsVariadic = method_exists('ReflectionParameter', 'isVariadic');
+        $this->supportsParameterType = method_exists('ReflectionParameter', 'getType');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function createArgumentMetadata($controller)
     {
-        $arguments = array();
+        $arguments = [];
 
-        if (is_array($controller)) {
+        if (\is_array($controller)) {
             $reflection = new \ReflectionMethod($controller[0], $controller[1]);
-        } elseif (is_object($controller) && !$controller instanceof \Closure) {
+        } elseif (\is_object($controller) && !$controller instanceof \Closure) {
             $reflection = (new \ReflectionObject($controller))->getMethod('__invoke');
         } else {
             $reflection = new \ReflectionFunction($controller);
         }
 
         foreach ($reflection->getParameters() as $param) {
-            $arguments[] = new ArgumentMetadata($param->getName(), $this->getType($param), $this->isVariadic($param), $this->hasDefaultValue($param), $this->getDefaultValue($param));
+            $arguments[] = new ArgumentMetadata($param->getName(), $this->getType($param, $reflection), $this->isVariadic($param), $this->hasDefaultValue($param), $this->getDefaultValue($param), $param->allowsNull());
         }
 
         return $arguments;
@@ -43,19 +67,15 @@ final class ArgumentMetadataFactory implements ArgumentMetadataFactoryInterface
     /**
      * Returns whether an argument is variadic.
      *
-     * @param \ReflectionParameter $parameter
-     *
      * @return bool
      */
     private function isVariadic(\ReflectionParameter $parameter)
     {
-        return PHP_VERSION_ID >= 50600 && $parameter->isVariadic();
+        return $this->supportsVariadic && $parameter->isVariadic();
     }
 
     /**
      * Determines whether an argument has a default value.
-     *
-     * @param \ReflectionParameter $parameter
      *
      * @return bool
      */
@@ -67,8 +87,6 @@ final class ArgumentMetadataFactory implements ArgumentMetadataFactoryInterface
     /**
      * Returns a default value if available.
      *
-     * @param \ReflectionParameter $parameter
-     *
      * @return mixed|null
      */
     private function getDefaultValue(\ReflectionParameter $parameter)
@@ -79,31 +97,39 @@ final class ArgumentMetadataFactory implements ArgumentMetadataFactoryInterface
     /**
      * Returns an associated type to the given parameter if available.
      *
-     * @param \ReflectionParameter $parameter
-     *
-     * @return null|string
+     * @return string|null
      */
-    private function getType(\ReflectionParameter $parameter)
+    private function getType(\ReflectionParameter $parameter, \ReflectionFunctionAbstract $function)
     {
-        if (PHP_VERSION_ID >= 70000) {
-            return $parameter->hasType() ? (string) $parameter->getType() : null;
+        if ($this->supportsParameterType) {
+            if (!$type = $parameter->getType()) {
+                return null;
+            }
+            $name = $type instanceof \ReflectionNamedType ? $type->getName() : (string) $type;
+            if ('array' === $name && !$type->isBuiltin()) {
+                // Special case for HHVM with variadics
+                return null;
+            }
+        } elseif (preg_match('/^(?:[^ ]++ ){4}([a-zA-Z_\x7F-\xFF][^ ]++)/', $parameter, $name)) {
+            $name = $name[1];
+        } else {
+            return null;
+        }
+        $lcName = strtolower($name);
+
+        if ('self' !== $lcName && 'parent' !== $lcName) {
+            return $name;
+        }
+        if (!$function instanceof \ReflectionMethod) {
+            return null;
+        }
+        if ('self' === $lcName) {
+            return $function->getDeclaringClass()->name;
+        }
+        if ($parent = $function->getDeclaringClass()->getParentClass()) {
+            return $parent->name;
         }
 
-        if ($parameter->isArray()) {
-            return 'array';
-        }
-
-        if ($parameter->isCallable()) {
-            return 'callable';
-        }
-
-        try {
-            $refClass = $parameter->getClass();
-        } catch (\ReflectionException $e) {
-            // mandatory; extract it from the exception message
-            return str_replace(array('Class ', ' does not exist'), '', $e->getMessage());
-        }
-
-        return $refClass ? $refClass->getName() : null;
+        return null;
     }
 }
