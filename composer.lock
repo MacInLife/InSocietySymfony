@@ -2727,7 +2727,7 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.4.49",
+            "version": "v3.4.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
