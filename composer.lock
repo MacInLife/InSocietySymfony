@@ -22,7 +22,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
-                "symfony/symfony": "^3.1.0"
+                "symfony/symfony": "^4.4.50"
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.2"
@@ -1174,7 +1174,7 @@
         },
         {
             "name": "laminas/laminas-diactoros",
-            "version": "1.3.3",
+            "version": "2.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-diactoros.git",
