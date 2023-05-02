@@ -30,10 +30,8 @@
         "symfony/security-acl": "*",
         "symfony/psr-http-message-bridge": "*",
         "zendframework/zend-diactoros": "*",
-        "symfony/phpunit-bridge": "^6.2"
-    },
-    "require-dev": {
-        "laminas/laminas-diactoros": "*"
+        "symfony/phpunit-bridge": "^6.2",
+        "guzzlehttp/psr7": "*"
     },
     "scripts": {
         "symfony-scripts": [
