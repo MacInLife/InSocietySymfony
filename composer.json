@@ -60,5 +60,8 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null
+    },
+    "require-dev": {
+        "doctrine/doctrine-cache-bundle": "*"
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30a34d282d4b440af16b46ba286d56e9",
+    "content-hash": "f213a8184cee72cc27aa4dfefcc641c6",
     "packages": [
         {
             "name": "ancarebeca/full-calendar-bundle",
@@ -22,7 +22,7 @@
             },
             "require": {
                 "php": ">=5.5.9",
-                "symfony/symfony": "^3.1.0"
+                "symfony/symfony": "^3.4.49"
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.2"
