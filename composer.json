@@ -19,7 +19,6 @@
     "require": {
         "php": ">=5.5.9",
         "doctrine/orm": "^2.5",
-        "doctrine/doctrine-bundle": "^1.6",
         "symfony/monolog-bundle": "^2.8",
         "symfony/polyfill-apcu": "^1.0",
         "incenteev/composer-parameter-handler": "^2.0",
@@ -32,7 +31,11 @@
         "symfony/phpunit-bridge": "^6.2",
         "guzzlehttp/psr7": "*",
         "symfony/symfony": "*",
-        "backendtea/un-poly-intl-icu": "^1.0"
+        "backendtea/un-poly-intl-icu": "^1.0",
+        "symfony/cache": "*",
+        "ang3/symfony-scripts": "^1.2",
+        "sensio/distribution-bundle": "*",
+        "symfony/process": "*"
     },
     "scripts": {
         "symfony-scripts": [
