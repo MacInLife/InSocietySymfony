@@ -31,7 +31,8 @@
         "symfony/psr-http-message-bridge": "*",
         "symfony/phpunit-bridge": "^6.2",
         "guzzlehttp/psr7": "*",
-        "symfony/symfony": "*"
+        "symfony/symfony": "*",
+        "backendtea/un-poly-intl-icu": "^1.0"
     },
     "scripts": {
         "symfony-scripts": [
@@ -60,8 +61,5 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null
-    },
-    "require-dev": {
-        "doctrine/doctrine-cache-bundle": "*"
     }
 }
