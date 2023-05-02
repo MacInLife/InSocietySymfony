@@ -29,9 +29,9 @@
         "symfony/http-kernel": "*",
         "symfony/security-acl": "*",
         "symfony/psr-http-message-bridge": "*",
-        "zendframework/zend-diactoros": "*",
         "symfony/phpunit-bridge": "^6.2",
-        "guzzlehttp/psr7": "*"
+        "guzzlehttp/psr7": "*",
+        "symfony/symfony": "*"
     },
     "scripts": {
         "symfony-scripts": [
